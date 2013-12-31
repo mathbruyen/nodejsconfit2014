@@ -62,13 +62,44 @@ Let's now discuss the actual algorithms.
 
 There is one thing common to all: synchronization is initiated by the client. As a first setup the client must be setup to record changes happening while offline. If you want to stick to asynchronous UIs you can even record changes and push to the server asynchronously even when online. Then upon synchronization, the client starts by pushing all edits to the server, and only then pulls changes from the server. We recommend this because the number of edits on the client will remain relatively small, it concerns the action of only one user.
 
+The reasons for doing that are
+
+* batch updates may be better handled by calling a specific endpoint on the server rather than sending individual modifications
+* updates usually require some business rules to be validated, that automatic synchronization could not handle
+
 You can of course combine that with push notifications. Push cannot be your only medium because it is unreliable when clients are disconnected. But it can be a very nice addition to asynchronous synchronization (sic) to make your app far more responsive.
+
+## Conflicts
+
+We assumed that applications could go offline, so we assumed the application must be partition tolerant. And with that usually comes conflicts, two users doing a different edit to the same entity. With the model taken here, the conflict is detected when the second client tries to push its local edits. To us the solution is to refuse this push and require the client to do the merge. That does not necessarily mean that the actual user will do the merge, but that the application running on the client will do it, it is specific to your business case, no global choice can be made by any library.
+
+The good news is that with the chosen model, conflicts only happen when pushing local changes. When pulling, all changes from the server should be blindly taken.
 
 # Wholesale
 
 ## Algorithm
 
+The algorithm is the simplest we could imagine: transfer the whole dataset to the client. Selective data model is also easy, just parameterize the database query on the endpoint and you have it.
+
+That may seem like a horrible idea, but at least it works, no surprise! And I bet there are use cases for which it is perfectly valid. Do not optimize before you need to.
+
 ## Evaluation
+
+Evaluation is pretty straigforward here. Bandwidth is wasted because non modified entities are nonetheless transferred. Only one roundtrip is needed. Errors, rogue edits, everything is resolved on the next synchronization. And the setup if of course very simple.
+
+## Versioned entities
+
+For many business cases one attaches a version identifier to entities, that is every time you modify something it gets a new version. All version are sometimes stored to keep track of what happens. That can be used to improve wholesale trasnfer by only sending all entity identities and latest versions.
+
+Notice that if you keep track of all versions it can be leveraged to let the application do three-way merges upon conflict.
+
+## Versioned evaluation
+
+Bandwidth is a bit reduced compared to the other but one still needs to transmit a datastructure whose size is proportional to the number of items in the store, regardless the number of edits.
+
+Roundtrips on the other hand increases a lot because the client must fetch modified entities one by one after having the list of changed ones. One could also use lazy loading in the client storage and actually request entity content only when needed.
+
+Computational cost remains limited, error correction is preserved if one guaranties that there are no rogue edits to the database for which the version would not change. Setup remains very easy.
 
 # Timestamps
 
@@ -81,3 +112,25 @@ You can of course combine that with push notifications. Push cannot be your only
 ## Clocks
 
 ## Evaluation
+
+# Mathematical
+
+The last aproach to synchronization is less direct but gives interesting results. We present here one possible data structure here.
+
+## Idea
+
+## Combined with versioning
+
+If one uses versioned entities version one can synchronize only entity identity and version and then lazy load actual content, like for wholesale transfer.
+
+## Evaluation
+
+With this solution, bandwidth is used very efficiently because data transferred is proportional the the changeset size, regardless how many items are to be synchronized. To be more precise it is proportional to the number of entities modified times the size of an entity. So entity choice may impact performances.
+
+The solution leads to a few roundtrips, logarithmic growth in term of changed entities number is not that much, but still greater than other aproaches that did it in one shot.
+
+Computational cost is pretty high because with a lot of binary operations. Since the data structure is map/reduce friendly it can be computed ahead of time but then we can count memory used to cache it as a computation cost.
+
+Error correction is very interesting here, because even rogue edits to your database are taken into account. Except if you have caches or use map/reduce on top of the database.
+
+Setup may seem very high, but I would argue not that much in the end because we developed a library to do that for you. To be honest the library is under heavy development, but it already does its job and if you need it tomorrow in production your contribution is warmly welcome.

@@ -281,6 +281,9 @@
           <li>clients pulls changes which happened on the server</li>
         </ol>
       </div>
+      <div class="ft-page" data-id="conflict" data-title="Conflicts">
+        <h1>Conflicts</h1>
+      </div>
     </div>
     <div class="ft-section" data-id="wholesale">
       <div class="ft-page" data-id="transfereverything" data-title="Transfer everything">
@@ -295,6 +298,23 @@
         <h1>Evaluation</h1>
         <ul>
           <li>Bandwidth: not efficient</li>
+          <li>Roundtrips: 1 + number of edits</li>
+          <li>Computational cost: low</li>
+          <li>Error correction: no rogue edits</li>
+          <li>Setup: remains ok</li>
+        </ul>
+      </div>
+      <div class="ft-page" data-id="versionedentities" data-title="Versioned entitied">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>With versioned entities</h1>
+          </div>
+        </div>
+      </div>
+      <div class="ft-page" data-id="versionedevaluation" data-title="Versioned entity evaluation">
+        <h1>Versioned entities evaluation</h1>
+        <ul>
+          <li>Bandwidth: medium</li>
           <li>Roundtrips: just 1</li>
           <li>Computational cost: low</li>
           <li>Error correction: fixed on next synchronization</li>
@@ -372,6 +392,42 @@
           <li>Computational cost: low for CPU / doubles database footprint</li>
           <li>Error correction: errors remain here forever</li>
           <li>Setup: extra field to store on clients, logging infrastructure (may be here for business reasons)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-section" data-id="mathematical">
+      <div class="ft-page" data-id="description" data-title="Mathematical">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Mathematical aproach</h1>
+            <h2>let's play!</h2>
+          </div>
+        </div>
+      </div>
+      <div class="ft-page" data-id="idea" data-title="Idea">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Send me a data structure</h1>
+            <h1>that I will be able to decipher</h1>
+            <h1>if I already have a large part of it</h1>
+          </div>
+        </div>
+      </div>
+      <div class="ft-page" data-id="idea" data-title="Idea">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Combine with versioning</h1>
+          </div>
+        </div>
+      </div>
+      <div class="ft-page" data-id="evaluation" data-title="Evaluation">
+        <h1>Evaluation</h1>
+        <ul>
+          <li>Bandwidth: O(changeset size)</li>
+          <li>Roundtrips: O(log(changeset size))</li>
+          <li>Computational cost: high</li>
+          <li>Error correction: fix on next synchronization</li>
+          <li>Setup: ?</li>
         </ul>
       </div>
     </div>
