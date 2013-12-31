@@ -69,7 +69,7 @@
           <div class="stacked-center">
             <h1>Synchronization</h1>
             <svg viewBox="0 0 400 200" style="height: 25em;">
-              <style type="text/css" ><![CDATA[
+              <style scoped type="text/css" ><![CDATA[
                 text {
                   text-anchor: middle;
                 }
@@ -122,7 +122,7 @@
           <div class="stacked-center">
             <h1>Client/server</h1>
             <svg viewBox="0 0 400 200" style="height: 25em;">
-              <style type="text/css" ><![CDATA[
+              <style scoped type="text/css" ><![CDATA[
                 text {
                   text-anchor: middle;
                   dominant-baseline: middle;
@@ -177,7 +177,7 @@
         <div class="stack-center">
           <div class="stacked-center">
             <h1>... mostly offline</h1>
-            <svg viewBox="0 0 400 200" style="height: 25em;">
+            <svg scoped viewBox="0 0 400 200" style="height: 25em;">
               <style type="text/css" ><![CDATA[
                 text {
                   text-anchor: middle;
@@ -282,7 +282,76 @@
         </ol>
       </div>
       <div class="ft-page" data-id="conflict" data-title="Conflicts">
-        <h1>Conflicts</h1>
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Conflicts</h1>
+            <svg viewBox="0 0 400 200" style="height: 25em;">
+              <style scoped type="text/css" ><![CDATA[
+                text {
+                  text-anchor: middle;
+                  dominant-baseline: middle;
+                }
+                path {
+                  fill: none;
+                }
+                .timeline rect {
+                  stroke: #222244;
+                  fill: #BBB;
+                }
+                .offline rect {
+                  stroke: black;
+                  stroke-dasharray: 4 4;
+                  fill: rgba(10, 30, 10, 0.2);
+                }
+                .action rect {
+                  stroke: #442244;
+                  fill: #DDD;
+                }
+                .client rect {
+                  stroke: #442222;
+                }
+              ]]></style>
+              <g class="timeline client" transform="translate(75,10)">
+                <rect x="-50" y="-7" width="100" height="14"/>
+                <text font-size="10">client A</text>
+                <path d="M 0 10 L 0 180" />
+              </g>
+              <g class="timeline" transform="translate(200,10)">
+                <rect x="-50" y="-7" width="100" height="14"/>
+                <text font-size="10">server</text>
+                <path d="M 0 10 L 0 180" />
+              </g>
+              <g class="timeline client" transform="translate(325,10)">
+                <rect x="-50" y="-7" width="100" height="14"/>
+                <text font-size="10">client B</text>
+                <path d="M 0 10 L 0 180" />
+              </g>
+              <g class="action" transform="translate(140, 30)">
+                <rect x="-40" y="-7" width="80" height="14"/>
+                <text font-size="10">sync</text>
+                <path d="M -65 7 L 60 7" />
+              </g>
+              <g class="offline" transform="translate(75, 55)">
+                <rect x="-40" y="-7" width="80" height="100"/>
+                <text font-size="10">offline</text>
+              </g>
+              <g class="action" transform="translate(75, 95)">
+                <rect x="-30" y="-7" width="60" height="14"/>
+                <text font-size="10">change</text>
+              </g>
+              <g class="action" transform="translate(265, 100)">
+                <rect x="-40" y="-7" width="80" height="14"/>
+                <text font-size="10">change</text>
+                <path d="M -65 7 L -60 10 L -60 4 L -65 7 L 60 7" />
+              </g>
+              <g class="action" transform="translate(140, 160)">
+                <rect x="-40" y="-7" width="80" height="14"/>
+                <text font-size="10">sync/conflict</text>
+                <path d="M -65 7 L 60 7" />
+              </g>
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
     <div class="ft-section" data-id="wholesale">
@@ -336,7 +405,7 @@
           <div class="stacked-center">
             <h1>How to</h1>
             <svg viewBox="0 0 400 200" style="height: 25em;">
-              <style type="text/css" ><![CDATA[
+              <style scoped type="text/css" ><![CDATA[
                 text {
                   text-anchor: middle;
                   dominant-baseline: middle;
