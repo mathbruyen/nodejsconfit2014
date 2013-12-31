@@ -242,13 +242,137 @@
         </div>
       </div>
     </div>
-    <div class="ft-section" data-id="constraints">
-      <div class="ft-page" data-id="constraints" data-title="Constraints">
+    <div class="ft-section" data-id="features">
+      <div class="ft-page" data-id="features" data-title="Features">
         <div class="stack-center">
           <div class="stacked-center">
-            <h1>Constraints!</h1>
+            <h1>Features!</h1>
           </div>
         </div>
+      </div>
+      <div class="ft-page" data-id="operations" data-title="Operations">
+        <h1>Supported operations</h1>
+        <ul>
+          <li>Add - <code>PUT</code></li>
+          <li>Modify - <code>POST</code></li>
+          <li>Suppress - <code>DELETE</code></li>
+        </ul>
+      </div>
+      <div class="ft-page" data-id="selectivedatamodel" data-title="Selective data model">
+        <h1>Selective data model</h1>
+      </div>
+      <div class="ft-page" data-id="evaluation" data-title="Evaluation">
+        <h1>Evaluation</h1>
+        <ul>
+          <li>Bandwidth</li>
+          <li>Roundtrips</li>
+          <li>Computational cost</li>
+          <li>Error correction</li>
+          <li>Setup</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-section" data-id="common">
+      <div class="ft-page" data-id="clientinitiated" data-title="Client initiated">
+        <h1>Initiated by the client</h1>
+        <ol>
+          <li>client logs offline edits</li>
+          <li>client pushes edits</li>
+          <li>clients pulls changes which happened on the server</li>
+        </ol>
+      </div>
+    </div>
+    <div class="ft-section" data-id="wholesale">
+      <div class="ft-page" data-id="transfereverything" data-title="Transfer everything">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Wholesale</h1>
+            <h2>Transfer everything!</h2>
+          </div>
+        </div>
+      </div>
+      <div class="ft-page" data-id="evaluation" data-title="Evaluation">
+        <h1>Evaluation</h1>
+        <ul>
+          <li>Bandwidth: not efficient</li>
+          <li>Roundtrips: just 1</li>
+          <li>Computational cost: low</li>
+          <li>Error correction: fixed on next synchronization</li>
+          <li>Setup: does anyone have a simpler idea?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-section" data-id="timestamps">
+      <div class="ft-page" data-id="logchanges" data-title="Log changes">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Timestamps</h1>
+            <h2>Log changes!</h2>
+          </div>
+        </div>
+      </div>
+      <div class="ft-page" data-id="algorithm" data-title="Log changes">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>How to</h1>
+            <svg viewBox="0 0 400 200" style="height: 25em;">
+              <style type="text/css" ><![CDATA[
+                text {
+                  text-anchor: middle;
+                  dominant-baseline: middle;
+                }
+                .serverrevision rect {
+                  stroke: #222244;
+                  fill: #BBB;
+                }
+                .clientrevision rect {
+                  stroke: #442222;
+                  fill: #BBB;
+                }
+              ]]></style>
+              <defs>
+                <g id="revision">
+                  <rect x="-50" y="-7" width="100" height="14"/>
+                  <text font-size="10">change</text>
+                </g>
+              </defs>
+              <g transform="translate(280, 40)">
+                <rect x="-50" y="-10" width="100" height="20"/>
+                <text>last sync: 10</text>
+              </g>
+              <use xlink:href="#revision" class="serverrevision" x="100" y="60"/>
+              <use xlink:href="#revision" class="serverrevision" x="100" y="80"/>
+              <use xlink:href="#revision" class="serverrevision" x="100" y="100"/>
+              <use xlink:href="#revision" class="serverrevision" x="100" y="120"/>
+              <use xlink:href="#revision" class="serverrevision" x="100" y="140"/>
+
+              <use xlink:href="#revision" class="clientrevision" x="300" y="60"/>
+              <use xlink:href="#revision" class="clientrevision" x="300" y="80"/>
+              <use xlink:href="#revision" class="clientrevision" x="300" y="100"/>
+              <use xlink:href="#revision" class="clientrevision" x="300" y="160"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="ft-page" data-id="filters" data-title="Filters">
+        <h1>Filters</h1>
+      </div>
+      <div class="ft-page" data-id="errors" data-title="Errors">
+        <h1>Errors</h1>
+      </div>
+      <div class="ft-page" data-id="clocks" data-title="Clocks">
+        <h1>Clocks</h1>
+        TODO: client/server/db clocks are not synchronized so only the database time must be used (never use Date.now() on client/server)
+      </div>
+      <div class="ft-page" data-id="evaluation" data-title="Evaluation">
+        <h1>Evaluation</h1>
+        <ul>
+          <li>Bandwidth: efficient (with deduplicates)</li>
+          <li>Roundtrips: just 1</li>
+          <li>Computational cost: low for CPU / doubles database footprint</li>
+          <li>Error correction: errors remain here forever</li>
+          <li>Setup: extra field to store on clients, logging infrastructure (may be here for business reasons)</li>
+        </ul>
       </div>
     </div>
   </div>
