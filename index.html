@@ -64,59 +64,6 @@
       </div>
     </div>
     <div class="ft-section" data-id="introduction">
-      <div class="ft-page" data-id="synchronization" data-title="Synchronization">
-        <div class="stack-center">
-          <div class="stacked-center">
-            <h1>Synchronization</h1>
-            <svg viewBox="0 0 400 200" style="height: 25em;">
-              <style scoped type="text/css" ><![CDATA[
-                text {
-                  text-anchor: middle;
-                }
-                .entity rect {
-                  stroke: #222244;
-                  fill: none;
-                }
-                .network path {
-                  stroke: black;
-                  stroke-dasharray: 4 4;
-                }
-                .exchange path {
-                  stroke: #442222;
-                  fill: none;
-                }
-              ]]></style>
-              <g class="entity" transform="translate(10,10)">
-                <rect width="120" height="50"/>
-                <text x="60" y="20">Entity A</text>
-                <text x="60" y="40">State 1</text>
-              </g>
-              <g class="entity" transform="translate(270,10)">
-                <rect width="120" height="50"/>
-                <text x="60" y="20">Entity B</text>
-                <text x="60" y="40">State 2</text>
-              </g>
-              <g class="network" transform="translate(200,0)">
-                <text y="20">Network</text>
-                <path d="M 0 30 L 0 170" style="" />
-              </g>
-              <g class="entity" transform="translate(10,140)">
-                <rect width="120" height="50"/>
-                <text x="60" y="20">Entity A</text>
-                <text x="60" y="40">State 3</text>
-              </g>
-              <g class="entity" transform="translate(270,140)">
-                <rect width="120" height="50"/>
-                <text x="60" y="20">Entity B</text>
-                <text x="60" y="40">State 3</text>
-              </g>
-              <g class="exchange" transform="translate(120,70)">
-                <path d="M 0 0 L 160 10 L 0 20 L 160 30 L 0 40 L 160 50 L 0 60" />
-              </g>
-            </svg>
-          </div>
-        </div>
-      </div>
       <div class="ft-page" data-id="clientserver" data-title="Client server">
         <div class="stack-center">
           <div class="stacked-center">
@@ -228,6 +175,59 @@
               <use class="offline" xlink:href="#client" x="100" y="60"/>
 
               <use xlink:href="#server" x="200" y="100"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="ft-page" data-id="synchronization" data-title="Synchronization">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Synchronization</h1>
+            <svg viewBox="0 0 400 200" style="height: 25em;">
+              <style scoped type="text/css" ><![CDATA[
+                text {
+                  text-anchor: middle;
+                }
+                .entity rect {
+                  stroke: #222244;
+                  fill: none;
+                }
+                .network path {
+                  stroke: black;
+                  stroke-dasharray: 4 4;
+                }
+                .exchange path {
+                  stroke: #442222;
+                  fill: none;
+                }
+              ]]></style>
+              <g class="entity" transform="translate(10,10)">
+                <rect width="120" height="50"/>
+                <text x="60" y="20">Actor A</text>
+                <text x="60" y="40">State 1</text>
+              </g>
+              <g class="entity" transform="translate(270,10)">
+                <rect width="120" height="50"/>
+                <text x="60" y="20">Actor B</text>
+                <text x="60" y="40">State 2</text>
+              </g>
+              <g class="network" transform="translate(200,0)">
+                <text y="20">Network</text>
+                <path d="M 0 30 L 0 170" style="" />
+              </g>
+              <g class="entity" transform="translate(10,140)">
+                <rect width="120" height="50"/>
+                <text x="60" y="20">Actor A</text>
+                <text x="60" y="40">State 3</text>
+              </g>
+              <g class="entity" transform="translate(270,140)">
+                <rect width="120" height="50"/>
+                <text x="60" y="20">Actor B</text>
+                <text x="60" y="40">State 3</text>
+              </g>
+              <g class="exchange" transform="translate(120,70)">
+                <path d="M 0 0 L 160 10 L 0 20 L 160 30 L 0 40 L 160 50 L 0 60" />
+              </g>
             </svg>
           </div>
         </div>
