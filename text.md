@@ -118,13 +118,25 @@ Even though we generally speak of numeric timestamps because it looks easy to de
 
 It may look strange but a version control system like Git and its JS implementation can be a solution for some (relatively rare) cases, namely if you need the full repository history to live on clients.
 
-## Filters
-
-## Errors
+The main difference between timestamps and other solutions is that timestamps are ordered and if you index your database on them you can find all modifications within two instants in a very efficient manner. Git commits on the other hand require to look through parents of each commit until finding the last one the client knew about.
 
 ## Clocks
 
+There is still an important thing to think about when using timestamps: they must come from a globally stricly increasing source.
+
+And this is almost impossible to achieve if you are relying only on computer clock because clocks on different nodes are not in sync. One way to achieve it is given in [Google's Spanner](http://research.google.com/archive/spanner.html) paper. Only leader nodes can assign write timestamps, and they are allowed to do so only for a period of time explicitly allowed by all slaves. If the leader fails, slaves must wait until the lease period expires before electing a new leader. And to definitely be sure that the lease period expired, they had to plug GPS sensors on their computers and house atomic clocks in their datacenters.
+
+Even if you have only one node, its clock may go backwards! For example when syncing with an NTP server and discovering its physical clock goes too fast.
+
+So you need a timestamp oracle which gives you strictly increasing timestamps. We did not find any so if you know one please email it to us.
+
+## Errors
+
+## Filters
+
 ## Evaluation
+
+## Couch/PouchDB
 
 # Mathematical
 
@@ -147,3 +159,8 @@ Computational cost is pretty high because with a lot of binary operations. Since
 Error correction is very interesting here, because even rogue edits to your database are taken into account. Except if you have caches or use map/reduce on top of the database.
 
 Setup may seem very high, but I would argue not that much in the end because we developed a library to do that for you. To be honest the library is under heavy development, but it already does its job and if you need it tomorrow in production your contribution is warmly welcome.
+
+# TODO
+
+* Couch/PouchDB
+* rsync
