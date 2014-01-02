@@ -36,11 +36,13 @@ The talk will be about the different constraints that you have here and possible
 
 ## Supported operations
 
-We want to support all kind of operations. Creating a new item on a client must be visible on others. An item being modified must be visible on all clients. And it is important to also mention that deleting an item must be propagated to other clients. Said like that it seems trivial, but it is usually the one aspect that people forget about in the initial design, and then it may be impossible to integrate naturally.
+We want to synchronize the result of applying all kind of operations. Both making the server aware of what the client did while offline and fetching changes made by all other clients.
+
+Creating a new item on a client must be visible on others. An item being modified must be visible on all clients. And it is important to also mention that deleting an item must be propagated to other clients. Said like that it seems trivial, but it is usually the one aspect that people forget about in the initial design, and then it may be impossible to integrate naturally.
 
 ## Selective data model
 
-Another important feature we usually want is a selective data model. The whole dataset usually must not be synchronized to all clients. First because of access rights, I should not see Facebook private messages from my neighbor. But also because of the volume of data involved, one would not want to try synchronizing every single tweet ever sent on a poor iPhone over 3G. So each user may want to synchronize a personal subset of the dataset.
+Another important feature we usually want is a selective data model. The whole dataset usually must not be synchronized to all clients. First because of access rights, I should not see Facebook private messages from my neighbor. But also because of the volume of data involved, one would not want to try synchronizing every single tweet ever sent on a poor iPhone over 3G. So each user may wants to synchronize a personal subset of the dataset.
 
 ## Evaluation
 
@@ -62,7 +64,7 @@ Let's now discuss the actual algorithms.
 
 ## Initiated by the client
 
-There is one thing common to all: synchronization is initiated by the client. As a first setup the client must be setup to record changes happening while offline. If you want to stick to asynchronous UIs you can even record changes and push to the server asynchronously even when online. Then upon synchronization, the client starts by pushing all edits to the server, and only then pulls changes from the server. We recommend this because the number of edits on the client will remain relatively small, it concerns the action of only one user.
+There is one thing common to all: synchronization is initiated by the client. As a first step the client must be setup to record changes happening while offline. If you want to stick to asynchronous UIs you can even record changes and push to the server asynchronously even when online. Then upon synchronization, the client starts by pushing all edits to the server, and only then pulls changes made by other clients. We recommend this because the number of edits on the client will remain small and relatively easy to track, it concerns the action of only one user.
 
 The reasons for doing that are
 
@@ -73,7 +75,7 @@ You can of course combine that with push notifications. Push cannot be your only
 
 ## Conflicts
 
-We assumed that applications could go offline, so we assumed the application must be partition tolerant. And with that usually comes conflicts, two users doing a different edit to the same entity. With the model taken here, the conflict is detected when the second client tries to push its local edits. To us the solution is to refuse this push and require the client to do the merge. That does not necessarily mean that the actual user will do the merge, but that the application running on the client will do it, it is specific to your business case, no global choice can be made by any library.
+We assumed that applications could go offline, so it must be partition tolerant. And with that usually comes conflicts, two users doing a different edit to the same entity. With the model taken here, the conflict is detected when the second client tries to push its local edits. To us the solution is to refuse this push and require the client to do the merge. That does not necessarily mean that the actual user will do the merge, but that the application running on the client must be designed to do it. It is specific to your business case, no global choice can be made by any library.
 
 The good news is that with the chosen model, conflicts only happen when pushing local changes. When pulling, all changes from the server should be blindly taken.
 
