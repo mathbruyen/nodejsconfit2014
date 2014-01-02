@@ -109,6 +109,15 @@ Computational cost remains limited, error correction is preserved if one guarant
 
 ## How to
 
+## Version identifier
+
+Even though we generally speak of numeric timestamps because it looks easy to deal with. What is important there is having:
+
+* a version identifier which changes whenever anything in the dataset changes
+* a way to retrieve operations between two versions
+
+It may look strange but a version control system like Git and its JS implementation can be a solution for some (relatively rare) cases, namely if you need the full repository history to live on clients.
+
 ## Filters
 
 ## Errors
