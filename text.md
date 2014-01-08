@@ -130,9 +130,9 @@ Even if you have only one node, its clock may go backwards! For example when syn
 
 So you need a timestamp oracle which gives you strictly increasing timestamps. We did not find any so if you know one please email it to us.
 
-## Errors
-
 ## Filters
+
+http://wiki.apache.org/couchdb/Replication#Filtered_Replication
 
 ## Evaluation
 
@@ -162,5 +162,4 @@ Setup may seem very high, but I would argue not that much in the end because we 
 
 # TODO
 
-* Couch/PouchDB
-* rsync
+big-O on all evaluations

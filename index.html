@@ -46,7 +46,7 @@
           </div>
         </div>
       </div>
-      <div class="ft-page" data-id="landpage" data-title="Speakers">
+      <div class="ft-page" data-id="speakers" data-title="Speakers">
         <div class="stack-center">
           <div class="stacked-center">
             <h1>Speakers</h1>
@@ -261,9 +261,9 @@
       <div class="ft-page" data-id="operations" data-title="Operations">
         <h1>Supported operations</h1>
         <ul>
-          <li>Add - <code>PUT</code></li>
-          <li>Modify - <code>POST</code></li>
-          <li>Suppress - <code>DELETE</code></li>
+          <li>Add</li>
+          <li>Modify</li>
+          <li>Delete</li>
         </ul>
       </div>
       <div class="ft-page" data-id="selectivedatamodel" data-title="Selective data model">
@@ -275,7 +275,7 @@
           <li>Bandwidth</li>
           <li>Roundtrips</li>
           <li>Computational cost</li>
-          <li>Error correction</li>
+          <li>Resiliency</li>
           <li>Setup</li>
         </ul>
       </div>
@@ -375,10 +375,10 @@
         <h1>Evaluation</h1>
         <ul>
           <li>Bandwidth: not efficient</li>
-          <li>Roundtrips: 1 + number of edits</li>
+          <li>Roundtrips: just 1</li>
           <li>Computational cost: low</li>
-          <li>Error correction: no rogue edits</li>
-          <li>Setup: remains ok</li>
+          <li>Resiliency: yes</li>
+          <li>Setup: does anyone have a simpler idea?</li>
         </ul>
       </div>
       <div class="ft-page" data-id="versionedentities" data-title="Versioned entitied">
@@ -388,14 +388,21 @@
           </div>
         </div>
       </div>
+      <div class="ft-page" data-id="rsync" data-title="Rsync">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Rsync</h1>
+          </div>
+        </div>
+      </div>
       <div class="ft-page" data-id="versionedevaluation" data-title="Versioned entity evaluation">
         <h1>Versioned entities evaluation</h1>
         <ul>
           <li>Bandwidth: medium</li>
-          <li>Roundtrips: just 1</li>
+          <li>Roundtrips: 1 + number of edits</li>
           <li>Computational cost: low</li>
-          <li>Error correction: fixed on next synchronization</li>
-          <li>Setup: does anyone have a simpler idea?</li>
+          <li>Resiliency: not to rogue edits</li>
+          <li>Setup: remains ok</li>
         </ul>
       </div>
     </div>
@@ -457,9 +464,6 @@
       <div class="ft-page" data-id="clocks" data-title="Clocks">
         <h1>Clocks</h1>
       </div>
-      <div class="ft-page" data-id="errors" data-title="Errors">
-        <h1>Errors</h1>
-      </div>
       <div class="ft-page" data-id="filters" data-title="Filters">
         <h1>Filters</h1>
       </div>
@@ -468,8 +472,8 @@
         <ul>
           <li>Bandwidth: efficient (with deduplicates)</li>
           <li>Roundtrips: just 1</li>
-          <li>Computational cost: low for CPU / doubles database footprint</li>
-          <li>Error correction: errors remain here forever</li>
+          <li>Computational cost: low for CPU / up to double database footprint</li>
+          <li>Resiliency: errors remain here forever</li>
           <li>Setup: extra field to store on clients, logging infrastructure (may be here for business reasons)</li>
         </ul>
       </div>
