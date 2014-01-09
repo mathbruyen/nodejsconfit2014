@@ -16,7 +16,7 @@ For credits, those slides are based on Flowtime.js framework.
 
 ## Client server
 
-Let's take an assumption: we are building a client server application. Algorithms we will discuss would also work in a P2P architecture but would be less suitable. We do not assume that there is one physical server as the diagram may suggest, but there is one central accessible place where data is stored and a lot of clients which access it. 
+Let's take an assumption: we are building a client server application. Algorithms we will discuss would also work in a P2P architecture but would be less suitable. We do not assume that there is one physical server as the diagram may suggest, but there is one central accessible place where data is stored and a lot of clients which access it.
 
 So many clients that the server generally cannot track all of them individually. This is the scheme for web applications, mobile, desktop, on your smart television... You have one central point to which many (billions?) of clients connect.
 
