@@ -99,9 +99,13 @@ Evaluation is pretty straigforward here. Bandwidth is wasted because non modifie
 
 ## Versioned entities
 
-For many business cases one attaches a version identifier to entities, that is every time you modify something it gets a new version. All version are sometimes stored to keep track of what happens. That can be used to improve wholesale trasnfer by only sending all entity identities and latest versions.
+For many business cases one attaches a version identifier to entities, that is every time you modify something it gets a new version. All version are sometimes stored to keep track of what happens. That can be used to improve wholesale transfer by only sending all entity identities and latest versions. If one does not have an explicit attribute, consistent hashing of meaningful attributes can be used.
 
 Notice that if you keep track of all versions it can be leveraged to let the application do three-way merges upon conflict.
+
+## Rsync
+
+This is for example what Rsync does. The client requests the `MD5` hash of all files on the target, computes the same locally, and sends only different and missing files. Rsync makes other optimizations by taking chunks of files instead of whole files, and even being able to detect chunks for which offset changed.
 
 ## Versioned evaluation
 
