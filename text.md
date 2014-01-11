@@ -14,15 +14,21 @@ For credits, those slides are based on Flowtime.js framework.
 
 # Introduction
 
+## Web application
+
+Let's take an assumption: we are building a web application. Of course it may run on mobiles and tablets, but also on wide screen desktops, small screen laptops. Actually any device which is able to connect to the web. What if the device on the left was a smart TV?
+
 ## Client server
 
-Let's take an assumption: we are building a client server application. Algorithms we will discuss would also work in a P2P architecture but would be less suitable. We do not assume that there is one physical server as the diagram may suggest, but there is one central accessible place where data is stored and a lot of clients which access it.
+And the application model is mainly the one of the client/server. With so many clients that the server generally cannot track all of them individually. You have one central point to which many (billions?) of clients connect.
 
-So many clients that the server generally cannot track all of them individually. This is the scheme for web applications, mobile, desktop, on your smart television... You have one central point to which many (billions?) of clients connect.
+We do not assume that there is one physical server as the diagram may suggest, but there is one central accessible place where data is stored and a lot of clients which access it.
+
+Algorithms we will discuss would also work in a P2P architecture but would be less suitable.
 
 # Mostly offline
 
-Looking at the application use case, there is another important aspect easily seen for mobile applications: they go offline very often (willingly or by constraint). How many times a day do you go through an area not covered by 3G with your phone? And sometimes they go offline for a long time. Easily seen for desktop web applications: for how long do you let your Gmail tab closed before reopening it?
+There is another important aspect easily seen for mobile applications: they go offline very often (willingly or by constraint). How many times a day do you go through an area not covered by 3G with your phone? And sometimes they go offline for a long time. This one is easily seen for desktop web applications: for how long do you let your Gmail tab closed before reopening it?
 
 When disconnected, any other client may modify the state of the server. And we generally expect applications to work while offline, maybe in a degraded mode, and to modify its state too. It means that when the client comes back online it needs to synchronize its state.
 
