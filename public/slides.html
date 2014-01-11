@@ -400,8 +400,8 @@
       <div class="ft-page" data-id="evaluation" data-title="Evaluation">
         <h1>Evaluation</h1>
         <ul>
-          <li>Bandwidth: not efficient</li>
-          <li>Roundtrips: just 1</li>
+          <li>Bandwidth: O(dataset size)</li>
+          <li>Roundtrips: 1</li>
           <li>Computational cost: low</li>
           <li>Resiliency: yes</li>
           <li>Setup: does anyone have a simpler idea?</li>
@@ -590,8 +590,8 @@
       <div class="ft-page" data-id="versionedevaluation" data-title="Versioned entity evaluation">
         <h1>Versioned entities evaluation</h1>
         <ul>
-          <li>Bandwidth: medium</li>
-          <li>Roundtrips: 1 + number of edits</li>
+          <li>Bandwidth: lower but still O(dataset size)</li>
+          <li>Roundtrips: O(changeset size)</li>
           <li>Computational cost: low</li>
           <li>Resiliency: not to rogue edits</li>
           <li>Setup: remains ok</li>
