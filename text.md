@@ -180,6 +180,10 @@ Error correction is very interesting here, because even rogue edits to your data
 
 Setup may seem very high, but I would argue not that much in the end because we developed a library to do that for you. To be honest the library is under heavy development, but it already does its job and if you need it tomorrow in production your contribution is warmly welcome.
 
-# TODO
+# Conclusion
 
-big-O on all evaluations
+In conclusion the first thing we want to say is: start simple! For you prototype I am very sure that wholesale transfer is enough. So do it, validate that your app is interesting to people. Scaling comes later on, you will have solutions to do that if your design is clean with synchronization done in an abstracted service aproach. Please do not tie your implementation with a given library or framework.
+
+Then if you can obtain a reliable edit log our of your database, make sure you use only its time and that its clock is actually monotonic, then use the log aproach. It allows you to scale with a simple setup.
+
+But if you can't prove that your log will be correct and not miss anything, because it is a hard assumption, then move to the mathematical aproach. Mathematics never lie. But keep in mind that the setup is a bit larger. And if you decide to use this aproach and find our library convenient, use it and contribute to it! There is room for improvements, we are just scratching the surface.
