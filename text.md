@@ -68,6 +68,16 @@ The last criteria is how easy is setup. Do you need to tie yourself with a compl
 
 Let's now discuss the actual algorithms.
 
+## No push!
+
+The first idea of most people think "let's just push updates to clients!" and they will get them by the time they reconnect. But this is unsuitable.
+
+First push notifications are unreliable when the client is offline. So your client may not receive some of them and miss some updates, that will never get repaired.
+
+Then we just said that there may be so many clients the server cannot track all of them. And some clients may never come again to your server, so what would you do for them? Queue all notifications they should receive forever?
+
+We do not say that push is not great. It is a great addition to make applications more responsive. But it is not enough to get your clients synchronized with the server, which by the way can be combine with push notifications.
+
 ## Initiated by the client
 
 There is one thing common to all: synchronization is initiated by the client. As a first step the client must be setup to record changes happening while offline. If you want to stick to asynchronous UIs you can even record changes and push to the server asynchronously even when online. Then upon synchronization, the client starts by pushing all edits to the server, and only then pulls changes made by other clients. We recommend this because the number of edits on the client will remain small and relatively easy to track, it concerns the action of only one user.
