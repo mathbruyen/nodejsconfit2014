@@ -164,9 +164,25 @@ The last aproach to synchronization is less direct but gives interesting results
 
 ## Idea
 
-## Combined with versioning
+## Ahead of time computation
 
-If one uses versioned entities version one can synchronize only entity identity and version and then lazy load actual content, like for wholesale transfer.
+## Selective data model
+
+Selective data model fits naturally in this model because the endpoint can filter content it extracts from the database before compressing it. Just select all items that should be present on the application and compress it altogether.
+
+## Easy combination
+
+Selective data model gets computationally expensive with ahead of time computation because one needs to store one structure for each and every use case.
+
+But the data structure is very flexible. One can efficiently combine several structures together if they represent disjoint set of entities. Or do a substraction.
+
+Say you have many users that belongs to a few groups, and that entities they can access depend on groups they belong to. One can store one structure for each group, which is not that many, and merge them together in a single one at runtime depending on the registered user.
+
+## Errors
+
+The magical part of that aproach is that errors get corrected at no cost. If there is a bug in the implementation or that your cache entered a wrong state, for example an incorrectly applied iterative map/reduce job, the next time synchronization occurs all problems are gone.
+
+In the timestamp aproach an error basically means that one needs to invalidate all client caches and make them download again the whole data they need. With the mathematical one at worse you need to clean intermediate caches and map/reduce results. But applications only download actually different data.
 
 ## Evaluation
 
@@ -186,4 +202,4 @@ In conclusion the first thing we want to say is: start simple! For you prototype
 
 Then if you can obtain a reliable edit log our of your database, make sure you use only its time and that its clock is actually monotonic, then use the log aproach. It allows you to scale with a simple setup.
 
-But if you can't prove that your log will be correct and not miss anything, because it is a hard assumption, then move to the mathematical aproach. Mathematics never lie. But keep in mind that the setup is a bit larger. And if you decide to use this aproach and find our library convenient, use it and contribute to it! There is room for improvements, we are just scratching the surface.
+But if you can't prove that your log will be correct and not miss anything, because it is a hard assumption, then move to the mathematical aproach. Mathematics never lie. Another reason is if you need greater flexibility on what to synchronize. But keep in mind that the setup is a bit larger. If you decide to use this aproach and find our library convenient, use it and contribute to it! There is room for improvements, we are just scratching the surface.

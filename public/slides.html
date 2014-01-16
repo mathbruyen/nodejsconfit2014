@@ -308,7 +308,7 @@
     </div>
     <div class="ft-section" data-id="common">
       <div class="ft-page" data-id="npush" data-title="No push!">
-        <h1>No push!</h1>
+        <h1>No(t only) push!</h1>
       </div>
       <div class="ft-page" data-id="clientinitiated" data-title="Client initiated">
         <h1>Initiated by the client</h1>
@@ -694,10 +694,94 @@
           </div>
         </div>
       </div>
-      <div class="ft-page" data-id="idea" data-title="Idea">
+      <div class="ft-page" data-id="aheadoftime" data-title="Ahead of time computation">
         <div class="stack-center">
           <div class="stacked-center">
-            <h1>Combine with versioning</h1>
+            <h1>Ahead of time computation</h1>
+          </div>
+        </div>
+      </div>
+      <div class="ft-page" data-id="mathselective" data-title="Selective data model">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Selective data model</h1>
+          </div>
+        </div>
+      </div>
+      <div class="ft-page" data-id="easycombination" data-title="Easy combination">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Easy combination</h1>
+          </div>
+        </div>
+      </div>
+      <div class="ft-page" data-id="matherror" data-title="Errors">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Errors get corrected!</h1>
+            <svg class="matherrors" viewBox="0 0 400 200" style="height: 25em;">
+              <style type="text/css" ><![CDATA[
+                .matherrors text {
+                  text-anchor: middle;
+                  dominant-baseline: middle;
+                }
+                .matherrors path {
+                  fill: none;
+                }
+                .matherrors .timeline rect {
+                  stroke: #222244;
+                  fill: #BBB;
+                }
+                .matherrors .action rect {
+                  stroke: #442244;
+                  fill: #DDD;
+                }
+              ]]></style>
+              <defs>
+                <path id="rsyncarrow" d="M 0 0 L -5 3 L -5 -3 L 0 0 L -5 0" />
+              </defs>
+              <g class="timeline" transform="translate(100,10)">
+                <rect x="-50" y="-7" width="100" height="14"/>
+                <text font-size="10">application</text>
+                <path d="M 0 10 L 0 180" />
+              </g>
+              <g class="timeline" transform="translate(300,10)">
+                <rect x="-50" y="-7" width="100" height="14"/>
+                <text font-size="10">server</text>
+                <path d="M 0 10 L 0 180" />
+              </g>
+
+              <g class="action" transform="translate(200, 40)">
+                <rect x="-50" y="-7" width="100" height="14"/>
+                <text font-size="10">inconsistent data</text>
+                <path d="M -100 7 L 100 7" />
+                <use xlink:href="#rsyncarrow" transform="translate(100 7)"/>
+                <use xlink:href="#rsyncarrow" transform="translate(-100 7) rotate(180)"/>
+              </g>
+              <g class="action" transform="translate(200, 160)">
+                <rect x="-50" y="-7" width="100" height="14"/>
+                <text font-size="10">synchronize</text>
+                <path d="M -100 7 L 100 7" />
+                <use xlink:href="#rsyncarrow" transform="translate(100 7)"/>
+                <use xlink:href="#rsyncarrow" transform="translate(-100 7) rotate(180)"/>
+              </g>
+              <g class="action" transform="translate(300, 80)">
+                <g transform="translate(55, 0)">
+                  <rect x="-40" y="-7" width="80" height="14"/>
+                  <text font-size="10">fix bug</text>
+                </g>
+                <path d="M 0 -10 L 10 -10 L 10 10 L 0 10" />
+                <use xlink:href="#rsyncarrow" transform="translate(0 10) rotate(180)"/>
+              </g>
+              <g class="action" transform="translate(300, 120)">
+                <g transform="translate(55, 0)">
+                  <rect x="-40" y="-7" width="80" height="14"/>
+                  <text font-size="10">clean caches</text>
+                </g>
+                <path d="M 0 -10 L 10 -10 L 10 10 L 0 10" />
+                <use xlink:href="#rsyncarrow" transform="translate(0 10) rotate(180)"/>
+              </g>
+            </svg>
           </div>
         </div>
       </div>
