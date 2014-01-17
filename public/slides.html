@@ -107,6 +107,7 @@
                 text {
                   text-anchor: middle;
                   dominant-baseline: middle;
+                  font-size: 10pt;
                 }
                 #server rect {
                   stroke: #222244;
@@ -163,6 +164,7 @@
                 text {
                   text-anchor: middle;
                   dominant-baseline: middle;
+                  font-size: 10pt;
                 }
                 #server rect {
                   stroke: #222244;
@@ -477,7 +479,7 @@
               </g>
               <g class="action" transform="translate(200, 60)">
                 <rect x="-75" y="-7" width="150" height="14"/>
-                <text font-size="10">file1 => 1A2B, file2 => 3C4D, ...</text>
+                <text font-size="10">{ file1: 1A2B, file2: 3C4D, ... }</text>
                 <path d="M -100 7 L 100 7" />
                 <use xlink:href="#rsyncarrow" transform="translate(-100 7) rotate(180)"/>
               </g>
@@ -489,7 +491,7 @@
                 </g>
                 <g transform="translate(90, 10)">
                   <rect x="-75" y="-7" width="150" height="14"/>
-                  <text font-size="10">file1 => 1A2B, file2 => 5E6F, ...</text>
+                  <text font-size="10">{ file1: 1A2B, file2: 5EF6, ... }</text>
                 </g>
                 <path d="M 0 -10 L 10 -10 L 10 10 L 0 10" />
                 <use xlink:href="#rsyncarrow" transform="translate(0 10) rotate(180)"/>
@@ -550,14 +552,14 @@
               <g class="action" transform="translate(300, 50)">
                 <g transform="translate(55, 0)">
                   <rect x="-40" y="-7" width="80" height="14"/>
-                  <text font-size="10">version(entity)</text>
+                  <text font-size="10">entity.version</text>
                 </g>
                 <path d="M 0 -10 L 10 -10 L 10 10 L 0 10" />
                 <use xlink:href="#rsyncarrow" transform="translate(0 10) rotate(180)"/>
               </g>
               <g class="action" transform="translate(200, 60)">
                 <rect x="-85" y="-7" width="170" height="14"/>
-                <text font-size="10">entity1 => 1A2B, entity2 => 3C4D, ...</text>
+                <text font-size="10">{ entity1: 2, entity2: 3 , ... }</text>
                 <path d="M -100 7 L 100 7" />
                 <use xlink:href="#rsyncarrow" transform="translate(-100 7) rotate(180)"/>
               </g>
@@ -565,24 +567,24 @@
               <g class="action" transform="translate(100, 110)">
                 <g transform="translate(55, -10)">
                   <rect x="-40" y="-7" width="80" height="14"/>
-                  <text font-size="10">version(entity)</text>
+                  <text font-size="10">entity.version</text>
                 </g>
                 <g transform="translate(100, 10)">
                   <rect x="-85" y="-7" width="170" height="14"/>
-                  <text font-size="10">entity1 => 1A2B, entity2 => 5E6F, ...</text>
+                  <text font-size="10">{ entity1: 2, entity2: 5 , ... }</text>
                 </g>
                 <path d="M 0 -10 L 10 -10 L 10 10 L 0 10" />
                 <use xlink:href="#versionedentitiedalgoarrow" transform="translate(0 10) rotate(180)"/>
               </g>
               <g class="action" transform="translate(200, 160)">
                 <rect x="-75" y="-7" width="150" height="14"/>
-                <text font-size="10">gimme file2</text>
+                <text font-size="10">gimme entity2</text>
                 <path d="M -100 7 L 100 7" />
                 <use xlink:href="#versionedentitiedalgoarrow" transform="translate(100 7)"/>
               </g>
               <g class="action" transform="translate(200, 180)">
                 <rect x="-75" y="-7" width="150" height="14"/>
-                <text font-size="10">file2  = {...}</text>
+                <text font-size="10">entity2  = {...}</text>
                 <path d="M -100 7 L 100 7" />
                 <use xlink:href="#versionedentitiedalgoarrow" transform="translate(-100 7) rotate(180)"/>
               </g>

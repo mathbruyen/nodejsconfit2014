@@ -68,11 +68,11 @@ The last criteria is how easy is setup. Do you need to tie yourself with a compl
 
 Let's now discuss the actual algorithms.
 
-## No push!
+## No(t only) push!
 
 The first idea of most people think "let's just push updates to clients!" and they will get them by the time they reconnect. But this is unsuitable.
 
-First push notifications are unreliable when the client is offline. So your client may not receive some of them and miss some updates, that will never get repaired.
+First push notifications like Google Cloud Messaging are unreliable when the client is offline. So your client may not receive some of them and miss some updates, that will never get repaired.
 
 Then we just said that there may be so many clients the server cannot track all of them. And some clients may never come again to your server, so what would you do for them? Queue all notifications they should receive forever?
 
