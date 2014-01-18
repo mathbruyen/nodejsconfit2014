@@ -243,49 +243,54 @@
         <div class="stack-center">
           <div class="stacked-center">
             <h1>Synchronization</h1>
-            <svg viewBox="0 0 400 200" style="height: 25em;">
+            <svg viewBox="0 0 400 200" style="height: 25em;" class="synchronization">
               <style type="text/css" ><![CDATA[
-                text {
-                  text-anchor: middle;
-                }
-                .entity rect {
+                #synchronizationcloud {
                   stroke: #222244;
-                  fill: none;
+                  fill: #999;
                 }
-                .network path {
+                .synchronization text {
+                  text-anchor: middle;
+                  dominant-baseline: middle;
+                  font-size: 10pt;
+                }
+                .synchronization .network path {
                   stroke: black;
                   stroke-dasharray: 4 4;
                 }
-                .exchange path {
-                  stroke: #442222;
+                .synchronization .exchange path {
+                  stroke: #994444;
                   fill: none;
                 }
               ]]></style>
-              <g class="entity" transform="translate(10,10)">
-                <rect width="120" height="50"/>
-                <text x="60" y="20">Actor A</text>
-                <text x="60" y="40">State 1</text>
+              <defs>
+                <path id="synchronizationcloud" transform="scale(0.5, 0.3) translate(-385, -395)" d="M 404.82773,299.83793 C 390.22963,299.83793 377.56518,307.70801 370.48083,319.33078 C 363.90815,314.68689 355.94082,311.87906 347.28681,311.87908 C 325.01481,311.87908 306.91934,329.97456 306.91934,352.24655 C 306.91934,353.88322 307.2231,355.44757 307.41283,357.0334 C 288.17814,360.10248 273.41137,376.61535 273.41137,396.70999 C 273.41137,416.62054 287.89441,433.09939 306.86999,436.38657 C 306.48549,438.62212 306.1791,440.90134 306.1791,443.24608 C 306.1791,465.51809 324.27456,483.56421 346.54657,483.56421 C 357.45549,483.56421 367.31225,479.20668 374.5768,472.16459 C 381.98006,480.9708 392.92489,486.72254 405.32122,486.72254 C 423.00812,486.72254 437.87677,475.23091 443.31994,459.3832 C 447.67667,460.99428 452.32187,462.04805 457.23635,462.04805 C 479.50836,462.04805 497.55446,443.95259 497.55447,421.68058 C 497.55447,410.48096 492.98863,400.3708 485.61202,393.05816 C 489.33611,386.94832 491.6326,379.85746 491.6326,372.18354 C 491.6326,349.91153 473.53714,331.8654 451.26512,331.86542 C 448.9206,331.86542 446.64096,332.12254 444.40561,332.50696 C 440.80916,313.91248 424.46771,299.83793 404.82773,299.83793" />
+              </defs>
+              <g class="entity" transform="translate(70,55)">
+                <use xlink:href="#synchronizationcloud"/>
+                <text y="-7">Actor A</text>
+                <text y="7">State 1</text>
               </g>
-              <g class="entity" transform="translate(270,10)">
-                <rect width="120" height="50"/>
-                <text x="60" y="20">Actor B</text>
-                <text x="60" y="40">State 2</text>
+              <g class="entity" transform="translate(330,55)">
+                <use xlink:href="#synchronizationcloud"/>
+                <text y="-7">Actor B</text>
+                <text y="7">State 2</text>
               </g>
               <g class="network" transform="translate(200,0)">
                 <text y="20">Network</text>
                 <path d="M 0 30 L 0 170" style="" />
               </g>
-              <g class="entity" transform="translate(10,140)">
-                <rect width="120" height="50"/>
-                <text x="60" y="20">Actor A</text>
-                <text x="60" y="40">State 3</text>
+              <g class="entity" transform="translate(70,165)">
+                <use xlink:href="#synchronizationcloud"/>
+                <text y="-7">Actor A</text>
+                <text y="7">State 3</text>
               </g>
-              <g class="entity" transform="translate(270,140)">
-                <rect width="120" height="50"/>
-                <text x="60" y="20">Actor B</text>
-                <text x="60" y="40">State 3</text>
+              <g class="entity" transform="translate(330,165)">
+                <use xlink:href="#synchronizationcloud"/>
+                <text y="-7">Actor B</text>
+                <text y="7">State 3</text>
               </g>
-              <g class="exchange" transform="translate(120,70)">
+              <g class="exchange" transform="translate(120,80)">
                 <path d="M 0 0 L 160 10 L 0 20 L 160 30 L 0 40 L 160 50 L 0 60" />
               </g>
             </svg>
