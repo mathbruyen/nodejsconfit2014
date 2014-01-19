@@ -36,6 +36,13 @@
     <defs>
       <!-- 100x50 centered cloud -->
       <path id="cloud" transform="scale(0.5, 0.3) translate(-385, -395)" d="M 404.82773,299.83793 C 390.22963,299.83793 377.56518,307.70801 370.48083,319.33078 C 363.90815,314.68689 355.94082,311.87906 347.28681,311.87908 C 325.01481,311.87908 306.91934,329.97456 306.91934,352.24655 C 306.91934,353.88322 307.2231,355.44757 307.41283,357.0334 C 288.17814,360.10248 273.41137,376.61535 273.41137,396.70999 C 273.41137,416.62054 287.89441,433.09939 306.86999,436.38657 C 306.48549,438.62212 306.1791,440.90134 306.1791,443.24608 C 306.1791,465.51809 324.27456,483.56421 346.54657,483.56421 C 357.45549,483.56421 367.31225,479.20668 374.5768,472.16459 C 381.98006,480.9708 392.92489,486.72254 405.32122,486.72254 C 423.00812,486.72254 437.87677,475.23091 443.31994,459.3832 C 447.67667,460.99428 452.32187,462.04805 457.23635,462.04805 C 479.50836,462.04805 497.55446,443.95259 497.55447,421.68058 C 497.55447,410.48096 492.98863,400.3708 485.61202,393.05816 C 489.33611,386.94832 491.6326,379.85746 491.6326,372.18354 C 491.6326,349.91153 473.53714,331.8654 451.26512,331.86542 C 448.9206,331.86542 446.64096,332.12254 444.40561,332.50696 C 440.80916,313.91248 424.46771,299.83793 404.82773,299.83793" />
+
+      <!-- 70x90 centered tablet -->
+      <g id="tablet">
+        <path d="M -35 -45 L 35 -45 L 35 45 L -35 45 L -35 -45" />
+        <path d="M -35 39 L 35 39" />
+        <circle cy="42" r="1.5"/>
+      </g>
     </defs>
   </svg>
 </head>
@@ -91,11 +98,7 @@
               ]]></style>
               <path class="device" d="M 20 10 L 180 10 L 180 110 L 110 110 L 115 125 L 120 125 L 120 128 L 80 128 L 80 125 L 85 125 L 90 110 L 20 110 L 20 10" />
 
-              <g transform="translate(270, 65)">
-                <path class="device" d="M -35 -45 L 35 -45 L 35 45 L -35 45 L -35 -45" />
-                <path class="device" d="M -35 39 L 35 39" />
-                <circle class="device" cy="42" r="1.5"/>
-              </g>
+              <use xlink:href="#tablet" class="device" transform="translate(270, 65)" />
 
               <g transform="translate(360, 90)">
                 <path class="device" d="M -12.5 -20 L 12.5 -20 L 12.5 20 L -12.5 20 L -12.5 -20" />
@@ -140,13 +143,6 @@
                 <g id="desktopclient" class="client">
                   <path transform="scale(0.4) translate(-100, -65)" d="M 20 10 L 180 10 L 180 110 L 110 110 L 115 125 L 120 125 L 120 128 L 80 128 L 80 125 L 85 125 L 90 110 L 20 110 L 20 10" />
                 </g>
-                <g id="tabletclient" class="client">
-                  <g transform="scale(0.6)">
-                    <path d="M -35 -45 L 35 -45 L 35 45 L -35 45 L -35 -45" />
-                    <path d="M -35 39 L 35 39" />
-                    <circle cy="42" r="1.5"/>
-                  </g>
-                </g>
                 <g id="phoneclient" class="client">
                   <g>
                     <path d="M -12.5 -20 L 12.5 -20 L 12.5 20 L -12.5 20 L -12.5 -20" />
@@ -160,11 +156,11 @@
               <path d="M 200 100 L 200 30" />
               <use xlink:href="#desktopclient" x="200" y="30"/>
               <path d="M 200 100 L 300 60" />
-              <use xlink:href="#tabletclient" x="300" y="60"/>
+              <use xlink:href="#tablet" class="client" transform="translate(300, 60) scale(0.6)" />
               <path d="M 200 100 L 300 140" />
               <use xlink:href="#phoneclient" x="300" y="140"/>
               <path d="M 200 100 L 200 170" />
-              <use xlink:href="#tabletclient" x="200" y="170"/>
+              <use xlink:href="#tablet" class="client" transform="translate(200, 170) scale(0.6)" />
               <path d="M 200 100 L 100 140" />
               <use xlink:href="#desktopclient" x="100" y="140"/>
               <path d="M 200 100 L 100 60" />
@@ -210,13 +206,6 @@
                 <g id="desktopclient2" class="client">
                   <path transform="scale(0.4) translate(-100, -65)" d="M 20 10 L 180 10 L 180 110 L 110 110 L 115 125 L 120 125 L 120 128 L 80 128 L 80 125 L 85 125 L 90 110 L 20 110 L 20 10" />
                 </g>
-                <g id="tabletclient2" class="client">
-                  <g transform="scale(0.6)">
-                    <path d="M -35 -45 L 35 -45 L 35 45 L -35 45 L -35 -45" />
-                    <path d="M -35 39 L 35 39" />
-                    <circle cy="42" r="1.5"/>
-                  </g>
-                </g>
                 <g id="phoneclient2" class="client">
                   <g>
                     <path d="M -12.5 -20 L 12.5 -20 L 12.5 20 L -12.5 20 L -12.5 -20" />
@@ -230,11 +219,11 @@
               <path d="M 200 100 L 200 30" />
               <use class="offline" xlink:href="#desktopclient2" x="200" y="30"/>
               <path d="M 200 100 L 300 60" />
-              <use xlink:href="#tabletclient2" x="300" y="60"/>
+              <use xlink:href="#tablet" class="client" transform="translate(300, 60) scale(0.6)" />
               <path d="M 200 100 L 300 140" />
               <use class="offline" xlink:href="#phoneclient2" x="300" y="140"/>
               <path d="M 200 100 L 200 170" />
-              <use class="offline" xlink:href="#tabletclient2" x="200" y="170"/>
+              <use xlink:href="#tablet" class="client offline" transform="translate(200, 170) scale(0.6)" />
               <path d="M 200 100 L 100 140" />
               <use class="offline" xlink:href="#desktopclient2" x="100" y="140"/>
               <path d="M 200 100 L 100 60" />
