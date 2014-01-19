@@ -298,7 +298,7 @@
           <li>Bandwidth</li>
           <li>Roundtrips</li>
           <li>Computational cost</li>
-          <li>Resiliency</li>
+          <li>Recovery</li>
           <li>Setup</li>
         </ul>
       </div>
@@ -403,7 +403,7 @@
           <li>Bandwidth: O(dataset size)</li>
           <li>Roundtrips: 1</li>
           <li>Computational cost: low</li>
-          <li>Resiliency: yes</li>
+          <li>Recovery: yes</li>
           <li>Setup: does anyone have a simpler idea?</li>
         </ul>
       </div>
@@ -593,7 +593,7 @@
           <li>Bandwidth: lower but still O(dataset size)</li>
           <li>Roundtrips: O(changeset size)</li>
           <li>Computational cost: low</li>
-          <li>Resiliency: not to rogue edits</li>
+          <li>Recovery: not to rogue edits</li>
           <li>Setup: remains ok</li>
         </ul>
       </div>
@@ -665,7 +665,7 @@
           <li>Bandwidth: efficient (with deduplicates)</li>
           <li>Roundtrips: just 1</li>
           <li>Computational cost: low for CPU / up to double database footprint</li>
-          <li>Resiliency: errors remain here forever</li>
+          <li>Recovery: errors remain here forever</li>
           <li>Setup: extra field to store on clients, logging infrastructure (may be here for business reasons)</li>
         </ul>
       </div>

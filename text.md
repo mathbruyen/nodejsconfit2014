@@ -62,7 +62,7 @@ Second criteria is the number of roundtrips. Some algorithms will involve a comp
 
 We will also take into account the computational cost of synchronization. Does it need a lot of CPU on the client and/or on the server to work? For the client it is important depending on your target. For the server it may impact cost because of the number of CPUs you will need to provision. But the criteria also includes memory, manipulated data structures may consume a lot of RAM.
 
-Then error correction is to be taken into account. Will a rogue-edit in your database be synchronized to clients? What happens in you had a bug in your client implementation and that he missed some data? Will the algorithm smoothly recover once you fix the bug or will you need to cleanup the client and restart from scratch? Those are important aspects, who never fought against an email desparately unread on your frontend while you marked it as read hundreds of times?
+Recovery after computation errors and bugs is to be taken into account. Will a rogue-edit in your database be synchronized to clients? What happens in you had a bug in your client implementation and that he missed some data? Will the algorithm smoothly recover once you fix the bug or will you need to cleanup the client and restart from scratch? Those are important aspects, who never fought against an email desparately unread on your frontend while you marked it as read hundreds of times?
 
 The last criteria is how easy is setup. Do you need to tie yourself with a complex data framework? Is it something which can be easily plugged into your existing architecture? How much should you tinker before getting something stable?
 
