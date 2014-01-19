@@ -295,7 +295,82 @@
         </div>
       </div>
       <div class="ft-page" data-id="selectivedatamodel" data-title="Selective data model">
-        <h1>Selective data model</h1>
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Selective data model</h1>
+            <svg viewBox="0 0 400 200" style="height: 25em;" class="selectivedatamodel">
+              <style type="text/css" ><![CDATA[
+                .selectivedatamodel #cloud {
+                  stroke: black;
+                }
+                .selectivedatamodel .one #cloud {
+                  fill: rgba(140, 20, 20, 0.3);
+                }
+                .selectivedatamodel .two #cloud {
+                  fill: rgba(20, 140, 20, 0.3);
+                }
+                .selectivedatamodel .three #cloud {
+                  fill: rgba(20, 20, 140, 0.3);
+                }
+                .selectivedatamodel #sdmuser rect {
+                  stroke: purple;
+                  fill: rgb(140, 140, 140);
+                }
+                .selectivedatamodel #sdmuser text {
+                  font-size: 10pt;
+                }
+                #sdmentity rect {
+                  stroke: none;
+                  fill: rgba(0, 0, 0, 0.2);
+                }
+                #sdmentity text {
+                  fill: black;
+                  font-size: 6pt;
+                }
+                .selectivedatamodel text {
+                  text-anchor: middle;
+                  dominant-baseline: middle;
+                  fill: #222244;
+                }
+              ]]></style>
+              <defs>
+                <g id="sdmentity">
+                  <rect x="-14" y="-7" width="28" height="14" />
+                  <text>{ ... }</text>
+                </g>
+                <g id="sdmuser">
+                  <rect x="-20" y="-10" width="40" height="20" />
+                  <text>User</text>
+                </g>
+              </defs>
+
+              <g class="one" transform="translate(140, 70)">
+                <use xlink:href="#cloud" transform="scale(2)" />
+                <use xlink:href="#sdmuser" />
+
+                <use xlink:href="#sdmentity" transform="translate(-30, -30)" />
+                <use xlink:href="#sdmentity" transform="translate(-65, 10)" />
+              </g>
+              <g class="two" transform="translate(280, 70)">
+                <use xlink:href="#cloud" transform="scale(2)" />
+                <use xlink:href="#sdmuser" />
+
+                <use xlink:href="#sdmentity" transform="translate(-70, 0)" />
+                <use xlink:href="#sdmentity" transform="translate(5, 30)" />
+                <use xlink:href="#sdmentity" transform="translate(15, -30)" />
+                <use xlink:href="#sdmentity" transform="translate(65, 10)" />
+              </g>
+              <g class="three" transform="translate(140, 145)">
+                <use xlink:href="#cloud" transform="scale(1.7)" />
+                <use xlink:href="#sdmuser" />
+
+                <use xlink:href="#sdmentity" transform="translate(20, -33)" />
+                <use xlink:href="#sdmentity" transform="translate(55, 5)" />
+                <use xlink:href="#sdmentity" transform="translate(-35, 25)" />
+              </g>
+            </svg>
+          </div>
+        </div>
       </div>
       <div class="ft-page" data-id="evaluation" data-title="Evaluation">
         <h1>Evaluation</h1>
