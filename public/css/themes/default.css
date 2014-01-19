@@ -279,7 +279,7 @@ body {
 .flowtime a:visited,
 .flowtime a:hover,
 .flowtime a:active,
-.flowtime a:focus, 
+.flowtime a:focus,
 .flowtime a:hover img,
 .flowtime a:active img,
 .flowtime a:focus img {
@@ -293,7 +293,7 @@ body {
 
 .flowtime a:hover,
 .flowtime a:active,
-.flowtime a:focus, 
+.flowtime a:focus,
 .flowtime a:hover img,
 .flowtime a:active img,
 .flowtime a:focus img {
@@ -360,6 +360,10 @@ body {
 	vertical-align: middle;
 }
 
+.flowtime .stack-center .stacked-center li {
+  text-align: left;
+}
+
 /* media queries */
 
 @media screen and (min-height: 41em) and (min-width: 80em)
@@ -369,7 +373,7 @@ body {
 	}
 
 	.ft-page {
-		
+
 	}
 }
 
@@ -380,7 +384,7 @@ body {
 	}
 
 	.ft-page {
-		
+
 	}
 }
 
@@ -391,7 +395,7 @@ body {
 	}
 
 	.ft-page {
-		
+
 	}
 }
 /* parallax demo */
