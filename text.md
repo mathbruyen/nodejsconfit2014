@@ -62,6 +62,12 @@ Creating a new item on a client must be visible on others. An item being modifie
 
 Another important feature we usually want is a selective data model. The whole dataset usually must not be synchronized to all clients. First because of access rights, I should not see Facebook private messages from my neighbor. But also because of the volume of data involved, one would not want to try synchronizing every single tweet ever sent on a poor iPhone over 3G. So each user may wants to synchronize a personal subset of the dataset.
 
+## Conflicts
+
+We assumed that applications could go offline, so it must be partition tolerant. And with that usually comes conflicts, two users doing a different edit to the same entity. With the model taken here, the conflict is detected when the second client tries to push its local edits. To us the solution is to refuse this push and require the client to do the merge. That does not necessarily mean that the actual user will do the merge, but that the application running on the client must be designed to do it. It is specific to your business case, no global choice can be made by any library.
+
+The good news is that with the chosen model, conflicts only happen when pushing local changes. When pulling, all changes from the server should be blindly taken.
+
 ## Evaluation
 
 How will we evaluate the different solutions we will talk about?
@@ -86,12 +92,6 @@ The reasons for doing that are
 * updates usually require some business rules to be validated, that automatic synchronization could not handle
 
 You can of course combine that with push notifications. Push cannot be your only medium because it is unreliable when clients are disconnected. But it can be a very nice addition to asynchronous synchronization (sic) to make your app far more responsive.
-
-## Conflicts
-
-We assumed that applications could go offline, so it must be partition tolerant. And with that usually comes conflicts, two users doing a different edit to the same entity. With the model taken here, the conflict is detected when the second client tries to push its local edits. To us the solution is to refuse this push and require the client to do the merge. That does not necessarily mean that the actual user will do the merge, but that the application running on the client must be designed to do it. It is specific to your business case, no global choice can be made by any library.
-
-The good news is that with the chosen model, conflicts only happen when pushing local changes. When pulling, all changes from the server should be blindly taken.
 
 # Wholesale
 
