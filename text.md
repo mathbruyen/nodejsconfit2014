@@ -113,7 +113,13 @@ Notice that if you keep track of all versions it can be leveraged to let the app
 
 ## Rsync
 
-This is for example what Rsync does. The client requests the `MD5` hash of all files on the target, computes the same locally, and sends only different and missing files. Rsync makes other optimizations by taking chunks of files instead of whole files, and even being able to detect chunks for which offset changed.
+Did you think this cannot work? It doesn't scale at all? Well this is the way Rsync works, so it may not be so dumb in the end.
+
+In Rsync the client requests `MD5` hash of all files on the target, computes the same locally, and sends only different and missing files. Rsync makes other optimizations by taking chunks of files instead of whole files, and even being able to detect chunks for which offset changed.
+
+## Versioned algorithm
+
+So the same algorithm can be applied there. The only difference is that the client requests modified entities on the server rather than pushing them.
 
 ## Versioned evaluation
 
