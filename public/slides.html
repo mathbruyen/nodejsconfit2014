@@ -125,7 +125,7 @@
                   stroke: #222244;
                   fill: #AAA;
                 }
-                #server text {
+                .clientserver .server text {
                   text-anchor: middle;
                   dominant-baseline: middle;
                   font-size: 10pt;
@@ -139,12 +139,6 @@
                   stroke: black;
                 }
               ]]></style>
-              <defs>
-                <g id="server">
-                  <use xlink:href="#cloud" transform="scale(0.7)" />
-                  <text>Server</text>
-                </g>
-              </defs>
               <path d="M 200 100 L 200 30" />
               <use xlink:href="#desktop" class="client" transform="translate(200, 30) scale(0.4)" />
               <path d="M 200 100 L 300 60" />
@@ -158,7 +152,10 @@
               <path d="M 200 100 L 100 60" />
               <use xlink:href="#phone" class="client" transform="translate(100, 60)" />
 
-              <use xlink:href="#server" x="200" y="100"/>
+              <g class="server" transform="translate(200, 100)">
+                <use xlink:href="#cloud" transform="scale(0.7)" />
+                <text>Server</text>
+              </g>
             </svg>
           </div>
         </div>
@@ -173,7 +170,7 @@
                   stroke: #222244;
                   fill: #AAA;
                 }
-                #server2 text {
+                .mostlyoffline .server text {
                   text-anchor: middle;
                   dominant-baseline: middle;
                   font-size: 10pt;
@@ -190,12 +187,6 @@
                   stroke: black;
                 }
               ]]></style>
-              <defs>
-                <g id="server2">
-                  <use xlink:href="#cloud" transform="scale(0.7)" />
-                  <text>Server</text>
-                </g>
-              </defs>
               <path d="M 200 100 L 200 30" />
               <use xlink:href="#desktop" class="client offline" transform="translate(200, 30) scale(0.4)" />
               <path d="M 200 100 L 300 60" />
@@ -209,7 +200,10 @@
               <path d="M 200 100 L 100 60" />
               <use xlink:href="#phone" class="client" transform="translate(100, 60)" />
 
-              <use xlink:href="#server2" x="200" y="100"/>
+              <g class="server" transform="translate(200, 100)">
+                <use xlink:href="#cloud" transform="scale(0.7)" />
+                <text>Server</text>
+              </g>
             </svg>
           </div>
         </div>
