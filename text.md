@@ -38,7 +38,9 @@ What do we mean by synchronization? We generally have two actors in different st
 
 The talk will be about the different constraints that you have here and possible solutions depending on your needs to solve that use case: as a client, when I come back online, how to synchronize with the server? We will be speaking about general aproaches and about one library that we are building to solve one use case.
 
-# Features
+# Common
+
+We will discuss three different solutions but let's first see requirements, how to compare the different solutions and the general algorithm.
 
 ## Supported operations
 
@@ -63,10 +65,6 @@ We will also take into account the computational cost of synchronization. Does i
 Then error correction is to be taken into account. Will a rogue-edit in your database be synchronized to clients? What happens in you had a bug in your client implementation and that he missed some data? Will the algorithm smoothly recover once you fix the bug or will you need to cleanup the client and restart from scratch? Those are important aspects, who never fought against an email desparately unread on your frontend while you marked it as read hundreds of times?
 
 The last criteria is how easy is setup. Do you need to tie yourself with a complex data framework? Is it something which can be easily plugged into your existing architecture? How much should you tinker before getting something stable?
-
-# Common
-
-Let's now discuss the actual algorithms.
 
 ## No(t only) push!
 
