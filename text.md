@@ -68,6 +68,17 @@ We assumed that applications could go offline, so it must be partition tolerant.
 
 The good news is that with the chosen model, conflicts only happen when pushing local changes. When pulling, all changes from the server should be blindly taken.
 
+## Initiated by the client
+
+There is one thing common to all: synchronization is initiated by the client. As a first step the client must be setup to record changes happening while offline. If you want to stick to asynchronous UIs you can even record changes and push to the server asynchronously even when online. Then upon synchronization, the client starts by pushing all edits to the server, and only then pulls changes made by other clients. We recommend this because the number of edits on the client will remain small and relatively easy to track, it concerns the action of only one user.
+
+The reasons for doing that are
+
+* batch updates may be better handled by calling a specific endpoint on the server rather than sending individual modifications
+* updates usually require some business rules to be validated, that automatic synchronization could not handle
+
+You can of course combine that with push notifications. Push cannot be your only medium because it is unreliable when clients are disconnected. But it can be a very nice addition to asynchronous synchronization (sic) to make your app far more responsive.
+
 ## Evaluation
 
 How will we evaluate the different solutions we will talk about?
@@ -81,17 +92,6 @@ We will also take into account the computational cost of synchronization. Does i
 Recovery after computation errors and bugs is to be taken into account. Will a rogue-edit in your database be synchronized to clients? What happens in you had a bug in your client implementation and that he missed some data? Will the algorithm smoothly recover once you fix the bug or will you need to cleanup the client and restart from scratch? Those are important aspects, who never fought against an email desparately unread on your frontend while you marked it as read hundreds of times?
 
 The last criteria is how easy is setup. Do you need to tie yourself with a complex data framework? Is it something which can be easily plugged into your existing architecture? How much should you tinker before getting something stable?
-
-## Initiated by the client
-
-There is one thing common to all: synchronization is initiated by the client. As a first step the client must be setup to record changes happening while offline. If you want to stick to asynchronous UIs you can even record changes and push to the server asynchronously even when online. Then upon synchronization, the client starts by pushing all edits to the server, and only then pulls changes made by other clients. We recommend this because the number of edits on the client will remain small and relatively easy to track, it concerns the action of only one user.
-
-The reasons for doing that are
-
-* batch updates may be better handled by calling a specific endpoint on the server rather than sending individual modifications
-* updates usually require some business rules to be validated, that automatic synchronization could not handle
-
-You can of course combine that with push notifications. Push cannot be your only medium because it is unreliable when clients are disconnected. But it can be a very nice addition to asynchronous synchronization (sic) to make your app far more responsive.
 
 # Wholesale
 
