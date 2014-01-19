@@ -42,6 +42,16 @@ The talk will be about the different constraints that you have here and possible
 
 We will discuss three different solutions but let's first see requirements, how to compare the different solutions and the general algorithm.
 
+## No(t only) push!
+
+The first idea of most people think "let's just push updates to clients!" and they will get them by the time they reconnect. So why aren't we taking this and BOOM, done. Because this is unsuitable.
+
+First push notifications like Google Cloud Messaging are unreliable when the client is offline. So your client may not receive some of them and miss some updates, that will never get repaired.
+
+Then we just said that there may be so many clients the server cannot track all of them. And some clients may never come again to your server, so what would you do for them? Queue all notifications they should receive forever?
+
+We do not say that push is not great. It is a great addition to make applications more responsive. But it is not enough to get your clients synchronized with the server, which by the way can be combine with push notifications.
+
 ## Supported operations
 
 We want to synchronize the result of applying all kind of operations. Both making the server aware of what the client did while offline and fetching changes made by all other clients.
@@ -65,16 +75,6 @@ We will also take into account the computational cost of synchronization. Does i
 Recovery after computation errors and bugs is to be taken into account. Will a rogue-edit in your database be synchronized to clients? What happens in you had a bug in your client implementation and that he missed some data? Will the algorithm smoothly recover once you fix the bug or will you need to cleanup the client and restart from scratch? Those are important aspects, who never fought against an email desparately unread on your frontend while you marked it as read hundreds of times?
 
 The last criteria is how easy is setup. Do you need to tie yourself with a complex data framework? Is it something which can be easily plugged into your existing architecture? How much should you tinker before getting something stable?
-
-## No(t only) push!
-
-The first idea of most people think "let's just push updates to clients!" and they will get them by the time they reconnect. But this is unsuitable.
-
-First push notifications like Google Cloud Messaging are unreliable when the client is offline. So your client may not receive some of them and miss some updates, that will never get repaired.
-
-Then we just said that there may be so many clients the server cannot track all of them. And some clients may never come again to your server, so what would you do for them? Queue all notifications they should receive forever?
-
-We do not say that push is not great. It is a great addition to make applications more responsive. But it is not enough to get your clients synchronized with the server, which by the way can be combine with push notifications.
 
 ## Initiated by the client
 

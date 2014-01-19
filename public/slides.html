@@ -101,9 +101,9 @@
         <div class="stack-center">
           <div class="stacked-center">
             <h1>Web application</h1>
-            <svg viewBox="0 0 400 200" style="height: 25em;">
+            <svg viewBox="0 0 400 200" style="height: 25em;" class="webapplication">
               <style type="text/css" ><![CDATA[
-                .device {
+                .webapplication .device {
                   stroke: purple;
                   fill: black;
                 }
@@ -281,6 +281,52 @@
           </div>
         </div>
       </div>
+      <div class="ft-page" data-id="npush" data-title="No push!">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>No(t only) push!</h1>
+            <svg viewBox="0 0 400 200" style="height: 25em;" class="notonlypush">
+              <style type="text/css" ><![CDATA[
+                .notonlypush .device {
+                  stroke: purple;
+                  fill: black;
+                }
+                .notonlypush #cloud {
+                  stroke: #222244;
+                  fill: #999;
+                }
+                .notonlypush .link {
+                  stroke: black;
+                  stroke-dasharray: 4 2 2 2;
+                }
+                .notonlypush text {
+                  text-anchor: middle;
+                  dominant-baseline: middle;
+                  font-size: 10pt;
+                }
+              ]]></style>
+              <path class="link" d="M 250 60 L 150 150" />
+              <use xlink:href="#desktop" class="device" transform="translate(150, 150) scale(0.5)"/>
+
+              <path class="link" d="M 250 60 L 250 150" />
+              <use xlink:href="#phone" class="device" transform="translate(250, 150) scale(0.8)"/>
+
+              <path class="link" d="M 250 60 L 350 150" />
+              <use xlink:href="#tablet" class="device" transform="translate(350, 150) scale(0.7)"/>
+
+              <path class="link" d="M 50 60 L 250 60" />
+              <g transform="translate(50, 60)">
+                <use xlink:href="#cloud" transform="scale(0.8)"/>
+                <text>Server</text>
+              </g>
+              <g transform="translate(250, 60)">
+                <use xlink:href="#cloud" transform="scale(1.7)"/>
+                <text>Cloud Notification Service</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
       <div class="ft-page" data-id="operations" data-title="Operations">
         <div class="stack-center">
           <div class="stacked-center">
@@ -385,9 +431,6 @@
             </ul>
           </div>
         </div>
-      </div>
-      <div class="ft-page" data-id="npush" data-title="No push!">
-        <h1>No(t only) push!</h1>
       </div>
       <div class="ft-page" data-id="clientinitiated" data-title="Client initiated">
         <h1>Initiated by the client</h1>
