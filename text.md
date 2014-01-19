@@ -162,6 +162,40 @@ http://wiki.apache.org/couchdb/Replication#Filtered_Replication
 
 ## Couch/PouchDB
 
+ID: An identifier
+Sequence: An ID provided by the changes feed
+Revision: Could be the version
+Document A document is JSON entity with a unique ID and revision.
+Database A collection of documents with a unique URI
+URI An uri is defined by the 2396 . It can be an URL as defined in 1738.
+Source Database from where the Documents are replicated
+Target Database where the Document are replicated
+Checkpoint Last source sequence ID
+
+As you can see, this combines version and logs and Couch DB is a protocol whic works over http 1.1
+You can add easyly filter by passing a filter parameter to the change feed, a function which return true if the change needs to be added to the change feed.
+The main issue is that it synchronize  or replicates changes from one DB to another instead of a real selective model (Filter might help for this issue)
+
+## Couch Pouch DB The algorithm itself
+1. Assign an unique identifier to the source Database..
+
+2. Save this identifier in a special Document named _local/<uniqueid> on the Target database.
+This document isn’t replicated. It will collect the last Source sequence ID, the Checkpoint, from the previous replication process.
+
+3. Get the Source changes feed by passing it the Checkpoint using the since parameter by calling the /<source>/_changes URL.
+Feed can be longpoll or feed=continuous parameters. Then the feed will continuously get the changes.
+
+4. Collect a group of Document/Revisions ID pairs from the changes feed and send them to the target databases on the /<target>/_revs_diffs URL. The result will contain the list of revisions NOT in the Target database.
+
+5. GET each revisions from the source Database by calling the URL /<source>/<docid>?revs=true&rev=<revision> .
+This will get the document with the parent revisions.
+
+6. Collect a group of revisions fetched at previous step and store them on the target database
+using the Bulk Docs API with the new_edit: false JSON property to preserve their revisions ID.
+
+7. After the group of revision is stored on the Target Database, save the new Checkpoint on the Source database.
+
+
 # Mathematical
 
 The last aproach to synchronization is less direct but gives interesting results. We present here one possible data structure here.
