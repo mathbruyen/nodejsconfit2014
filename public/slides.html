@@ -43,6 +43,15 @@
         <path d="M -35 39 L 35 39" />
         <circle cy="42" r="1.5"/>
       </g>
+
+      <!-- 25x40 centered phone -->
+      <g id="phone">
+        <path class="device" d="M -12.5 -20 L 12.5 -20 L 12.5 20 L -12.5 20 L -12.5 -20" />
+        <path class="device" d="M -3 -17 L 3 -17" />
+        <path class="device" d="M -12.5 -14 L 12.5 -14" />
+        <path class="device" d="M -12.5 14 L 12.5 14" />
+        <circle class="device" cy="17" r="1.5"/>
+      </g>
     </defs>
   </svg>
 </head>
@@ -100,13 +109,7 @@
 
               <use xlink:href="#tablet" class="device" transform="translate(270, 65)" />
 
-              <g transform="translate(360, 90)">
-                <path class="device" d="M -12.5 -20 L 12.5 -20 L 12.5 20 L -12.5 20 L -12.5 -20" />
-                <path class="device" d="M -3 -17 L 3 -17" />
-                <path class="device" d="M -12.5 -14 L 12.5 -14" />
-                <path class="device" d="M -12.5 14 L 12.5 14" />
-                <circle class="device" cy="17" r="1.5"/>
-              </g>
+              <use xlink:href="#phone" class="device" transform="translate(360, 90)" />
             </svg>
           </div>
         </div>
@@ -143,28 +146,19 @@
                 <g id="desktopclient" class="client">
                   <path transform="scale(0.4) translate(-100, -65)" d="M 20 10 L 180 10 L 180 110 L 110 110 L 115 125 L 120 125 L 120 128 L 80 128 L 80 125 L 85 125 L 90 110 L 20 110 L 20 10" />
                 </g>
-                <g id="phoneclient" class="client">
-                  <g>
-                    <path d="M -12.5 -20 L 12.5 -20 L 12.5 20 L -12.5 20 L -12.5 -20" />
-                    <path d="M -3 -17 L 3 -17" />
-                    <path d="M -12.5 -14 L 12.5 -14" />
-                    <path d="M -12.5 14 L 12.5 14" />
-                    <circle cy="17" r="1.5"/>
-                  </g>
-                </g>
               </defs>
               <path d="M 200 100 L 200 30" />
               <use xlink:href="#desktopclient" x="200" y="30"/>
               <path d="M 200 100 L 300 60" />
               <use xlink:href="#tablet" class="client" transform="translate(300, 60) scale(0.6)" />
               <path d="M 200 100 L 300 140" />
-              <use xlink:href="#phoneclient" x="300" y="140"/>
+              <use xlink:href="#phone" class="client" transform="translate(300, 140)" />
               <path d="M 200 100 L 200 170" />
               <use xlink:href="#tablet" class="client" transform="translate(200, 170) scale(0.6)" />
               <path d="M 200 100 L 100 140" />
               <use xlink:href="#desktopclient" x="100" y="140"/>
               <path d="M 200 100 L 100 60" />
-              <use xlink:href="#phoneclient" x="100" y="60"/>
+              <use xlink:href="#phone" class="client" transform="translate(100, 60)" />
 
               <use xlink:href="#server" x="200" y="100"/>
             </svg>
@@ -206,28 +200,19 @@
                 <g id="desktopclient2" class="client">
                   <path transform="scale(0.4) translate(-100, -65)" d="M 20 10 L 180 10 L 180 110 L 110 110 L 115 125 L 120 125 L 120 128 L 80 128 L 80 125 L 85 125 L 90 110 L 20 110 L 20 10" />
                 </g>
-                <g id="phoneclient2" class="client">
-                  <g>
-                    <path d="M -12.5 -20 L 12.5 -20 L 12.5 20 L -12.5 20 L -12.5 -20" />
-                    <path d="M -3 -17 L 3 -17" />
-                    <path d="M -12.5 -14 L 12.5 -14" />
-                    <path d="M -12.5 14 L 12.5 14" />
-                    <circle cy="17" r="1.5"/>
-                  </g>
-                </g>
               </defs>
               <path d="M 200 100 L 200 30" />
               <use class="offline" xlink:href="#desktopclient2" x="200" y="30"/>
               <path d="M 200 100 L 300 60" />
               <use xlink:href="#tablet" class="client" transform="translate(300, 60) scale(0.6)" />
               <path d="M 200 100 L 300 140" />
-              <use class="offline" xlink:href="#phoneclient2" x="300" y="140"/>
+              <use xlink:href="#phone" class="client offline" transform="translate(300, 140)" />
               <path d="M 200 100 L 200 170" />
               <use xlink:href="#tablet" class="client offline" transform="translate(200, 170) scale(0.6)" />
               <path d="M 200 100 L 100 140" />
               <use class="offline" xlink:href="#desktopclient2" x="100" y="140"/>
               <path d="M 200 100 L 100 60" />
-              <use xlink:href="#phoneclient2" x="100" y="60"/>
+              <use xlink:href="#phone" class="client" transform="translate(100, 60)" />
 
               <use xlink:href="#server2" x="200" y="100"/>
             </svg>
