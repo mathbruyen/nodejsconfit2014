@@ -799,7 +799,16 @@
         </div>
       </div>
       <div class="ft-page" data-id="versionidentifier" data-title="Version identifier">
-        <h1>Version identifier</h1>
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Version identifier</h1>
+            <ul>
+              <li>Changes whenever anything in dataset changes</li>
+              <li>Retrieve operations between two versions</li>
+              <li>IE: Git using SHA1 key + History</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="ft-page" data-id="clocks" data-title="Clocks">
         <div class="stack-center">
@@ -835,7 +844,7 @@
                 }
               ]]></style>
               <use xlink:href="#clock-icon" class="first" x="-10" y="10" ></use>
-              <use xlink:href="#clock-icon" class="second"x="42" y="10"></use>
+              <use xlink:href="#clock-icon" class="second" x="42" y="10" transform="rotate(10, 16, 17)"></use>
             </svg>
           </div>
         </div>
@@ -928,7 +937,7 @@
                   <rect x="-50" y="-7" width="100" height="14"/>
                   <text>source checkpoint: 1A2B</text>
                 </g>
-                <g class="action" transform="translate(0,160)">
+                <g class="action" transform="translate(0,152)">
                   <rect x="-50" y="-7" width="100" height="14"/>
                   <text>new checkpoint: 3C4D</text>
                 </g>
@@ -970,6 +979,12 @@
                 <text>{ _id: id2, _rev: revision4, ...}</text>
                 <path d="M -100 7 L 100 7" />
                 <use xlink:href="#versionedentitiedalgoarrow" transform="translate(-100 7) rotate(180)"/>
+              </g>
+              <g class="action" transform="translate(200, 180)">
+                <rect x="-75" y="-7" width="150" height="14"/>
+                <text>send checkpoint: 3C4D</text>
+                <path d="M -100 7 L 100 7" />
+                <use xlink:href="#versionedentitiedalgoarrow" transform="translate(100 7)"/>
               </g>
             </svg>
           </div>
