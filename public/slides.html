@@ -137,7 +137,7 @@
                   fill: #222244;
                 }
                 .clientserver .client rect, .clientserver .client path, .clientserver .client circle {
-                  stroke: #442222;
+                  stroke: purple;
                   fill: #AAA;
                 }
                 .clientserver path {
@@ -182,7 +182,7 @@
                   fill: #222244;
                 }
                 .mostlyoffline .client rect, .mostlyoffline .client path, .mostlyoffline .client circle {
-                  stroke: #442222;
+                  stroke: purple;
                   fill: #AAA;
                 }
                 .mostlyoffline .offline rect, .mostlyoffline .offline path, .mostlyoffline .offline circle {
@@ -191,16 +191,19 @@
                 .mostlyoffline path {
                   stroke: black;
                 }
+                .mostlyoffline .offlinelink {
+                  stroke-dasharray: 4 4;
+                }
               ]]></style>
-              <path d="M 200 100 L 200 30" />
+              <path class="offlinelink" d="M 200 100 L 200 30" />
               <use xlink:href="#desktop" class="client offline" transform="translate(200, 30) scale(0.4)" />
               <path d="M 200 100 L 300 60" />
               <use xlink:href="#tablet" class="client" transform="translate(300, 60) scale(0.6)" />
-              <path d="M 200 100 L 300 140" />
+              <path class="offlinelink" d="M 200 100 L 300 140" />
               <use xlink:href="#phone" class="client offline" transform="translate(300, 140)" />
-              <path d="M 200 100 L 200 170" />
+              <path class="offlinelink" d="M 200 100 L 200 170" />
               <use xlink:href="#tablet" class="client offline" transform="translate(200, 170) scale(0.6)" />
-              <path d="M 200 100 L 100 140" />
+              <path class="offlinelink" d="M 200 100 L 100 140" />
               <use xlink:href="#desktop" class="client offline" transform="translate(100, 140) scale(0.4)" />
               <path d="M 200 100 L 100 60" />
               <use xlink:href="#phone" class="client" transform="translate(100, 60)" />
