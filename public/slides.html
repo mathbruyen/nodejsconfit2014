@@ -75,6 +75,14 @@
         <div class="stack-center">
           <div class="stacked-center">
             <h1>Speakers</h1>
+              <div>
+              <img align="left" style="width:128px" src="img/math.png">
+              <img align="right" style="width:128px" src="img/fab.png">
+              </div>
+              <div>
+              <img align="left" style="width:128px" src="img/jssophia.jpg">
+              <img align="right" style="width:128px" src="img/rivieragug.png">
+              </div>
           </div>
         </div>
       </div>
@@ -267,8 +275,8 @@
         <div class="stack-center">
           <div class="stacked-center">
             <h1>As a client,</h1>
-            <h1>when I come back online,</h1>
-            <h1>how to synchronize with the server?</h1>
+            <h1>when I come <font color=red>back online</font>,</h1>
+            <h1>how to <font color=red>synchronize</font> with the server?</h1>
           </div>
         </div>
       </div>
@@ -333,9 +341,11 @@
             <h1>Supported operations</h1>
             <ul>
               <li>Both by myself and another</li>
-              <li>Creating an item</li>
-              <li>Modifying an existing item</li>
-              <li>Deleting an item</li>
+                <ul>
+                    <li>Creating an item</li>
+                    <li>Modifying an existing item</li>
+                    <li>Deleting an item</li>
+                </ul>
             </ul>
           </div>
         </div>
@@ -533,7 +543,7 @@
           <div class="stacked-center">
             <h1>Evaluation</h1>
             <ul>
-              <li>Bandwidth: O(dataset size)</li>
+              <li><font color=red>Bandwidth: O(dataset size)</font></li>
               <li>Roundtrips: 1</li>
               <li>Computational cost: low</li>
               <li>Recovery: yes</li>
@@ -734,10 +744,10 @@
           <div class="stacked-center">
             <h1>Versioned entities evaluation</h1>
             <ul>
-              <li>Bandwidth: lower but still O(dataset size)</li>
+              <li><font color=red>Bandwidth: lower but still O(dataset size)</font></li>
               <li>Roundtrips: O(changeset size)</li>
               <li>Computational cost: low</li>
-              <li>Recovery: not to rogue edits</li>
+              <li><font color=red>Recovery: not to rogue edits</font></li>
               <li>Setup: remains ok</li>
             </ul>
           </div>
@@ -806,17 +816,40 @@
         <h1>Filters</h1>
       </div>
       <div class="ft-page" data-id="evaluation" data-title="Evaluation">
-        <h1>Evaluation</h1>
-        <ul>
-          <li>Bandwidth: efficient (with deduplicates)</li>
-          <li>Roundtrips: just 1</li>
-          <li>Computational cost: low for CPU / up to double database footprint</li>
-          <li>Recovery: errors remain here forever</li>
-          <li>Setup: extra field to store on clients, logging infrastructure (may be here for business reasons)</li>
-        </ul>
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Evaluation</h1>
+            <ul>
+              <li>Bandwidth: efficient (with deduplicates)</li>
+              <li>Roundtrips: just 1</li>
+              <li>Computational cost: low for CPU / <font color=red>up to double database footprint</font></li>
+              <li><font color=red>Recovery: errors remain here forever</font></li>
+              <li>Setup: <font color=red>extra field</font> to store on clients, logging infrastructure (may be here for business reasons)</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="ft-page" data-id="couchdb" data-title="Couch/Pouchdb">
-        <h1>Couch/PouchDB</h1>
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Couch/PouchDB</h1>
+              <ul>
+                <li>ID</li>
+                <li>Sequence</li>
+                <li>Revision</li>
+                <li>Document</li>
+                <li>Database</li>
+                <li>URI</li>
+                <li>Source</li>
+                <li>Target</li>
+                <li>Checkpoint</li>
+              </ul>
+          </div>
+        </div>
+      </div>
+      <div class="ft-page" data-id="couchdbalgo" data-title="Couch/Pouchdb AlgoRythm">
+        <h1>Couch/PouchDB Algorithm</h1>
+
       </div>
     </div>
     <div class="ft-section" data-id="mathematical">
@@ -831,7 +864,7 @@
       <div class="ft-page" data-id="idea" data-title="Idea">
         <div class="stack-center">
           <div class="stacked-center">
-            <h1>Send me a data structure</h1>
+            <h1>Send me a ??? delta ??? data structure</h1>
             <h1>that I will be able to decipher</h1>
             <h1>if I already have a large part of it</h1>
           </div>
@@ -933,10 +966,19 @@
         <ul>
           <li>Bandwidth: O(changeset size)</li>
           <li>Roundtrips: O(log(changeset size))</li>
-          <li>Computational cost: high</li>
+          <li><font color=red>Computational cost: high</font></li>
           <li>Error correction: fix on next synchronization</li>
           <li>Setup: ?</li>
         </ul>
+      </div>
+      <div class="ft-page" data-id="mathsync" data-title="Mathematical Synchronization">
+          <h1>Slide to show our implementation with links</h1>
+      </div>
+      <div class="ft-page" data-id="mathsyncsetup" data-title="Mathematical Synchronization Setup">
+          <h1>Show code with simple setup</h1>
+      </div>
+      <div class="ft-page" data-id="mathsyncalgo" data-title="Mathematical Synchronization Algorithm">
+          <h1>Show code with algo implementation</h1>
       </div>
     </div>
     <div class="ft-section" data-id="conclusion">
