@@ -70,14 +70,13 @@ The good news is that with the chosen model, conflicts only happen when pushing 
 
 ## Initiated by the client
 
-There is one thing common to all: synchronization is initiated by the client. As a first step the client must be setup to record changes happening while offline. If you want to stick to asynchronous UIs you can even record changes and push to the server asynchronously even when online. Then upon synchronization, the client starts by pushing all edits to the server, and only then pulls changes made by other clients. We recommend this because the number of edits on the client will remain small and relatively easy to track, it concerns the action of only one user.
+There is one thing common to all: synchronization is initiated by the client. As a first step the client must be setup to record changes happening while offline. If you want to stick to asynchronous UIs you can even record changes and push to the server asynchronously even when online. Then upon synchronization, the client starts by pushing all edits to the server, and only then pulls changes made by other clients.
 
 The reasons for doing that are
 
+* the number of edits on the client will remain small and relatively easy to track, it concerns the action of only one user
 * batch updates may be better handled by calling a specific endpoint on the server rather than sending individual modifications
-* updates usually require some business rules to be validated, that automatic synchronization could not handle
-
-You can of course combine that with push notifications. Push cannot be your only medium because it is unreliable when clients are disconnected. But it can be a very nice addition to asynchronous synchronization (sic) to make your app far more responsive.
+* updates usually require some business rules to be validated or conflicts to be solved, that automatic synchronization could not handle
 
 ## Evaluation
 
@@ -198,18 +197,39 @@ using the Bulk Docs API with the new_edit: false JSON property to preserve their
 
 # Mathematical
 
-The last aproach to synchronization is less direct but gives interesting results. We present here one possible data structure here.
+The last aproach to synchronization is less direct but gives interesting results.
 
-## Idea
+## Primitive
 
-## Ahead of time computation
+For that to work, we will first describe the data structure we need. There are several ways to implement it, we will see one later on.
+
+The primitive is thus: given an integer `n` the server can build a data structure of size `O(n)`, that allows the client to compute it's delta from the server if the number of differences in this delta is less than `2^n`. A difference is adding, removing or modifying an item.
+
+`n` is called the level from now on because it represents level of details.
+
+## Algorithm
+
+Given that structure, the algorithm is pretty simple as executed from the client. Remember that the client already pushed its changes and that it can blindly take edits from the server.
+
+It starts by setting a counter `i` to 0. Then it fetches the previously mentioned data structure from the server at level `i = 0` and tries to compute the difference of the local store to the server using that structure. This may succeed or fail depending on the actual number of differences. If it succeeds, the difference is applied to the local store. If it fails, it increments the counter and retries with a larger level of details until it succeeds.
+
+## Performances
+
+With this solution, bandwidth is used very efficiently because data transferred is proportional the the changeset size, regardless how many items are to be synchronized. To be more precise it is proportional to the number of entities modified times the size of an entity. So entity choice may impact performances.
+
+The solution leads to a few roundtrips, logarithmic growth in term of changed entities number is not that much, but still greater than other aproaches that did it in one shot.
+
+So in terms of those it is damn efficient. Let's have a look at the others.
+
+## Errors
+
+The magical part of that aproach is that errors get corrected at no cost. If there is a bug in the implementation or that your cache entered a wrong state, for example an incorrectly applied iterative map/reduce job, the next time synchronization occurs all problems are gone.
+
+In the timestamp aproach an error basically means that one needs to invalidate all client stores and make them download again the whole data they need. With the mathematical one at worse you need to clean intermediate caches. But clients only download actually different data.
 
 ## Selective data model
 
-Selective data model fits naturally in this model because the endpoint can filter content it extracts from the database before compressing it.
-Just select all items that should be present on the application and compress it altogether.
-
-## Easy combination
+Selective data model fits naturally in this model because the endpoint can filter content it extracts from the database before compressing it. Just select all items that should be present on the application and compress it altogether.
 
 Selective data model gets computationally expensive with ahead of time computation because one needs to store one structure for each and every use case.
 
@@ -217,23 +237,17 @@ But the data structure is very flexible. One can efficiently combine several str
 
 Say you have many users that belongs to a few groups, and that entities they can access depend on groups they belong to. One can store one structure for each group, which is not that many, and merge them together in a single one at runtime depending on the registered user.
 
-## Errors
-
-The magical part of that aproach is that errors get corrected at no cost. If there is a bug in the implementation or that your cache entered a wrong state, for example an incorrectly applied iterative map/reduce job, the next time synchronization occurs all problems are gone.
-
-In the timestamp aproach an error basically means that one needs to invalidate all client caches and make them download again the whole data they need. With the mathematical one at worse you need to clean intermediate caches and map/reduce results. But applications only download actually different data.
+## Ahead of time computation
 
 ## Evaluation
 
-With this solution, bandwidth is used very efficiently because data transferred is proportional the the changeset size, regardless how many items are to be synchronized. To be more precise it is proportional to the number of entities modified times the size of an entity. So entity choice may impact performances.
-
-The solution leads to a few roundtrips, logarithmic growth in term of changed entities number is not that much, but still greater than other aproaches that did it in one shot.
+We already saw that network performances are pretty good.
 
 Computational cost is pretty high because with a lot of binary operations. Since the data structure is map/reduce friendly it can be computed ahead of time but then we can count memory used to cache it as a computation cost.
 
-Error correction is very interesting here, because even rogue edits to your database are taken into account. Except if you have caches or use map/reduce on top of the database.
+Error correction is very interesting here, because even rogue edits to your database are taken into account. Except if you have caches or use map/reduce on top of the database, but then you just need to clean those.
 
-Setup may seem very high, but I would argue not that much in the end because we developed a library to do that for you. To be honest the library is under heavy development, but it already does its job and if you need it tomorrow in production your contribution is warmly welcome.
+Remains setup. Building the data structure may look hard right? Resolving it on the client may seem hard too? So we tried developing a library which does it for you. We are doing it on our spare time and really starting to scratch the surface, there remains a lot to be done he and you are welcome contributing!
 
 # Conclusion
 
