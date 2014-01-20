@@ -429,3 +429,8 @@ body {
 	bottom: -32%;
 	z-index: 30;
 }
+
+svg {
+  width: 45em;
+  height: 25em;
+}
