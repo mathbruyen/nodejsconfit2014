@@ -73,16 +73,13 @@
       </div>
       <div class="ft-page" data-id="speakers" data-title="Speakers">
         <div class="stack-center">
-          <div class="stacked-center">
+          <div class="stacked-center speakers">
             <h1>Speakers</h1>
-              <div>
-              <img align="left" style="width:128px" src="img/math.png">
-              <img align="right" style="width:128px" src="img/fab.png">
-              </div>
-              <div>
-              <img align="left" style="width:128px" src="img/jssophia.jpg">
-              <img align="right" style="width:128px" src="img/rivieragug.png">
-              </div>
+            <img src="img/math.png">
+            <img src="img/fab.png">
+            <br/>
+            <img src="img/jssophia.jpg">
+            <img src="img/rivieragug.png">
           </div>
         </div>
       </div>
@@ -275,8 +272,8 @@
         <div class="stack-center">
           <div class="stacked-center">
             <h1>As a client,</h1>
-            <h1>when I come <font color=red>back online</font>,</h1>
-            <h1>how to <font color=red>synchronize</font> with the server?</h1>
+            <h1>when I come <strong>back online</strong>,</h1>
+            <h1>how to <strong>synchronize</strong> with the server?</h1>
           </div>
         </div>
       </div>
@@ -339,13 +336,12 @@
         <div class="stack-center">
           <div class="stacked-center">
             <h1>Supported operations</h1>
+            <h2>Performed by myself and others</h2>
             <ul>
-              <li>Both by myself and another</li>
-                <ul>
-                    <li>Creating an item</li>
-                    <li>Modifying an existing item</li>
-                    <li>Deleting an item</li>
-                </ul>
+              <li>Creating an item</li>
+              <li>Modifying an existing item</li>
+              <li>Deleting an item</li>
+            </ul>
             </ul>
           </div>
         </div>
@@ -543,7 +539,7 @@
           <div class="stacked-center">
             <h1>Evaluation</h1>
             <ul>
-              <li><font color=red>Bandwidth: O(dataset size)</font></li>
+              <li><strong>Bandwidth: O(dataset size)</strong></li>
               <li>Roundtrips: 1</li>
               <li>Computational cost: low</li>
               <li>Recovery: yes</li>
@@ -744,10 +740,10 @@
           <div class="stacked-center">
             <h1>Versioned entities evaluation</h1>
             <ul>
-              <li><font color=red>Bandwidth: lower but still O(dataset size)</font></li>
+              <li><strong>Bandwidth: lower but still O(dataset size)</strong></li>
               <li>Roundtrips: O(changeset size)</li>
               <li>Computational cost: low</li>
-              <li><font color=red>Recovery: not to rogue edits</font></li>
+              <li><strong>Recovery: not to rogue edits</strong></li>
               <li>Setup: remains ok</li>
             </ul>
           </div>
@@ -822,9 +818,9 @@
             <ul>
               <li>Bandwidth: efficient (with deduplicates)</li>
               <li>Roundtrips: just 1</li>
-              <li>Computational cost: low for CPU / <font color=red>up to double database footprint</font></li>
-              <li><font color=red>Recovery: errors remain here forever</font></li>
-              <li>Setup: <font color=red>extra field</font> to store on clients, logging infrastructure (may be here for business reasons)</li>
+              <li>Computational cost: low for CPU / <strong>up to double database footprint</strong></li>
+              <li><strong>Recovery: errors remain here forever</strong></li>
+              <li>Setup: <strong>logging infrastructure</strong>, extra field to store on clients</li>
             </ul>
           </div>
         </div>
@@ -864,7 +860,7 @@
       <div class="ft-page" data-id="idea" data-title="Idea">
         <div class="stack-center">
           <div class="stacked-center">
-            <h1>Send me a ??? delta ??? data structure</h1>
+            <h1>Send me a data structure</h1>
             <h1>that I will be able to decipher</h1>
             <h1>if I already have a large part of it</h1>
           </div>
@@ -897,6 +893,9 @@
             <h1>Errors get corrected!</h1>
             <svg class="matherrors" viewBox="0 0 400 200" style="height: 25em;">
               <style type="text/css" ><![CDATA[
+                .matherrors path {
+                  stroke: black;
+                }
                 .matherrors text {
                   text-anchor: middle;
                   dominant-baseline: middle;
@@ -962,34 +961,42 @@
         </div>
       </div>
       <div class="ft-page" data-id="evaluation" data-title="Evaluation">
-        <h1>Evaluation</h1>
-        <ul>
-          <li>Bandwidth: O(changeset size)</li>
-          <li>Roundtrips: O(log(changeset size))</li>
-          <li><font color=red>Computational cost: high</font></li>
-          <li>Error correction: fix on next synchronization</li>
-          <li>Setup: ?</li>
-        </ul>
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Evaluation</h1>
+            <ul>
+              <li>Bandwidth: O(changeset size)</li>
+              <li>Roundtrips: O(log(changeset size))</li>
+              <li>Computational cost: <strong>high</strong></li>
+              <li>Error correction: fix on next synchronization</li>
+              <li>Setup: ?</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="ft-page" data-id="mathsync" data-title="Mathematical Synchronization">
-          <h1>Slide to show our implementation with links</h1>
+        <h1>Mathsync</h1>
       </div>
-      <div class="ft-page" data-id="mathsyncsetup" data-title="Mathematical Synchronization Setup">
-          <h1>Show code with simple setup</h1>
+      <div class="ft-page" data-id="mathsyncsetup" data-title="Mathematical Synchronization - setup">
+        <h1>Mathsync - setup</h1>
       </div>
-      <div class="ft-page" data-id="mathsyncalgo" data-title="Mathematical Synchronization Algorithm">
-          <h1>Show code with algo implementation</h1>
+      <div class="ft-page" data-id="mathsyncalgorithm" data-title="Mathematical Synchronization - algorithm">
+        <h1>Mathsync - algorithm details</h1>
       </div>
     </div>
     <div class="ft-section" data-id="conclusion">
       <div class="ft-page" data-id="conclusion" data-title="Conclusion">
-        <h1>Conclusion bullets</h1>
-        <ul>
-          <li>Push is not sufficient</li>
-          <li>Start simple with wholesale transfer!</li>
-          <li>When needed move to log-based solution if its assumptions are validated</li>
-          <li>Otherwise use the complex mathematical aproach (contributors welcome!)</li>
-        </ul>
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Conclusion bullets</h1>
+            <ul>
+              <li>Push is not sufficient</li>
+              <li>Start simple with wholesale transfer!</li>
+              <li>When needed move to log-based solution if its assumptions are validated</li>
+              <li>Otherwise use the complex mathematical aproach (contributors welcome!)</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
