@@ -980,6 +980,38 @@ local.applyDifference(diff);</code></pre>
           </div>
         </div>
       </div>
+      <div class="ft-page" data-id="mathsync" data-title="Mathematical Synchronization">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Mathsync</h1>
+            <img src="img/mathsync.png" />
+          </div>
+        </div>
+      </div>
+      <div class="ft-page" data-id="mathsyncdatastructure" data-title="Mathematical Synchronization - data structure">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Mathsync data structure</h1>
+            <pre><code class="language-javascript">// bucket: { hash: [], content: [], items: 0 }
+var ibf = emptyBuckets(n);
+
+items.forEach(function(item) {
+  var bytes = serialize(item);
+
+  buckets(bytes).forEach(function (id) {
+    var bucket = ibf[id % n];
+
+    bucket.hash = xor(bucket.hash, hash(bytes));
+    bucket.content = xor(bucket.content, bytes);
+    bucket.items++;
+  });
+});</code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="ft-page" data-id="mathsyncsetup" data-title="Mathematical Synchronization - setup">
+        <h1>Mathsync setup</h1>
+      </div>
       <div class="ft-page" data-id="aheadoftime" data-title="Ahead of time computation">
         <div class="stack-center">
           <div class="stacked-center">
@@ -1150,15 +1182,6 @@ local.applyDifference(diff);</code></pre>
             </ul>
           </div>
         </div>
-      </div>
-      <div class="ft-page" data-id="mathsync" data-title="Mathematical Synchronization">
-        <h1>Mathsync</h1>
-      </div>
-      <div class="ft-page" data-id="mathsyncsetup" data-title="Mathematical Synchronization - setup">
-        <h1>Mathsync - setup</h1>
-      </div>
-      <div class="ft-page" data-id="mathsyncalgorithm" data-title="Mathematical Synchronization - algorithm">
-        <h1>Mathsync - algorithm details</h1>
       </div>
     </div>
     <div class="ft-section" data-id="conclusion">

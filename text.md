@@ -219,7 +219,33 @@ With this solution, bandwidth is used very efficiently because data transferred 
 
 The solution leads to a few roundtrips, logarithmic growth in term of changed entities number is not that much, but still greater than other aproaches that did it in one shot.
 
-So in terms of those it is damn efficient. Let's have a look at the others.
+So in terms of those it is damn efficient. Let's discuss other criterion.
+
+## Mathsync
+
+First: setup. Building the data structure may look hard right? Resolving it on the client may seem hard too? So we tried developing a library which does it for you. We are doing it on our spare time and really starting to scratch the surface, there remains a lot to be done he and you are welcome contributing! It will serve to present the actual data structure implementation which we took from a paper. It is linked from our project homepage if you want to read it.
+
+## Mathsync data structure
+
+The data structure is not that hard to build and can be built in linear time.
+
+In the end it is an array of `n` buckets, a bucket being an object with three properties:
+
+* a counter of the number of items stored in the bucket
+* a byte array set to the XOR of all items in the bucket
+* a byte array set to the XOR of the hash of items in the bucket
+
+Technically, we use TypedArrays to implement byte arrays and transmit them in base64.
+
+One start with an array of empty buckets, then for each item we serialize it as a bytes.
+
+Out of those bytes it generates the list of buckets to store the item in, usually 3. It internally uses consistent hashing to get those buckets. Each target bucket is then updated accordingly by increasing the number of items, xoring the hash and the content.
+
+## Ahead of time computation
+
+You can guess the cost of computing the data structure is pretty heavy. If there are tens of thousands of entities to fetch from the database for each user query then your infrastructure will have a hard time.
+
+The good news if you suffer from this is that you can store a cache them.
 
 ## Errors
 
@@ -236,8 +262,6 @@ Selective data model gets computationally expensive with ahead of time computati
 But the data structure is very flexible. One can efficiently combine several structures together if they represent disjoint set of entities. Or do a substraction.
 
 Say you have many users that belongs to a few groups, and that entities they can access depend on groups they belong to. One can store one structure for each group, which is not that many, and merge them together in a single one at runtime depending on the registered user.
-
-## Ahead of time computation
 
 ## Evaluation
 
