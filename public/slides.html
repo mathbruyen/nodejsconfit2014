@@ -32,7 +32,7 @@
 
   <link rel="apple-touch-startup-image" href="img/startup-640x920.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)">
   <link rel="apple-touch-startup-image" href="img/startup-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
-  <svg viewBox="0 0 400 200" style="height: 0; width: 0;" class="synchronization">
+  <svg viewBox="0 0 400 200" style="height: 0; width: 0;">
     <defs>
       <!-- 100x50 centered cloud -->
       <path id="cloud" transform="scale(0.5, 0.3) translate(-385, -395)" d="M 404.82773,299.83793 C 390.22963,299.83793 377.56518,307.70801 370.48083,319.33078 C 363.90815,314.68689 355.94082,311.87906 347.28681,311.87908 C 325.01481,311.87908 306.91934,329.97456 306.91934,352.24655 C 306.91934,353.88322 307.2231,355.44757 307.41283,357.0334 C 288.17814,360.10248 273.41137,376.61535 273.41137,396.70999 C 273.41137,416.62054 287.89441,433.09939 306.86999,436.38657 C 306.48549,438.62212 306.1791,440.90134 306.1791,443.24608 C 306.1791,465.51809 324.27456,483.56421 346.54657,483.56421 C 357.45549,483.56421 367.31225,479.20668 374.5768,472.16459 C 381.98006,480.9708 392.92489,486.72254 405.32122,486.72254 C 423.00812,486.72254 437.87677,475.23091 443.31994,459.3832 C 447.67667,460.99428 452.32187,462.04805 457.23635,462.04805 C 479.50836,462.04805 497.55446,443.95259 497.55447,421.68058 C 497.55447,410.48096 492.98863,400.3708 485.61202,393.05816 C 489.33611,386.94832 491.6326,379.85746 491.6326,372.18354 C 491.6326,349.91153 473.53714,331.8654 451.26512,331.86542 C 448.9206,331.86542 446.64096,332.12254 444.40561,332.50696 C 440.80916,313.91248 424.46771,299.83793 404.82773,299.83793" />
@@ -92,14 +92,6 @@
         </ul>
         <p>TODO: screenshot</p>
       </div>
-      <div class="ft-page" data-id="built-with" data-title="Slides built with">
-        <div class="stack-center">
-          <div class="stacked-center">
-            <h1>Slides built with</h1>
-            <a href="http://flowtime-js.marcolago.com/"><img src="assets/img/logo-white-shadow.png"></a>
-          </div>
-        </div>
-      </div>
     </div>
     <div class="ft-section" data-id="introduction">
       <div class="ft-page" data-id="webapplication" data-title="Web application">
@@ -126,7 +118,7 @@
             <h1>Client/server</h1>
             <svg viewBox="0 0 400 200" class="clientserver">
               <style type="text/css" ><![CDATA[
-                .clientserver #cloud {
+                .clientserver .cloud {
                   stroke: #222244;
                   fill: #AAA;
                 }
@@ -136,9 +128,9 @@
                   font-size: 10pt;
                   fill: #222244;
                 }
-                .clientserver .client rect, .clientserver .client path, .clientserver .client circle {
+                .clientserver .client, .clientserver .client rect, .clientserver .client path, .clientserver .client circle {
                   stroke: purple;
-                  fill: #AAA;
+                  fill: black;
                 }
                 .clientserver path {
                   stroke: black;
@@ -158,7 +150,7 @@
               <use xlink:href="#phone" class="client" transform="translate(100, 60)" />
 
               <g class="server" transform="translate(200, 100)">
-                <use xlink:href="#cloud" transform="scale(0.7)" />
+                <use class="cloud" xlink:href="#cloud" transform="scale(0.7)" />
                 <text>Server</text>
               </g>
             </svg>
@@ -171,7 +163,7 @@
             <h1>... mostly offline</h1>
             <svg viewBox="0 0 400 200" class="mostlyoffline">
               <style type="text/css" ><![CDATA[
-                .mostlyoffline #cloud {
+                .mostlyoffline .cloud {
                   stroke: #222244;
                   fill: #AAA;
                 }
@@ -181,17 +173,18 @@
                   font-size: 10pt;
                   fill: #222244;
                 }
-                .mostlyoffline .client rect, .mostlyoffline .client path, .mostlyoffline .client circle {
+                .mostlyoffline .client, .mostlyoffline .client rect, .mostlyoffline .client path, .mostlyoffline .client circle {
                   stroke: purple;
-                  fill: #AAA;
-                }
-                .mostlyoffline .offline rect, .mostlyoffline .offline path, .mostlyoffline .offline circle {
                   fill: black;
+                }
+                .mostlyoffline .offline, .mostlyoffline .offline rect, .mostlyoffline .offline path, .mostlyoffline .offline circle {
+                  fill: #222;
                 }
                 .mostlyoffline path {
                   stroke: black;
                 }
                 .mostlyoffline .offlinelink {
+                  stroke: #288;
                   stroke-dasharray: 4 4;
                 }
               ]]></style>
@@ -209,7 +202,7 @@
               <use xlink:href="#phone" class="client" transform="translate(100, 60)" />
 
               <g class="server" transform="translate(200, 100)">
-                <use xlink:href="#cloud" transform="scale(0.7)" />
+                <use class="cloud" xlink:href="#cloud" transform="scale(0.7)" />
                 <text>Server</text>
               </g>
             </svg>
@@ -222,7 +215,7 @@
             <h1>Synchronization</h1>
             <svg viewBox="0 0 400 200" class="synchronization">
               <style type="text/css" ><![CDATA[
-                .synchronization #cloud {
+                .synchronization .cloud {
                   stroke: #222244;
                   fill: #999;
                 }
@@ -241,12 +234,12 @@
                 }
               ]]></style>
               <g class="entity" transform="translate(70,55)">
-                <use xlink:href="#cloud"/>
+                <use class="cloud" xlink:href="#cloud"/>
                 <text y="-7">Actor A</text>
                 <text y="7">State 1</text>
               </g>
               <g class="entity" transform="translate(330,55)">
-                <use xlink:href="#cloud"/>
+                <use class="cloud" xlink:href="#cloud"/>
                 <text y="-7">Actor B</text>
                 <text y="7">State 2</text>
               </g>
@@ -255,12 +248,12 @@
                 <path d="M 0 30 L 0 170" style="" />
               </g>
               <g class="entity" transform="translate(70,165)">
-                <use xlink:href="#cloud"/>
+                <use class="cloud" xlink:href="#cloud"/>
                 <text y="-7">Actor A</text>
                 <text y="7">State 3</text>
               </g>
               <g class="entity" transform="translate(330,165)">
-                <use xlink:href="#cloud"/>
+                <use class="cloud" xlink:href="#cloud"/>
                 <text y="-7">Actor B</text>
                 <text y="7">State 3</text>
               </g>
@@ -299,7 +292,7 @@
                   stroke: purple;
                   fill: black;
                 }
-                .notonlypush #cloud {
+                .notonlypush .cloud {
                   stroke: #222244;
                   fill: #999;
                 }
@@ -324,11 +317,11 @@
 
               <path class="link" d="M 50 60 L 250 60" />
               <g transform="translate(50, 60)">
-                <use xlink:href="#cloud" transform="scale(0.8)"/>
+                <use class="cloud" xlink:href="#cloud" transform="scale(0.8)"/>
                 <text>Server</text>
               </g>
               <g transform="translate(250, 60)">
-                <use xlink:href="#cloud" transform="scale(1.7)"/>
+                <use class="cloud" xlink:href="#cloud" transform="scale(1.7)"/>
                 <text>Cloud Notification Service</text>
               </g>
             </svg>
@@ -355,16 +348,16 @@
             <h1>Selective data model</h1>
             <svg viewBox="0 0 400 200" class="selectivedatamodel">
               <style type="text/css" ><![CDATA[
-                .selectivedatamodel #cloud {
+                .selectivedatamodel .cloud {
                   stroke: black;
                 }
-                .selectivedatamodel .one #cloud {
+                .selectivedatamodel .one .cloud {
                   fill: rgba(140, 20, 20, 0.3);
                 }
-                .selectivedatamodel .two #cloud {
+                .selectivedatamodel .two .cloud {
                   fill: rgba(20, 140, 20, 0.3);
                 }
-                .selectivedatamodel .three #cloud {
+                .selectivedatamodel .three .cloud {
                   fill: rgba(20, 20, 140, 0.3);
                 }
                 .selectivedatamodel #sdmuser rect {
@@ -400,14 +393,14 @@
               </defs>
 
               <g class="one" transform="translate(140, 70)">
-                <use xlink:href="#cloud" transform="scale(2)" />
+                <use class="cloud" xlink:href="#cloud" transform="scale(2)" />
                 <use xlink:href="#sdmuser" />
 
                 <use xlink:href="#sdmentity" transform="translate(-30, -30)" />
                 <use xlink:href="#sdmentity" transform="translate(-65, 10)" />
               </g>
               <g class="two" transform="translate(280, 70)">
-                <use xlink:href="#cloud" transform="scale(2)" />
+                <use class="cloud" xlink:href="#cloud" transform="scale(2)" />
                 <use xlink:href="#sdmuser" />
 
                 <use xlink:href="#sdmentity" transform="translate(-70, 0)" />
@@ -416,7 +409,7 @@
                 <use xlink:href="#sdmentity" transform="translate(65, 10)" />
               </g>
               <g class="three" transform="translate(140, 145)">
-                <use xlink:href="#cloud" transform="scale(1.7)" />
+                <use class="cloud" xlink:href="#cloud" transform="scale(1.7)" />
                 <use xlink:href="#sdmuser" />
 
                 <use xlink:href="#sdmentity" transform="translate(20, -33)" />
@@ -449,7 +442,7 @@
                 .conflicts .offline rect {
                   stroke: black;
                   stroke-dasharray: 4 4;
-                  fill: rgba(10, 30, 10, 0.2);
+                  fill: #288;
                 }
                 .conflicts .action rect {
                   stroke: #442244;
@@ -542,10 +535,10 @@
           <div class="stacked-center">
             <h1>Evaluation</h1>
             <ul>
-              <li><strong>Bandwidth: O(dataset size)</strong></li>
-              <li>Roundtrips: 1</li>
-              <li>Computational cost: low</li>
-              <li>Recovery: yes</li>
+              <li>Bandwidth: <strong>O(dataset size)</strong></li>
+              <li>Roundtrips: <em>1</em></li>
+              <li>Computational cost: <em>low</em></li>
+              <li>Recovery: <em>yes</em></li>
               <li>Setup: does anyone have a simpler idea?</li>
             </ul>
           </div>
@@ -743,10 +736,10 @@
           <div class="stacked-center">
             <h1>Versioned entities evaluation</h1>
             <ul>
-              <li><strong>Bandwidth: lower but still O(dataset size)</strong></li>
+              <li>Bandwidth: lower but still <strong>O(dataset size)</strong></li>
               <li>Roundtrips: O(changeset size)</li>
-              <li>Computational cost: low</li>
-              <li><strong>Recovery: not to rogue edits</strong></li>
+              <li>Computational cost: <em>low</em></li>
+              <li>Recovery: <strong>not to rogue edits</strong></li>
               <li>Setup: remains ok</li>
             </ul>
           </div>
@@ -819,10 +812,10 @@
           <div class="stacked-center">
             <h1>Evaluation</h1>
             <ul>
-              <li>Bandwidth: efficient (with deduplicates)</li>
-              <li>Roundtrips: just 1</li>
+              <li>Bandwidth: <em>efficient</em> (with deduplicates)</li>
+              <li>Roundtrips: <em>just 1</em></li>
               <li>Computational cost: low for CPU / <strong>up to double database footprint</strong></li>
-              <li><strong>Recovery: errors remain here forever</strong></li>
+              <li>Recovery: <strong>errors remain here forever</strong></li>
               <li>Setup: <strong>logging infrastructure</strong>, extra field to store on clients</li>
             </ul>
           </div>
@@ -847,8 +840,90 @@
         </div>
       </div>
       <div class="ft-page" data-id="couchdbalgo" data-title="Couch/Pouchdb AlgoRythm">
-        <h1>Couch/PouchDB Algorithm</h1>
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Couch/PouchDB Algorithm</h1>
+            <svg class="couchalgo" viewBox="0 0 400 200">
+              <style type="text/css" ><![CDATA[
+                .couchalgo text {
+                  text-anchor: middle;
+                  dominant-baseline: middle;
+                  font-size: 7pt;
+                }
+                .couchalgo .timelinename {
+                  font-size: 10pt;
+                }
+                .couchalgo path {
+                  stroke: black;
+                  fill: none;
+                }
+                .couchalgo .timeline rect {
+                  stroke: #222244;
+                  fill: #999;
+                }
+                .couchalgo .action rect {
+                  stroke: #442244;
+                  fill: #DDD;
+                }
+              ]]></style>
+              <defs>
+                <path id="versionedentitiedalgoarrow" d="M 0 0 L -5 3 L -5 -3 L 0 0 L -5 0" />
+              </defs>
+              <g class="timeline" transform="translate(100,10)">
+                <rect x="-60" y="-10" width="120" height="18"/>
+                <text class="timelinename">web DB</text>
+                <path d="M 0 10 L 0 180" />
 
+                <g class="action" transform="translate(0,20)">
+                  <rect x="-50" y="-7" width="100" height="14"/>
+                  <text>source checkpoint: 1A2B</text>
+                </g>
+                <g class="action" transform="translate(0,160)">
+                  <rect x="-50" y="-7" width="100" height="14"/>
+                  <text>new checkpoint: 3C4D</text>
+                </g>
+              </g>
+              <g class="timeline" transform="translate(300,10)">
+                <rect x="-60" y="-10" width="120" height="18"/>
+                <text class="timelinename">source DB</text>
+                <path d="M 0 10 L 0 180" />
+              </g>
+              <g class="action" transform="translate(200, 50)">
+                <rect x="-60" y="-7" width="120" height="14"/>
+                <text>gimme changes since 1A2B</text>
+                <path d="M -100 7 L 100 7" />
+                <use xlink:href="#versionedentitiedalgoarrow" transform="translate(100 7)"/>
+              </g>
+              <g class="action" transform="translate(300, 70)">
+                <g transform="translate(55, 0)">
+                  <rect x="-40" y="-7" width="80" height="14"/>
+                  <text>collect id/revision</text>
+                </g>
+                <path d="M 0 -10 L 10 -10 L 10 10 L 0 10" />
+                <use xlink:href="#rsyncarrow" transform="translate(0 10) rotate(180)"/>
+              </g>
+              <g class="action" transform="translate(200, 80)">
+                <rect x="-85" y="-7" width="170" height="14"/>
+                <text>{ id1: revision3, id2: revision4 , ... }</text>
+                <path d="M -100 7 L 100 7" />
+                <use xlink:href="#rsyncarrow" transform="translate(-100 7) rotate(180)"/>
+              </g>
+
+              <g class="action" transform="translate(200, 120)">
+                <rect x="-75" y="-7" width="150" height="14"/>
+                <text>gimme id2 at revision4</text>
+                <path d="M -100 7 L 100 7" />
+                <use xlink:href="#versionedentitiedalgoarrow" transform="translate(100 7)"/>
+              </g>
+              <g class="action" transform="translate(200, 140)">
+                <rect x="-75" y="-7" width="150" height="14"/>
+                <text>{ _id: id2, _rev: revision4, ...}</text>
+                <path d="M -100 7 L 100 7" />
+                <use xlink:href="#versionedentitiedalgoarrow" transform="translate(-100 7) rotate(180)"/>
+              </g>
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
     <div class="ft-section" data-id="mathematical">
@@ -968,10 +1043,10 @@
           <div class="stacked-center">
             <h1>Evaluation</h1>
             <ul>
-              <li>Bandwidth: O(changeset size)</li>
-              <li>Roundtrips: O(log(changeset size))</li>
+              <li>Bandwidth: <em>O(changeset size)</em></li>
+              <li>Roundtrips: <em>O(log(changeset size))</em></li>
               <li>Computational cost: <strong>high</strong></li>
-              <li>Error correction: fix on next synchronization</li>
+              <li>Error correction: <em>fix on next synchronization</em></li>
               <li>Setup: ?</li>
             </ul>
           </div>
@@ -998,6 +1073,15 @@
               <li>When needed move to log-based solution if its assumptions are validated</li>
               <li>Otherwise use the complex mathematical approach (contributors welcome!)</li>
             </ul>
+          </div>
+        </div>
+      </div>
+      <div class="ft-page" data-id="built-with" data-title="Slides built with">
+        <div class="stack-center">
+          <div class="stacked-center thanks">
+            <h1>Thanks!</h1>
+            <a href="http://flowtime-js.marcolago.com/"><img src="assets/img/logo-white-shadow.png"></a>
+            <a href="http://nodejsconf.it/"><img src="nodejsconfit.png" /></a>
           </div>
         </div>
       </div>

@@ -221,9 +221,14 @@ body {
 }
 
 .flowtime strong {
-	font-weight: bold;
-	color: #ff2222;
-	text-shadow: 1px 2px 0 #000000, 1px -1px 0 rgba(0,0,0,0.3), -1px -1px 0 rgba(0,0,0,0.3), -1px 1px 0 rgba(0,0,0,0.3)
+  font-weight: bold;
+  color: #ff2222;
+  text-shadow: 1px 2px 0 #000000, 1px -1px 0 rgba(0,0,0,0.3), -1px -1px 0 rgba(0,0,0,0.3), -1px 1px 0 rgba(0,0,0,0.3)
+}
+.flowtime em {
+  font-weight: bold;
+  color: #22bb22;
+  text-shadow: 1px 2px 0 #000000, 1px -1px 0 rgba(0,0,0,0.3), -1px -1px 0 rgba(0,0,0,0.3), -1px 1px 0 rgba(0,0,0,0.3)
 }
 
 /* quotes and citations */
@@ -336,6 +341,15 @@ body {
 .speakers img {
   display: inline-block;
   width: 25%;
+  margin: 1em;
+}
+.speakers img:nth-child(2) {
+  margin-right: 10em;
+}
+
+.thanks img {
+  display: inline-block;
+  width: 40%;
 }
 
 /* horizontally and vertically centered stackable content */
