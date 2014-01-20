@@ -805,7 +805,22 @@
         <h1>Clocks</h1>
       </div>
       <div class="ft-page" data-id="filters" data-title="Filters">
-        <h1>Filters</h1>
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Filters</h1>
+            <pre><code class="language-javascript">
+  function(doc, req) {
+    return (doc.type && doc.type == "foo")
+  }
+            </code></pre>
+            </br>
+            <ul>
+              <li>Not Full Selective Model</li>
+              <li>Iterate at each sync</li>
+              <li>Might harm recovery process</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="ft-page" data-id="evaluation" data-title="Evaluation">
         <div class="stack-center">
@@ -831,7 +846,6 @@
                 <li>Revision</li>
                 <li>Document</li>
                 <li>Database</li>
-                <li>URI</li>
                 <li>Source</li>
                 <li>Target</li>
                 <li>Checkpoint</li>
