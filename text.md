@@ -206,7 +206,8 @@ The last aproach to synchronization is less direct but gives interesting results
 
 ## Selective data model
 
-Selective data model fits naturally in this model because the endpoint can filter content it extracts from the database before compressing it. Just select all items that should be present on the application and compress it altogether.
+Selective data model fits naturally in this model because the endpoint can filter content it extracts from the database before compressing it.
+Just select all items that should be present on the application and compress it altogether.
 
 ## Easy combination
 
