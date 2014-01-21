@@ -299,7 +299,7 @@ Computational cost is pretty high because with a lot of binary operations. Since
 
 Error correction is very interesting here, because even rogue edits to your database are taken into account. Except if you have caches or use map/reduce on top of the database, but then you just need to clean those.
 
-Remains setup. Building the data structure may look hard right? Resolving it on the client may seem hard too? So we tried developing a library which does it for you. We are doing it on our spare time and really starting to scratch the surface, there remains a lot to be done he and you are welcome contributing!
+Remains setup. I don't know what you think about the library. I would say the library makes it a bit easier. If you feel interested, give it a try and submit your feedback, good and bad. We are eager to change if the way we do things do not fit a real need.
 
 # Conclusion
 
