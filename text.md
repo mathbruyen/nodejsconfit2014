@@ -273,7 +273,7 @@ Client setup requires the serializer and `summarizer` from the server plus
 
 You can guess the cost of computing the data structure is pretty heavy. If there are tens of thousands of entities to fetch from the database for each user query then your infrastructure will have a hard time.
 
-The good news if you suffer from this is that you can store a cache them.
+The good news if you suffer from this is that you can store a cache them. The best is to use an iterative map/reduce job, like views in CouchDB.
 
 ## Errors
 
@@ -285,9 +285,7 @@ In the timestamp aproach an error basically means that one needs to invalidate a
 
 Selective data model fits naturally in this model because the endpoint can filter content it extracts from the database before compressing it. Just select all items that should be present on the application and compress it altogether.
 
-Selective data model gets computationally expensive with ahead of time computation because one needs to store one structure for each and every use case.
-
-But the data structure is very flexible. One can efficiently combine several structures together if they represent disjoint set of entities. Or do a substraction.
+The data structure is actually very flexible. One can efficiently combine several structures together if they represent disjoint set of entities. Or do a substraction.
 
 Say you have many users that belongs to a few groups, and that entities they can access depend on groups they belong to. One can store one structure for each group, which is not that many, and merge them together in a single one at runtime depending on the registered user.
 
