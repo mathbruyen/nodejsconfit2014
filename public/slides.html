@@ -829,8 +829,99 @@
             <ul>
               <li>Changes whenever anything in dataset changes</li>
               <li>Retrieve operations between two versions</li>
-              <li>IE: Git using SHA1 key + History</li>
             </ul>
+            <svg class="timestamp" viewBox="0 0 400 200">
+              <style type="text/css" ><![CDATA[
+                .timestamp text {
+                      text-anchor: middle;
+                      dominant-baseline: middle;
+                      font-size: 7pt;
+                }
+                .timestamp .timelinename {
+                  font-size: 7pt;
+                  }
+                  .timestamp path {
+                      stroke: black;
+                      fill: none;
+                  }
+                  .timestamp .commit rect {
+                      stroke: #222244;
+                      fill: green;
+                  }
+              .timestamp .tree rect {
+                  stroke: #442244;
+                  fill: #EF4767;
+              }
+              .timestamp .file rect {
+                  stroke: #442244;
+                  fill: #288;
+              }
+                  ]]></style>
+                <defs>
+                    <path id="viarrow" d="M 0 0 L -5 3 L -5 -3 L 0 0 L -5 0" />
+                </defs>
+                  <g class="timeline commit" transform="translate(50,150)">
+                      <rect x="-55" y="-10" width="110" height="18"/>
+                      <text class="timelinename">first commit f34cx4e</text>
+                  </g>
+                <path d="M 50 100 L 50 140" />
+                <use xlink:href="#viarrow" transform="translate(144 150)"/>
+                <use xlink:href="#viarrow" transform="translate(50 140) rotate (90)"/>
+
+                <g class="timeline commit" transform="translate(50,100)">
+                      <rect x="-55" y="-10" width="110" height="18"/>
+                      <text class="timelinename">second commit e324xz</text>
+                  </g>
+                <path d="M 50 50 L 50 90" />
+                <use xlink:href="#viarrow" transform="translate(50 90) rotate (90)"/>
+                <use xlink:href="#viarrow" transform="translate(144 100)"/>
+                  <g class="timeline commit" transform="translate(50,50)">
+                      <rect x="-55" y="-10" width="110" height="18"/>
+                      <text class="timelinename">third commit w34sxd</text>
+                  </g>
+                <use xlink:href="#viarrow" transform="translate(144 50)"/>
+                  <g class="timeline tree" transform="translate(180, 150)">
+                      <rect x="-35" y="-10" width="70" height="18"/>
+                      <text class="timelinename">tree 12qaws</text>
+                  </g>
+                <use xlink:href="#viarrow" transform="translate(244 150)"/>
+                <path d="M 105 150 L 145 150" />
+                  <g class="timeline tree" transform="translate(180, 100)">
+                      <rect x="-35" y="-10" width="70" height="18"/>
+                      <text class="timelinename">tree hf75es</text>
+                  </g>
+                <path d="M 105 100 L 145 100" />
+                <use xlink:href="#viarrow" transform="translate(244 85) rotate (-35)"/>
+                <use xlink:href="#viarrow" transform="translate(244 115) rotate (35)"/>
+                  <g class="timeline tree" transform="translate(180, 50)">
+                      <rect x="-35" y="-10" width="70" height="18"/>
+                      <text class="timelinename">tree qa23fc</text>
+                  </g>
+                <path d="M 105 50 L 145 50" />
+                <use xlink:href="#viarrow" transform="translate(244 50)"/>
+                <use xlink:href="#viarrow" transform="translate(244 85) rotate (50)"/>
+                  <g class="timeline file" transform="translate(300, 150)">
+                      <rect x="-55" y="-10" width="110" height="18"/>
+                      <text class="timelinename">main.js Version 1 w34rd2</text>
+                  </g>
+                <path d="M 215 150 L 245 150" />
+                  <g class="timeline file" transform="translate(300,115)">
+                      <rect x="-55" y="-10" width="110" height="18"/>
+                      <text class="timelinename">new.js qa24zx2 </text>
+                  </g>
+                <path d="M 215 100 L 245 115" />
+                <path d="M 215 100 L 245 85" />
+                  <g class="timeline file" transform="translate(300,85)">
+                      <rect x="-55" y="-10" width="110" height="18"/>
+                      <text class="timelinename">main.js Version2 wa234f</text>
+                  </g>
+                <path d="M 215 50 L 245 50" />
+                <path d="M 215 50 L 245 85" />
+                  <g class="timeline file" transform="translate(300,50)">
+                      <rect x="-55" y="-10" width="110" height="18"/>
+                      <text class="timelinename">new.js Version2 334eds</text>
+                  </g>
+              </svg>
           </div>
         </div>
       </div>
