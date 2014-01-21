@@ -251,6 +251,8 @@ One start with an array of empty buckets, then for each item we serialize it as 
 
 Out of those bytes it generates the list of buckets to store the item in, usually 3. It internally uses consistent hashing to get those buckets. Each target bucket is then updated accordingly by increasing the number of items, xoring the hash and the content.
 
+To deserialize on the other side, first remove all the items you have locally. Then search for a bucket with +/-1 item and consider it as added/removed. Add or remove it in the structure and restart searching for singleton buckets. If there are no any, then retry with a larger level of details. XOR ensures that operations commute and get reversed.
+
 ## Mathsync server setup
 
 Server setup only consists in three steps
@@ -285,7 +287,7 @@ In the timestamp aproach an error basically means that one needs to invalidate a
 
 Selective data model fits naturally in this model because the endpoint can filter content it extracts from the database before compressing it. Just select all items that should be present on the application and compress it altogether.
 
-The data structure is actually very flexible. One can efficiently combine several structures together if they represent disjoint set of entities. Or do a substraction.
+The data structure is actually very flexible. Because it uses only XOR operations one can efficiently combine several structures together if they represent disjoint set of entities. Or do a substraction.
 
 Say you have many users that belongs to a few groups, and that entities they can access depend on groups they belong to. One can store one structure for each group, which is not that many, and merge them together in a single one at runtime depending on the registered user.
 
