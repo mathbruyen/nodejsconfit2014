@@ -157,7 +157,15 @@ So you need a timestamp oracle which gives you strictly increasing timestamps. W
 
 ## Filters
 
-http://wiki.apache.org/couchdb/Replication#Filtered_Replication
+The way to implement selective data model in this paradigm is using filters. When a client fetches edits since a checkpoint, one checks a filter function and only includes entities that fullfills a condition.
+
+It works pretty well but has a few drawbacks:
+
+* one needs to iterate on the whole log since the checkpoint, even though only a few items are to be included
+* only soft deletes are permitted because one needs entity content in order to determine if it belongs to the view and if deletion information must be propagated to this particular client
+* for the same reason data that is used in filters must be immutable, if it were not clients could download entities which are included in the view at some point and then never be notified from the server that they changed because they are no longer considered included
+
+This is the kind of working that [CouchDB](http://wiki.apache.org/couchdb/Replication#Filtered_Replication) uses.
 
 ## Evaluation
 

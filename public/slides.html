@@ -1006,14 +1006,15 @@
             <h1>Filters</h1>
             <pre><code class="language-javascript">
   function(doc, req) {
-    return (doc.type && doc.type == "foo")
+    return (doc.type &amp;&amp; doc.type == "foo")
   }
             </code></pre>
             </br>
             <ul>
-              <li>Not Full Selective Model</li>
-              <li>Iterate at each sync</li>
-              <li>Might harm recovery process</li>
+              <li>???Not Full Selective Model???</li>
+              <li>Iterate on the whole log</li>
+              <li>Soft deletes</li>
+              <li>Data used in filters must be immutable</li>
             </ul>
           </div>
         </div>
