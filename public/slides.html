@@ -55,6 +55,9 @@
 
       <!-- 160x118 centered desktop -->
       <path id="desktop" transform="translate(-100, -65)" d="M 20 10 L 180 10 L 180 110 L 110 110 L 115 125 L 120 125 L 120 128 L 80 128 L 80 125 L 85 125 L 90 110 L 20 110 L 20 10" />
+
+      <!-- right pointed arrow -->
+      <path id="arrow" d="M 0 0 L -5 3 L -5 -3 L 0 0 L -5 0" />
     </defs>
   </svg>
 </head>
@@ -766,57 +769,75 @@
                   dominant-baseline: middle;
                   font-size: 7pt;
                 }
-                .timestamp .timelinename {
-                  font-size: 7pt;
+                .timestamp #cloud {
+                  fill: #882222;
+                  stroke: #999;
                 }
-                .timestamp path {
+                .timestamp .log {
+                  fill: #228888;
+                }
+                .timestamp .client rect {
+                  fill: #228822;
+                }
+                .timestamp .client path {
+                  stroke: black;
+                }
+                .timestamp .checkpoint rect {
+                  fill: #222288;
+                }
+                .timestamp .exchange path {
                   stroke: black;
                   fill: none;
                 }
-                .timestamp .timeline rect {
-                  stroke: #222244;
-                  fill: #999;
-                }
-                .timestamp .action rect {
-                  stroke: #442244;
-                  fill: #DDD;
-                }
               ]]></style>
-              <g class="timeline" transform="translate(290,50)">
-                <rect x="-55" y="-10" width="110" height="18"/>
-                <text class="timelinename">{3, 1418336553, content} </text>
+              <g transform="translate(130,100)">
+                <use xlink:href="#cloud" transform="scale(2,3.8)" />
+                <g transform="translate(55, -45)">
+                  <rect class="log" x="-35" y="-8" width="70" height="106" />
+                  <text>time - identity</text>
+                  <text y="20">100 - /user/1</text>
+                  <text y="30">101 - /user/2</text>
+                  <text y="40">103 - /user/8</text>
+                  <text y="50">104 - /user/3</text>
+                  <text y="60">105 - /user/2</text>
+                  <text y="70">106 - /user/5</text>
+                  <text y="80">...</text>
+                  <text y="90">242 - /user/5</text>
+                </g>
+                <g transform="translate(-40,0)">
+                  <text x="10" y="20">/user/1: { ... }</text>
+                  <text x="-10" y="-30">/user/2: { ... }</text>
+                  <text x="-5" y="45">/user/3: { ... }</text>
+                  <text x="5" y="-55">/user/3: { ... }</text>
+                  <text x="-40" y="0">/user/4: { ... }</text>
+                  <text x="25" y="-10">/user/5: { ... }</text>
+                </g>
               </g>
-              <g class="timeline" transform="translate(290,70)">
-                <rect x="-55" y="-10" width="110" height="18"/>
-                <text class="timelinename">{6, 1418336555, content} </text>
-              </g>
-              <g class="timeline" transform="translate(290,150)">
-                <rect x="-55" y="-10" width="110" height="18"/>
-                <text class="timelinename">{9, 1418336557, content} </text>
-              </g>
-              <g class="action" transform="translate(130,10)">
-                <rect x="-40" y="-10" width="80" height="18"/>
-                <text class="timelinename">Sync Point 1</text>
-              </g>
-              <g class="timeline" transform="translate(130,40)">
-                <rect x="-55" y="-10" width="110" height="18"/>
-                <text class="timelinename">{1, 1418336553, content} </text>
-              </g>
-              <g class="timeline" transform="translate(130,60)">
-                <rect x="-55" y="-10" width="110" height="18"/>
-                <text class="timelinename">{4, 1418336554, content} </text>
-              </g>
-              <g class="timeline" transform="translate(130,80)">
-                <rect x="-55" y="-10" width="110" height="18"/>
-                <text class="timelinename">{6, 1418336555, content} </text>
-              </g>
-              <g class="timeline" transform="translate(130,100)">
-                <rect x="-55" y="-10" width="110" height="18"/>
-                <text class="timelinename">{17, 1418336555, content} </text>
-              </g>
-              <g class="action" transform="translate(130,130)">
-                <rect x="-40" y="-10" width="80" height="18"/>
-                <text class="timelinename">Sync Point 2</text>
+              <g transform="translate(360, 10)">
+                <g class="client">
+                  <rect x="-20" y="-7" width="40" height="14" />
+                  <text>Client</text>
+                  <path d="M 0 7 L 0 160" />
+                </g>
+                <g class="checkpoint" transform="translate(-10, 30)">
+                  <rect x="-40" y="-7" width="80" height="14" />
+                  <text>Checkpoint: 104</text>
+                </g>
+                <g transform="translate(0,50)" class="exchange">
+                  <path d="M 0 0 L -100 0" />
+                  <use xlink:href="#arrow" transform="translate(-100 0) rotate(180)" />
+                  <text x="-50" y="8">Changes since 104!</text>
+
+                  <path d="M 0 35 L -100 35" />
+                  <use xlink:href="#arrow" transform="translate(0 35)" />
+                  <text x="-50" y="45">/user/2: { ... }</text>
+                  <text x="-50" y="55">/user/5: { ... }</text>
+                  <text x="-50" y="65">checkpoint: 242</text>
+                </g>
+                <g class="checkpoint" transform="translate(-10, 140)">
+                  <rect x="-40" y="-7" width="80" height="14" />
+                  <text>Checkpoint: 242</text>
+                </g>
               </g>
             </svg>
           </div>

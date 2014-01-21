@@ -132,6 +132,8 @@ Computational cost remains limited, error correction is preserved if one guarant
 
 ## How to
 
+The idea here is to record on the server the list of changes and associate them to edit timestamp in an ordered log. On the client on needs to store the last synchronization timestamp. Upon connection the client requests all modified entities since the last checkpoint and the last safe checkpoint.
+
 ## Version identifier
 
 Even though we generally speak of numeric timestamps because it looks easy to deal with. What is important there is having:
