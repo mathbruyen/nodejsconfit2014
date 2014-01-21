@@ -1226,8 +1226,50 @@ items.forEach(function(item) {
           </div>
         </div>
       </div>
-      <div class="ft-page" data-id="mathsyncsetup" data-title="Mathematical Synchronization - setup">
-        <h1>Mathsync setup</h1>
+      <div class="ft-page" data-id="mathsyncsetupserver" data-title="Mathematical Synchronization - setup server">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Mathsync setup - server</h1>
+            <pre><code class="language-javascript">var data = [/* ... */];
+
+function serialize(item) {
+  var buffer = new Buffer(item.key + ':' + item.value, 'utf-8');
+  return new Uint8Array(buffer).buffer;
+}
+
+var summarizer = require('mathsync').summarizer.fromItems(data, serialize);
+
+app.use(route.get('/summary/:level', function* (level) {
+  this.body = yield summarizer(level | 0);
+}));</code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="ft-page" data-id="mathsyncsetupclient" data-title="Mathematical Synchronization - setup client">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Mathsync setup - client</h1>
+            <pre><code class="language-javascript">var data = [/* ... */];
+
+function serialize(item) { /* ... */ }
+
+function deserialize(buffer) {
+  var arr = new Buffer(new Uint8Array(buffer)).toString('utf-8').split(':');
+  return { key: arr[0], value: arr[1] };
+}
+
+function fetchSummary(level) {
+  return http.getJson('/summary/' + level);
+}
+
+var ms = require('mathsync');
+var local = ms.summarizer.fromItems(data, serialize);
+var remote = summarizer.fromJSON(fetchSummary);
+var resolve = ms.resolver.fromSummarizers(local, remote, deserialize);
+
+resolve().then(function (difference) { /* ... */ });</code></pre>
+          </div>
+        </div>
       </div>
       <div class="ft-page" data-id="aheadoftime" data-title="Ahead of time computation">
         <div class="stack-center">

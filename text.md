@@ -251,6 +251,24 @@ One start with an array of empty buckets, then for each item we serialize it as 
 
 Out of those bytes it generates the list of buckets to store the item in, usually 3. It internally uses consistent hashing to get those buckets. Each target bucket is then updated accordingly by increasing the number of items, xoring the hash and the content.
 
+## Mathsync server setup
+
+Server setup only consists in three steps
+
+* defining a `serializer` that converts items to TypedArrays, common ones are planned
+* creating a `summarizer` object bound to an array of items, other more flexible strategies than a fixed arrays are planned
+* exposing the result of this summarizer over an http entry point
+
+We need a custom serializer because one needs to have consistent convertion to bytes.
+
+## Mathsync client setup
+
+Client setup requires the serializer and `summarizer` from the server plus
+
+* a `deserializer` doing the opposite to the `serializer`
+* another `summarizer` fetching server content
+* a resolver orchestrating the use of both `summarizer`s
+
 ## Ahead of time computation
 
 You can guess the cost of computing the data structure is pretty heavy. If there are tens of thousands of entities to fetch from the database for each user query then your infrastructure will have a hard time.
