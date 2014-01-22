@@ -39,14 +39,14 @@
 
       <!-- 70x90 centered tablet -->
       <g id="tablet">
-        <path d="M -35 -45 L 35 -45 L 35 45 L -35 45 L -35 -45" />
+        <path d="M -35 -45 L 35 -45 L 35 45 L -35 45 Z" />
         <path d="M -35 39 L 35 39" />
         <circle cy="42" r="1.5"/>
       </g>
 
       <!-- 25x40 centered phone -->
       <g id="phone">
-        <path class="device" d="M -12.5 -20 L 12.5 -20 L 12.5 20 L -12.5 20 L -12.5 -20" />
+        <path class="device" d="M -12.5 -20 L 12.5 -20 L 12.5 20 L -12.5 20 Z" />
         <path class="device" d="M -3 -17 L 3 -17" />
         <path class="device" d="M -12.5 -14 L 12.5 -14" />
         <path class="device" d="M -12.5 14 L 12.5 14" />
@@ -54,7 +54,7 @@
       </g>
 
       <!-- 160x118 centered desktop -->
-      <path id="desktop" transform="translate(-100, -65)" d="M 20 10 L 180 10 L 180 110 L 110 110 L 115 125 L 120 125 L 120 128 L 80 128 L 80 125 L 85 125 L 90 110 L 20 110 L 20 10" />
+      <path id="desktop" transform="translate(-100, -65)" d="M 20 10 L 180 10 L 180 110 L 110 110 L 115 125 L 120 125 L 120 128 L 80 128 L 80 125 L 85 125 L 90 110 L 20 110 Z" />
 
       <!-- right pointed arrow -->
       <path id="arrow" d="M 0 0 L -5 3 L -5 -3 L 0 0 L -5 0" />
@@ -105,7 +105,8 @@
               <style type="text/css" ><![CDATA[
                 .webapplication .device {
                   stroke: purple;
-                  fill: black;
+                  fill: #222288;
+                  stroke-width: 1.5;
                 }
               ]]></style>
               <use xlink:href="#desktop" class="device" transform="translate(100, 65)" />
@@ -133,7 +134,8 @@
                 }
                 .clientserver .client, .clientserver .client rect, .clientserver .client path, .clientserver .client circle {
                   stroke: purple;
-                  fill: black;
+                  fill: #222288;
+                  stroke-width: 1.5;
                 }
                 .clientserver path {
                   stroke: black;
@@ -178,7 +180,8 @@
                 }
                 .mostlyoffline .client, .mostlyoffline .client rect, .mostlyoffline .client path, .mostlyoffline .client circle {
                   stroke: purple;
-                  fill: black;
+                  fill: #222288;
+                  stroke-width: 1.5;
                 }
                 .mostlyoffline .offline, .mostlyoffline .offline rect, .mostlyoffline .offline path, .mostlyoffline .offline circle {
                   fill: #222;
@@ -228,8 +231,11 @@
                   font-size: 10pt;
                 }
                 .synchronization .network path {
-                  stroke: black;
+                  stroke: #999;
                   stroke-dasharray: 4 4;
+                }
+                .synchronization .network text {
+                  fill: #CCC;
                 }
                 .synchronization .exchange path {
                   stroke: #994444;
@@ -293,7 +299,8 @@
               <style type="text/css" ><![CDATA[
                 .notonlypush .device {
                   stroke: purple;
-                  fill: black;
+                  fill: #222288;
+                  stroke-width: 1.5;
                 }
                 .notonlypush .cloud {
                   stroke: #222244;
@@ -355,13 +362,13 @@
                   stroke: black;
                 }
                 .selectivedatamodel .one .cloud {
-                  fill: rgba(140, 20, 20, 0.3);
+                  fill: rgba(180, 20, 20, 0.7);
                 }
                 .selectivedatamodel .two .cloud {
-                  fill: rgba(20, 140, 20, 0.3);
+                  fill: rgba(20, 180, 20, 0.5);
                 }
                 .selectivedatamodel .three .cloud {
-                  fill: rgba(20, 20, 140, 0.3);
+                  fill: rgba(20, 20, 180, 0.5);
                 }
                 .selectivedatamodel #sdmuser rect {
                   stroke: purple;
@@ -372,10 +379,10 @@
                 }
                 #sdmentity rect {
                   stroke: none;
-                  fill: rgba(0, 0, 0, 0.2);
+                  fill: rgba(0, 0, 0, 0.5);
                 }
                 #sdmentity text {
-                  fill: black;
+                  fill: #999;
                   font-size: 6pt;
                 }
                 .selectivedatamodel text {
@@ -386,11 +393,11 @@
               ]]></style>
               <defs>
                 <g id="sdmentity">
-                  <rect x="-14" y="-7" width="28" height="14" />
+                  <rect x="-14" y="-7" width="28" height="14" rx="4" ry="4" />
                   <text>{ ... }</text>
                 </g>
                 <g id="sdmuser">
-                  <rect x="-20" y="-10" width="40" height="20" />
+                  <rect x="-20" y="-10" width="40" height="20" rx="2" ry="2" />
                   <text>User</text>
                 </g>
               </defs>
@@ -436,7 +443,7 @@
                 }
                 .conflicts path {
                   fill: none;
-                  stroke: black;
+                  stroke: #C22;
                 }
                 .conflicts .timeline rect {
                   stroke: #222244;
@@ -456,40 +463,40 @@
                 }
               ]]></style>
               <g class="timeline client" transform="translate(75,10)">
-                <rect x="-50" y="-7" width="100" height="14"/>
+                <rect x="-50" y="-7" width="100" height="14" rx="2" ry="2" />
                 <text>client A</text>
                 <path d="M 0 10 L 0 180" />
               </g>
               <g class="timeline" transform="translate(200,10)">
-                <rect x="-50" y="-7" width="100" height="14"/>
+                <rect x="-50" y="-7" width="100" height="14" rx="2" ry="2"/>
                 <text>server</text>
                 <path d="M 0 10 L 0 180" />
               </g>
               <g class="timeline client" transform="translate(325,10)">
-                <rect x="-50" y="-7" width="100" height="14"/>
+                <rect x="-50" y="-7" width="100" height="14" rx="2" ry="2"/>
                 <text>client B</text>
                 <path d="M 0 10 L 0 180" />
               </g>
               <g class="action" transform="translate(140, 30)">
-                <rect x="-40" y="-7" width="80" height="14"/>
+                <rect x="-20" y="-7" width="40" height="14"/>
                 <text>sync</text>
                 <path d="M -65 7 L 60 7" />
               </g>
               <g class="offline" transform="translate(75, 55)">
-                <rect x="-40" y="-7" width="80" height="100"/>
+                <rect x="-40" y="-7" width="80" height="100" rx="5" ry="5"/>
                 <text>offline</text>
               </g>
               <g class="action" transform="translate(75, 95)">
-                <rect x="-30" y="-7" width="60" height="14"/>
+                <rect x="-20" y="-7" width="40" height="14"/>
                 <text>change</text>
               </g>
               <g class="action" transform="translate(265, 100)">
-                <rect x="-40" y="-7" width="80" height="14"/>
+                <rect x="-20" y="-7" width="40" height="14"/>
                 <text>change</text>
                 <path d="M -65 7 L -60 10 L -60 4 L -65 7 L 60 7" />
               </g>
               <g class="action" transform="translate(140, 160)">
-                <rect x="-40" y="-7" width="80" height="14"/>
+                <rect x="-35" y="-7" width="70" height="14"/>
                 <text>sync/conflict</text>
                 <path d="M -65 7 L 60 7" />
               </g>
@@ -577,7 +584,7 @@
                   dominant-baseline: middle;
                 }
                 .rsync path {
-                  stroke: black;
+                  stroke: #C22;
                   fill: none;
                 }
                 .rsync .timeline rect {
@@ -593,12 +600,12 @@
                 <path id="rsyncarrow" d="M 0 0 L -5 3 L -5 -3 L 0 0 L -5 0" />
               </defs>
               <g class="timeline" transform="translate(100,10)">
-                <rect x="-50" y="-7" width="100" height="14"/>
+                <rect x="-50" y="-7" width="100" height="14" rx="2" ry="2"/>
                 <text font-size="10">requester</text>
                 <path d="M 0 10 L 0 180" />
               </g>
               <g class="timeline" transform="translate(300,10)">
-                <rect x="-50" y="-7" width="100" height="14"/>
+                <rect x="-50" y="-7" width="100" height="14" rx="2" ry="2"/>
                 <text font-size="10">requested</text>
                 <path d="M 0 10 L 0 180" />
               </g>
@@ -612,8 +619,8 @@
               </g>
               <g class="action" transform="translate(300, 50)">
                 <g transform="translate(55, 0)">
-                  <rect x="-40" y="-7" width="80" height="14"/>
-                  <text font-size="10">MD5(file)</text>
+                  <rect x="-40" y="-7" width="60" height="14"/>
+                  <text font-size="10" x="-10">MD5(file)</text>
                 </g>
                 <path d="M 0 -10 L 10 -10 L 10 10 L 0 10" />
                 <use xlink:href="#rsyncarrow" transform="translate(0 10) rotate(180)"/>
@@ -627,8 +634,8 @@
 
               <g class="action" transform="translate(100, 110)">
                 <g transform="translate(55, -10)">
-                  <rect x="-40" y="-7" width="80" height="14"/>
-                  <text font-size="10">MD5(file)</text>
+                  <rect x="-40" y="-7" width="60" height="14"/>
+                  <text font-size="10" x="-10">MD5(file)</text>
                 </g>
                 <g transform="translate(90, 10)">
                   <rect x="-75" y="-7" width="150" height="14"/>
@@ -638,7 +645,7 @@
                 <use xlink:href="#rsyncarrow" transform="translate(0 10) rotate(180)"/>
               </g>
               <g class="action" transform="translate(200, 170)">
-                <rect x="-75" y="-7" width="150" height="14"/>
+                <rect x="-30" y="-7" width="60" height="14"/>
                 <text font-size="10">file2 = {...}</text>
                 <path d="M -100 7 L 100 7" />
                 <use xlink:href="#rsyncarrow" transform="translate(100 7)"/>
@@ -658,7 +665,7 @@
                   dominant-baseline: middle;
                 }
                 .versionedentitiedalgo path {
-                  stroke: black;
+                  stroke: #C22;
                   fill: none;
                 }
                 .versionedentitiedalgo .timeline rect {
@@ -674,14 +681,14 @@
                 <path id="versionedentitiedalgoarrow" d="M 0 0 L -5 3 L -5 -3 L 0 0 L -5 0" />
               </defs>
               <g class="timeline" transform="translate(100,10)">
-                <rect x="-50" y="-7" width="100" height="14"/>
+                <rect x="-50" y="-7" width="100" height="14" rx="2" ry="2"/>
                 <text font-size="10">client</text>
-                <path d="M 0 10 L 0 180" />
+                <path d="M 0 10 L 0 190" />
               </g>
               <g class="timeline" transform="translate(300,10)">
-                <rect x="-50" y="-7" width="100" height="14"/>
+                <rect x="-50" y="-7" width="100" height="14" rx="2" ry="2"/>
                 <text font-size="10">server</text>
-                <path d="M 0 10 L 0 180" />
+                <path d="M 0 10 L 0 190" />
               </g>
 
 
@@ -700,7 +707,7 @@
                 <use xlink:href="#rsyncarrow" transform="translate(0 10) rotate(180)"/>
               </g>
               <g class="action" transform="translate(200, 60)">
-                <rect x="-85" y="-7" width="170" height="14"/>
+                <rect x="-65" y="-7" width="130" height="14"/>
                 <text font-size="10">{ entity1: 2, entity2: 3 , ... }</text>
                 <path d="M -100 7 L 100 7" />
                 <use xlink:href="#rsyncarrow" transform="translate(-100 7) rotate(180)"/>
@@ -712,20 +719,20 @@
                   <text font-size="10">entity.version</text>
                 </g>
                 <g transform="translate(100, 10)">
-                  <rect x="-85" y="-7" width="170" height="14"/>
-                  <text font-size="10">{ entity1: 2, entity2: 5 , ... }</text>
+                  <rect x="-85" y="-7" width="130" height="14"/>
+                  <text font-size="10" x="-20">{ entity1: 2, entity2: 5 , ... }</text>
                 </g>
                 <path d="M 0 -10 L 10 -10 L 10 10 L 0 10" />
                 <use xlink:href="#versionedentitiedalgoarrow" transform="translate(0 10) rotate(180)"/>
               </g>
               <g class="action" transform="translate(200, 160)">
-                <rect x="-75" y="-7" width="150" height="14"/>
+                <rect x="-40" y="-7" width="80" height="14"/>
                 <text font-size="10">gimme entity2</text>
                 <path d="M -100 7 L 100 7" />
                 <use xlink:href="#versionedentitiedalgoarrow" transform="translate(100 7)"/>
               </g>
               <g class="action" transform="translate(200, 180)">
-                <rect x="-75" y="-7" width="150" height="14"/>
+                <rect x="-40" y="-7" width="80" height="14"/>
                 <text font-size="10">entity2  = {...}</text>
                 <path d="M -100 7 L 100 7" />
                 <use xlink:href="#versionedentitiedalgoarrow" transform="translate(-100 7) rotate(180)"/>
@@ -761,7 +768,7 @@
       <div class="ft-page" data-id="algorithm" data-title="Log changes">
         <div class="stack-center">
           <div class="stacked-center">
-            <h1>How to</h1>
+            <h1>Checkpoints</h1>
             <svg class="timestamp" viewBox="0 0 400 200">
               <style type="text/css" ><![CDATA[
                 .timestamp text {
@@ -771,23 +778,28 @@
                 }
                 .timestamp .cloud, .timestamp #cloud {
                   fill: #882222;
-                  stroke: #999;
+                  stroke: black;
                 }
                 .timestamp .log {
                   fill: #228888;
                 }
                 .timestamp .client rect {
+                  stroke: #222244;
                   fill: #228822;
                 }
                 .timestamp .client path {
-                  stroke: black;
+                  stroke: #C22;
                 }
                 .timestamp .checkpoint rect {
+                  stroke: #222244;
                   fill: #222288;
                 }
                 .timestamp .exchange path {
-                  stroke: black;
+                  stroke: #C22;
                   fill: none;
+                }
+                .timestamp text {
+                  fill: #CCC;
                 }
               ]]></style>
               <g transform="translate(130,100)">
@@ -824,11 +836,11 @@
                   <text>Checkpoint: 104</text>
                 </g>
                 <g transform="translate(0,50)" class="exchange">
-                  <path d="M 0 0 L -100 0" />
-                  <use xlink:href="#arrow" transform="translate(-100 0) rotate(180)" />
+                  <path d="M 0 0 L -120 0" />
+                  <use xlink:href="#arrow" transform="translate(-120 0) rotate(180)" />
                   <text x="-50" y="8">Changes since 104!</text>
 
-                  <path d="M 0 35 L -100 35" />
+                  <path d="M 0 35 L -120 35" />
                   <use xlink:href="#arrow" transform="translate(0 35)" />
                   <text x="-50" y="45">/user/2: { ... }</text>
                   <text x="-50" y="55">/user/5: { ... }</text>
@@ -851,29 +863,29 @@
               <li>Changes whenever anything in dataset changes</li>
               <li>Retrieve operations between two versions</li>
             </ul>
-            <svg class="timestamp" viewBox="0 0 400 200">
+            <svg class="versionid" viewBox="0 0 400 200">
               <style type="text/css" ><![CDATA[
-                .timestamp text {
+                .versionid text {
                       text-anchor: middle;
                       dominant-baseline: middle;
                       font-size: 7pt;
                 }
-                .timestamp .timelinename {
+                .versionid .timelinename {
                   font-size: 7pt;
                   }
-                  .timestamp path {
-                      stroke: black;
+                  .versionid path {
+                      stroke: #C22;
                       fill: none;
                   }
-                  .timestamp .commit rect {
+                  .versionid .commit rect {
                       stroke: #222244;
                       fill: green;
                   }
-              .timestamp .tree rect {
+              .versionid .tree rect {
                   stroke: #442244;
                   fill: #EF4767;
               }
-              .timestamp .file rect {
+              .versionid .file rect {
                   stroke: #442244;
                   fill: #288;
               }
@@ -882,7 +894,7 @@
                     <path id="viarrow" d="M 0 0 L -5 3 L -5 -3 L 0 0 L -5 0" />
                 </defs>
                   <g class="timeline commit" transform="translate(50,150)">
-                      <rect x="-55" y="-10" width="110" height="18"/>
+                      <rect x="-50" y="-10" width="110" height="18"/>
                       <text class="timelinename">first commit f34cx4e</text>
                   </g>
                 <path d="M 50 100 L 50 140" />
@@ -890,14 +902,14 @@
                 <use xlink:href="#viarrow" transform="translate(50 140) rotate (90)"/>
 
                 <g class="timeline commit" transform="translate(50,100)">
-                      <rect x="-55" y="-10" width="110" height="18"/>
+                      <rect x="-50" y="-10" width="110" height="18"/>
                       <text class="timelinename">second commit e324xz</text>
                   </g>
                 <path d="M 50 50 L 50 90" />
                 <use xlink:href="#viarrow" transform="translate(50 90) rotate (90)"/>
                 <use xlink:href="#viarrow" transform="translate(144 100)"/>
                   <g class="timeline commit" transform="translate(50,50)">
-                      <rect x="-55" y="-10" width="110" height="18"/>
+                      <rect x="-50" y="-10" width="110" height="18"/>
                       <text class="timelinename">third commit w34sxd</text>
                   </g>
                 <use xlink:href="#viarrow" transform="translate(144 50)"/>
@@ -906,19 +918,19 @@
                       <text class="timelinename">tree 12qaws</text>
                   </g>
                 <use xlink:href="#viarrow" transform="translate(244 150)"/>
-                <path d="M 105 150 L 145 150" />
+                <path d="M 110 150 L 145 150" />
                   <g class="timeline tree" transform="translate(180, 100)">
                       <rect x="-35" y="-10" width="70" height="18"/>
                       <text class="timelinename">tree hf75es</text>
                   </g>
-                <path d="M 105 100 L 145 100" />
+                <path d="M 110 100 L 145 100" />
                 <use xlink:href="#viarrow" transform="translate(244 85) rotate (-35)"/>
                 <use xlink:href="#viarrow" transform="translate(244 115) rotate (35)"/>
                   <g class="timeline tree" transform="translate(180, 50)">
                       <rect x="-35" y="-10" width="70" height="18"/>
                       <text class="timelinename">tree qa23fc</text>
                   </g>
-                <path d="M 105 50 L 145 50" />
+                <path d="M 110 50 L 145 50" />
                 <use xlink:href="#viarrow" transform="translate(244 50)"/>
                 <use xlink:href="#viarrow" transform="translate(244 85) rotate (50)"/>
                   <g class="timeline file" transform="translate(300, 150)">
@@ -993,7 +1005,7 @@
               <g transform="translate(42, 10)" class="second">
                 <use xlink:href="#clock-icon" />
                 <g transform="translate(15.85, 17.25) rotate(180)">
-                  <rect class="second-hand" transform="rotate(10)" x="-0.12" width="0.24" height="9.83"/>
+                  <rect class="second-hand" transform="rotate(20)" x="-0.12" width="0.24" height="9.83"/>
                 </g>
               </g>
             </svg>
@@ -1011,7 +1023,6 @@
             </code></pre>
             </br>
             <ul>
-              <li>???Not Full Selective Model???</li>
               <li>Iterate on the whole log</li>
               <li>Soft deletes</li>
               <li>Data used in filters must be immutable</li>
@@ -1028,7 +1039,7 @@
               <li>Roundtrips: <em>just 1</em></li>
               <li>Computational cost: low for CPU / <strong>up to double database footprint</strong></li>
               <li>Recovery: <strong>errors remain here forever</strong></li>
-              <li>Setup: <strong>logging infrastructure</strong>, extra field to store on clients</li>
+              <li>Setup: <strong>logging infrastructure</strong> / extra field to store on clients</li>
             </ul>
           </div>
         </div>
@@ -1065,7 +1076,7 @@
                   font-size: 10pt;
                 }
                 .couchalgo path {
-                  stroke: black;
+                  stroke: #C22;
                   fill: none;
                 }
                 .couchalgo .timeline rect {
@@ -1081,9 +1092,9 @@
                 <path id="versionedentitiedalgoarrow" d="M 0 0 L -5 3 L -5 -3 L 0 0 L -5 0" />
               </defs>
               <g class="timeline" transform="translate(100,10)">
-                <rect x="-60" y="-10" width="120" height="18"/>
+                <rect x="-60" y="-10" width="120" height="18" rx="3" ry="3"/>
                 <text class="timelinename">web DB</text>
-                <path d="M 0 10 L 0 180" />
+                <path d="M 0 10 L 0 190" />
 
                 <g class="action" transform="translate(0,20)">
                   <rect x="-50" y="-7" width="100" height="14"/>
@@ -1095,9 +1106,9 @@
                 </g>
               </g>
               <g class="timeline" transform="translate(300,10)">
-                <rect x="-60" y="-10" width="120" height="18"/>
+                <rect x="-60" y="-10" width="120" height="18" rx="3" ry="3"/>
                 <text class="timelinename">source DB</text>
-                <path d="M 0 10 L 0 180" />
+                <path d="M 0 10 L 0 190" />
               </g>
               <g class="action" transform="translate(200, 50)">
                 <rect x="-60" y="-7" width="120" height="14"/>
@@ -1114,7 +1125,7 @@
                 <use xlink:href="#rsyncarrow" transform="translate(0 10) rotate(180)"/>
               </g>
               <g class="action" transform="translate(200, 80)">
-                <rect x="-85" y="-7" width="170" height="14"/>
+                <rect x="-75" y="-7" width="150" height="14"/>
                 <text>{ id1: revision3, id2: revision4 , ... }</text>
                 <path d="M -100 7 L 100 7" />
                 <use xlink:href="#rsyncarrow" transform="translate(-100 7) rotate(180)"/>
@@ -1133,7 +1144,7 @@
                 <use xlink:href="#versionedentitiedalgoarrow" transform="translate(-100 7) rotate(180)"/>
               </g>
               <g class="action" transform="translate(200, 180)">
-                <rect x="-75" y="-7" width="150" height="14"/>
+                <rect x="-60" y="-7" width="120" height="14"/>
                 <text>send checkpoint: 3C4D</text>
                 <path d="M -100 7 L 100 7" />
                 <use xlink:href="#versionedentitiedalgoarrow" transform="translate(100 7)"/>
@@ -1158,7 +1169,7 @@
             <h3>given n</h3>
             <h2>server: build a data structure of size O(n)</h1>
             <h2>client: compute its delta from the server<h1>
-            <h2>if # of differences is less than 2<sup>n</sup></h1>
+            <h2>succeeds if # of differences is less than n</h1>
           </div>
         </div>
       </div>
@@ -1172,7 +1183,7 @@ i = 0;
 
 while (!diff) {
 
-  server = getFromServer(i);
+  server = getFromServer(Math.pow(2, i));
 
   diff = localStore.computeDifference(server);
 
@@ -1201,7 +1212,7 @@ local.applyDifference(diff);</code></pre>
         <div class="stack-center">
           <div class="stacked-center">
             <h1>Mathsync</h1>
-            <a href="https://github.com/3musket33rs/mathsync"><img src="img/mathsync.png" /></a>
+            <a style="display: inline-block; width: 80%" href="https://github.com/3musket33rs/mathsync"><img src="img/mathsync.png" /></a>
           </div>
         </div>
       </div>
@@ -1209,8 +1220,8 @@ local.applyDifference(diff);</code></pre>
         <div class="stack-center">
           <div class="stacked-center">
             <h1>Mathsync: data structure</h1>
-            <pre><code class="language-javascript">// bucket: { hash: [], content: [], items: 0 }
-var ibf = emptyBuckets(n);
+            <pre><code class="language-javascript">var ibf = emptyBuckets(n);
+// ibf: [{ hash: [], content: [], items: 0 }, ... ]
 
 items.forEach(function(item) {
   var bytes = serialize(item);
@@ -1218,9 +1229,9 @@ items.forEach(function(item) {
   buckets(bytes).forEach(function (id) {
     var bucket = ibf[id % n];
 
-    bucket.hash = xor(bucket.hash, hash(bytes));
-    bucket.content = xor(bucket.content, bytes);
     bucket.items++;
+    bucket.content = xor(bucket.content, bytes);
+    bucket.hash = xor(bucket.hash, hash(bytes));
   });
 });</code></pre>
           </div>
@@ -1249,22 +1260,24 @@ app.use(route.get('/summary/:level', function* (level) {
         <div class="stack-center">
           <div class="stacked-center">
             <h1>Mathsync setup - client</h1>
-            <pre><code class="language-javascript">var data = [/* ... */];
+            <pre><code class="language-javascript">var ms = require('mathsync');
+var data = [/* ... */];
 
+// local items
 function serialize(item) { /* ... */ }
+var local = ms.summarizer.fromItems(data, serialize);
 
+// server items
+function fetchSummary(level) {
+  return http.getJson('/summary/' + level);
+}
+var remote = summarizer.fromJSON(fetchSummary);
+
+// delta
 function deserialize(buffer) {
   var arr = new Buffer(new Uint8Array(buffer)).toString('utf-8').split(':');
   return { key: arr[0], value: arr[1] };
 }
-
-function fetchSummary(level) {
-  return http.getJson('/summary/' + level);
-}
-
-var ms = require('mathsync');
-var local = ms.summarizer.fromItems(data, serialize);
-var remote = summarizer.fromJSON(fetchSummary);
 var resolve = ms.resolver.fromSummarizers(local, remote, deserialize);
 
 resolve().then(function (difference) { /* ... */ });</code></pre>
@@ -1285,7 +1298,7 @@ resolve().then(function (difference) { /* ... */ });</code></pre>
             <svg class="matherrors" viewBox="0 0 400 200">
               <style type="text/css" ><![CDATA[
                 .matherrors path {
-                  stroke: black;
+                  stroke: #C22;
                 }
                 .matherrors text {
                   text-anchor: middle;
@@ -1307,12 +1320,12 @@ resolve().then(function (difference) { /* ... */ });</code></pre>
                 <path id="rsyncarrow" d="M 0 0 L -5 3 L -5 -3 L 0 0 L -5 0" />
               </defs>
               <g class="timeline" transform="translate(100,10)">
-                <rect x="-50" y="-7" width="100" height="14"/>
+                <rect x="-50" y="-7" width="100" height="14" rx="2" ry="2"/>
                 <text font-size="10">application</text>
                 <path d="M 0 10 L 0 180" />
               </g>
               <g class="timeline" transform="translate(300,10)">
-                <rect x="-50" y="-7" width="100" height="14"/>
+                <rect x="-50" y="-7" width="100" height="14" rx="2" ry="2"/>
                 <text font-size="10">server</text>
                 <path d="M 0 10 L 0 180" />
               </g>
@@ -1360,13 +1373,13 @@ resolve().then(function (difference) { /* ... */ });</code></pre>
                   stroke: black;
                 }
                 .mathselective .one .cloud {
-                  fill: rgba(90, 20, 20, 1);
+                  fill: rgba(150, 20, 20, 1);
                 }
                 .mathselective .two .cloud {
-                  fill: rgba(20, 90, 20, 1);
+                  fill: rgba(20, 130, 20, 1);
                 }
                 .mathselective .three .cloud {
-                  fill: rgba(20, 20, 90, 1);
+                  fill: rgba(20, 20, 150, 1);
                 }
                 .mathselective .mathsdmuser rect {
                   stroke: purple;
@@ -1377,10 +1390,10 @@ resolve().then(function (difference) { /* ... */ });</code></pre>
                 }
                 #mathsdmentity rect {
                   stroke: none;
-                  fill: rgba(0, 0, 0, 0.2);
+                  fill: rgba(0, 0, 0, 0.5);
                 }
                 #mathsdmentity text {
-                  fill: black;
+                  fill: white;
                   font-size: 6pt;
                 }
                 .mathselective text {
@@ -1389,17 +1402,17 @@ resolve().then(function (difference) { /* ... */ });</code></pre>
                   fill: #222244;
                 }
                 .mathselective .link {
-                  stroke: black;
+                  stroke: #C22;
                   fill: none;
                 }
               ]]></style>
               <defs>
                 <g id="mathsdmentity">
-                  <rect x="-14" y="-7" width="28" height="14" />
+                  <rect x="-14" y="-7" width="28" height="14" rx="5" ry="5"/>
                   <text>{ ... }</text>
                 </g>
                 <g class="mathsdmuser" id="mathsdmuser">
-                  <rect x="-30" y="-10" width="60" height="20" />
+                  <rect x="-30" y="-10" width="60" height="20" rx="3" ry="3"/>
                   <text>Summary</text>
                 </g>
               </defs>
@@ -1408,7 +1421,7 @@ resolve().then(function (difference) { /* ... */ });</code></pre>
               <use class="link" xlink:href="#arrow" transform="translate(342 162) rotate(60)" />
               <use class="link" xlink:href="#arrow" transform="translate(309 175) rotate(8)" />
               <g class="mathsdmuser" transform="translate(350, 180)">
-                <rect x="-40" y="-16" width="80" height="32" />
+                <rect x="-40" y="-16" width="80" height="32" rx="3" ry="3" />
                 <text y="-6">Combined</text>
                 <text y="6">summary</text>
               </g>
@@ -1451,7 +1464,7 @@ resolve().then(function (difference) { /* ... */ });</code></pre>
               <li>Roundtrips: <em>O(log(changeset size))</em></li>
               <li>Computational cost: <strong>high</strong></li>
               <li>Error correction: <em>fix on next synchronization</em></li>
-              <li>Setup: <strong>?</strong></li>
+              <li>Setup: <em>mathsync?</em></li>
             </ul>
           </div>
         </div>
