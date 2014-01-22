@@ -28,57 +28,46 @@ app.use(function* (next) {
   console.log('%s %s - %sms - %s', this.method, this.url, ms, this.session.id);
 });
 
-// [{ question: 'xxx?', requester: 'session', time: 123 }] index = question id
-var questions = [];
-
-// [{ voter_session: 1-5 }] index = question id
-var ranks = [];
-var average_rank = [];
-
-// { slide_id: { voter_session: 1-5 }}
-var votes = {};
-var average_slide = {};
-
-function serialize(item) {
-  return new Uint8Array(new Buffer(item, 'utf-8')).buffer;
+function serializeQuestion(question) {
+  var str = question.qid + ':' + question.q;
+  return new Uint8Array(new Buffer(str, 'utf-8')).buffer;
 }
 
-var current = summarizer.fromItems([], serialize);
-function updateSummarizer() {
-  var i, l, slides, slide;
-  var data = [];
+require('./public/couchstore')('http://@mathbr.cloudant.com').then(function (api) {
 
-  // question => q:question_id:average_rank:question
-  l = questions.length;
-  for (i = 0; i < l; i++) {
-    data.push(['q', i, average_rank[i] || 0, questions[i].question].join(':'));
-  }
+  app.use(route.get('/summary/:level', function* (level) {
+    var s = summarizer.fromItems(api.getQuestions(), serializeQuestion);
+    this.body = yield s(level);
+  }));
 
-  // slide vote => v:slide_id:average_score
-  slides = Object.keys(average_slide);
-  l = slides.length;
-  for (i = 0; i < l; i++) {
-    slide = slides[i];
-    data.push(['v', slide, average_slide[slide]].join(':'));
-  }
+  app.use(route.post('/question', function* () {
+    var query = yield* this.request.urlencoded();
+    yield api.askQuestion(query.question, this.session.id);
+    this.body = 'Question added!';
+    this.response.redirect('/');
+  }));
 
-  current = summarizer.fromItems(data, serialize);
-}
+  app.use(route.post('/rank', function* () {
+    var query = yield* this.request.urlencoded();
+    var rank = parseInt(query.rank, 10);
+    yield api.rankQuestion(query.question, this.session.id, rank);
+    this.body = 'Rank added!';
+    this.response.redirect('/');
+  }));
 
-app.use(route.get('/summary/:level', function* (level) {
-  this.body = yield current(level | 0);
-}));
+  app.use(route.post('/score', function* () {
+    var query = yield* this.request.urlencoded();
+    var score = parseInt(query.score, 10);
+    yield api.scoreSlide(query.slide, this.session.id, score);
+    this.body = 'Score added!';
+    this.response.redirect('/');
+  }));
 
-app.use(route.post('/question', function* () {
-  var query = yield* this.request.urlencoded();
-  if (query.question && query.question.length > 5) {
-    questions.push({ question: query.question, requester: this.session.id, time: Date.now() });
-    updateSummarizer();
-  }
-  this.body = 'Question added!';
-  this.response.redirect('/');
-}));
+  app.use(serve('public'));
 
-app.use(serve('public'));
-
-app.listen(process.env.PORT);
+  app.listen(process.env.PORT);
+}).then(function() {
+  console.log('Exposed API');
+}, function (err) {
+  console.log('Failed to load db: ' + err);
+});
