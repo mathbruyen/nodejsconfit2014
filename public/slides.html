@@ -1360,26 +1360,26 @@ resolve().then(function (difference) { /* ... */ });</code></pre>
                   stroke: black;
                 }
                 .mathselective .one .cloud {
-                  fill: rgba(140, 20, 20, 0.3);
+                  fill: rgba(90, 20, 20, 1);
                 }
                 .mathselective .two .cloud {
-                  fill: rgba(20, 140, 20, 0.3);
+                  fill: rgba(20, 90, 20, 1);
                 }
                 .mathselective .three .cloud {
-                  fill: rgba(20, 20, 140, 0.3);
+                  fill: rgba(20, 20, 90, 1);
                 }
-                .mathselective #sdmuser rect {
+                .mathselective .mathsdmuser rect {
                   stroke: purple;
                   fill: rgb(140, 140, 140);
                 }
-                .mathselective #sdmuser text {
+                .mathselective .mathsdmuser text {
                   font-size: 10pt;
                 }
-                #sdmentity rect {
+                #mathsdmentity rect {
                   stroke: none;
                   fill: rgba(0, 0, 0, 0.2);
                 }
-                #sdmentity text {
+                #mathsdmentity text {
                   fill: black;
                   font-size: 6pt;
                 }
@@ -1388,42 +1388,55 @@ resolve().then(function (difference) { /* ... */ });</code></pre>
                   dominant-baseline: middle;
                   fill: #222244;
                 }
+                .mathselective .link {
+                  stroke: black;
+                  fill: none;
+                }
               ]]></style>
               <defs>
-                <g id="sdmentity">
+                <g id="mathsdmentity">
                   <rect x="-14" y="-7" width="28" height="14" />
                   <text>{ ... }</text>
                 </g>
-                <g id="sdmuser">
-                  <rect x="-20" y="-10" width="40" height="20" />
-                  <text>User</text>
+                <g class="mathsdmuser" id="mathsdmuser">
+                  <rect x="-30" y="-10" width="60" height="20" />
+                  <text>Summary</text>
                 </g>
               </defs>
+              <path class="link" d="M 300 70 L 350 180" />
+              <path class="link" d="M 170 160 L 350 180" />
+              <use class="link" xlink:href="#arrow" transform="translate(342 162) rotate(60)" />
+              <use class="link" xlink:href="#arrow" transform="translate(309 175) rotate(8)" />
+              <g class="mathsdmuser" transform="translate(350, 180)">
+                <rect x="-40" y="-16" width="80" height="32" />
+                <text y="-6">Combined</text>
+                <text y="6">summary</text>
+              </g>
 
               <g class="one" transform="translate(110, 70)">
                 <use class="cloud" xlink:href="#cloud" transform="scale(1.7)" />
-                <use xlink:href="#sdmuser" />
+                <use xlink:href="#mathsdmuser" />
 
-                <use xlink:href="#sdmentity" transform="translate(-30, -30)" />
-                <use xlink:href="#sdmentity" transform="translate(-65, 10)" />
-                <use xlink:href="#sdmentity" transform="translate(60, 5)" />
+                <use xlink:href="#mathsdmentity" transform="translate(-30, -30)" />
+                <use xlink:href="#mathsdmentity" transform="translate(-65, 10)" />
+                <use xlink:href="#mathsdmentity" transform="translate(60, 5)" />
               </g>
               <g class="two" transform="translate(300, 70)">
                 <use class="cloud" xlink:href="#cloud" transform="scale(1.7)" />
-                <use xlink:href="#sdmuser" />
+                <use xlink:href="#mathsdmuser" />
 
-                <use xlink:href="#sdmentity" transform="translate(-60, 0)" />
-                <use xlink:href="#sdmentity" transform="translate(5, 30)" />
-                <use xlink:href="#sdmentity" transform="translate(15, -30)" />
-                <use xlink:href="#sdmentity" transform="translate(65, 10)" />
+                <use xlink:href="#mathsdmentity" transform="translate(-60, 0)" />
+                <use xlink:href="#mathsdmentity" transform="translate(5, 30)" />
+                <use xlink:href="#mathsdmentity" transform="translate(15, -30)" />
+                <use xlink:href="#mathsdmentity" transform="translate(65, 10)" />
               </g>
               <g class="three" transform="translate(170, 160)">
                 <use class="cloud" xlink:href="#cloud" transform="scale(1.7)" />
-                <use xlink:href="#sdmuser" />
+                <use xlink:href="#mathsdmuser" />
 
-                <use xlink:href="#sdmentity" transform="translate(20, -33)" />
-                <use xlink:href="#sdmentity" transform="translate(55, 5)" />
-                <use xlink:href="#sdmentity" transform="translate(-35, 25)" />
+                <use xlink:href="#mathsdmentity" transform="translate(20, -33)" />
+                <use xlink:href="#mathsdmentity" transform="translate(55, 5)" />
+                <use xlink:href="#mathsdmentity" transform="translate(-35, 25)" />
               </g>
             </svg>
           </div>
