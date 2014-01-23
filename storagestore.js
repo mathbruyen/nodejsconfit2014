@@ -1,12 +1,16 @@
 var q = require('q');
-var request = require('request');
+var request = require('superagent');
 var mathsync = require('mathsync');
 var sync = require('./sync');
 
-module.exports = function (storage, baseUrl) {
+module.exports = function (storage) {
 
   function get(key, def) {
-    return JSON.parse(storage.getItem(key) || def);
+    var str = storage.getItem(key);
+    if (!str) {
+      return def;
+    }
+    return JSON.parse(str);
   }
 
   function set(key, value) {
@@ -55,14 +59,24 @@ module.exports = function (storage, baseUrl) {
     return addToPending('pendingscores', { slide: slide, score: score });
   }
 
-  var post = q.nbind(request.post, request);
+  var post = function (path, form) {
+    var deferred = q.defer();
+    request.post(path).type('form').send(form).end(function (res) {
+      if (res.ok) {
+        deferred.resolve();
+      } else {
+        deferred.reject(res.text);
+      }
+    });
+    return deferred.promise;
+  }
 
   function processPending(key, processOne) {
     return q().then(function () {
       var promises = [];
       var pending = get(key, []);
       pending.forEach(function (q) {
-        promises.push(processOne());
+        promises.push(processOne(q));
       });
       return q.all(promises).then(function () {
         set(key, []);
@@ -72,32 +86,32 @@ module.exports = function (storage, baseUrl) {
 
   function askPendingQuestions() {
     return processPending('pendingquestions', function (question) {
-      return post(baseUrl + '/question', { form: question });
+      return post('/question', { form: question });
     });
   }
 
   function pushPendingRanks() {
     return processPending('pendingranks', function (rank) {
-      return post(baseUrl + '/rank', { form: rank });
+      return post('/rank', { form: rank });
     });
   }
 
   function pushPengingScores() {
     return processPending('pendingscores', function (score) {
-      return post(baseUrl + '/score', { form: score });
+      return post('/score', { form: score });
     });
   }
 
   function doSync() {
     return q().then(askPendingQuestions).then(pushPendingRanks).then(pushPengingScores).then(function () {
       var local = mathsync.summarizer.fromItems(getQuestions(), sync.serializeQuestion);
-      var remote = mathsync.summarizer.fromJson(function (level) {
+      var remote = mathsync.summarizer.fromJSON(function (level) {
         var deferred = q.defer();
-        request.get({ url: baseUrl + '/summary/' + level, json: true }, function (err, res, body) {
-          if (err) {
-            deferred.reject(err);
+        request.get('/summary/' + level).end(function (res) {
+          if (res.ok) {
+            deferred.resolve(res.body);
           } else {
-            deferred.resolve(body);
+            deferred.reject(res.text);
           }
         });
         return deferred.promise;
@@ -105,7 +119,12 @@ module.exports = function (storage, baseUrl) {
       var resolver = mathsync.resolver.fromSummarizers(local, remote, sync.deserializeQuestion);
       return resolver();
     }).then(function (difference) {
-      //TODO add & remove
+      difference.added.forEach(function (item) {
+        set(item.qid, item);
+      });
+      difference.removed.forEach(function (item) {
+        storage.removeItem(item.qid);
+      });
     });
   }
 
@@ -114,6 +133,6 @@ module.exports = function (storage, baseUrl) {
     rankQuestion: rankQuestion,
     scoreSlide: scoreSlide,
     getQuestions: getQuestions,
-    sync: sync
+    doSync: doSync
   });
 }

@@ -8,3 +8,4 @@ demo-skyline
 *.dev.*
 _wip
 node_modules
+public/browser.js
