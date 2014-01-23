@@ -21,6 +21,7 @@
 
   <title>World is in conflict: my app is online</title>
   <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="css/app.css">
 
   <link rel="apple-touch-icon-precomposed"             href="img/touch-icon-iphone.png">
   <link rel="apple-touch-icon-precomposed"   sizes="72x72"     href="img/touch-icon-ipad.png">
@@ -29,6 +30,8 @@
 
   <link rel="apple-touch-startup-image" href="img/startup-640x920.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)">
   <link rel="apple-touch-startup-image" href="img/startup-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <section>
@@ -42,8 +45,8 @@
   <section>
     <form action="/question" method="post">
       <label for="POST-question">Question :</label>
-      <input id="POST-question" type="text" name="question">
-      <input type="submit" value="Submit!">
+      <input id="POST-question" type="text" name="question" />
+      <input type="submit" value="Submit!" />
     </form>
   </section>
 </body>
