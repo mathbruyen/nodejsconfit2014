@@ -4,6 +4,7 @@ var fs = require('fs');
 var route = require('koa-route');
 var serve = require('koa-static');
 var summarizer = require('mathsync').summarizer;
+var serialize = require('./sync').serializeQuestion;
 
 // Body
 require('koa-body-parser')(app);

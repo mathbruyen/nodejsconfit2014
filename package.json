@@ -8,6 +8,7 @@
     "koa-session": "1.2.x",
     "node-uuid": "1.4.x",
     "nano": "4.4.x",
-    "q": "0.9.x"
+    "q": "0.9.x",
+    "request": "2.33.x"
   }
 }
