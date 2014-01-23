@@ -31,6 +31,19 @@ app.use(function* (next) {
 
 require('./couchstore')(process.env.COUCH_URL).then(function (api) {
 
+  var currentSlide;
+
+  app.use(route.get('/currentSlide', function* (level) {
+    this.body = currentSlide;
+  }));
+
+  app.use(route.post('/currentSlide', function* (level) {
+    var query = yield* this.request.json();
+    currentSlide = query.currentSlide;
+    this.body = 'Slide updated!';
+    this.response.redirect('/');
+  }));
+
   app.use(route.get('/summary/:level', function* (level) {
     var s = summarizer.fromItems(api.getQuestions(), serialize.serializeQuestion);
     this.body = yield s(level);

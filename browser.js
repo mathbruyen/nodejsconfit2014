@@ -1,3 +1,5 @@
+var request = require('superagent');
+
 require('./storagestore')(window.localStorage).then(function (api) {
 
   setInterval(api.doSync, 5000);
@@ -17,6 +19,24 @@ require('./storagestore')(window.localStorage).then(function (api) {
       }
     }
   }
+
+  // Score slides
+  var slideElement = document.getElementById('slidetitle');
+  function scoreCurrentSlide(score) {
+    if (slideElement.textContent.length > 0) {
+      api.scoreSlide(slideElement.textContent, score);
+      // TODO handle promise
+    }
+  }
+  readButtons(slideElement, scoreCurrentSlide);
+  function getLastSlide() {
+    request.get('/currentSlide').end(function (res) {
+      if (res.ok) {
+        slideElement.textContent = res.text;
+      }
+    });
+  }
+  setInterval(getLastSlide, 5000);
 
   // Ask questions
   var submitQuestionElement = document.getElementById('askquestion');
@@ -47,7 +67,7 @@ require('./storagestore')(window.localStorage).then(function (api) {
       questionElement.textContent = rankedQuestion.q;
     }
   }
-  setInterval(changeQuestion, 5000);
+  setInterval(changeQuestion, 10000);
   changeQuestion();
 
   window.nodejsconfit = api;

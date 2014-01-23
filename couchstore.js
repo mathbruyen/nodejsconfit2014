@@ -93,8 +93,9 @@ module.exports = function (url) {
     if (score < 1 || score > 5) {
       return q.reject('Invalid score: ' + score);
     }
+
     if (!votes[slide]) {
-      return q.reject('Slide ' + slide + ' does not exist and cannot be scored');
+      votes[slide] = {};
     }
 
     var obj = votes[slide][requester];
@@ -131,10 +132,10 @@ module.exports = function (url) {
           }
           ranks[doc.qid][doc.req] = doc;
         } else if (doc.score) {
-          if (!slides[doc.sid]) {
-            slides[doc.sid] = {};
+          if (!votes[doc.sid]) {
+            votes[doc.sid] = {};
           }
-          slides[doc.sid][doc.req] = doc;
+          votes[doc.sid][doc.req] = doc;
         }
       }));
     });
