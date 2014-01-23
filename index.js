@@ -4,7 +4,7 @@ var fs = require('fs');
 var route = require('koa-route');
 var serve = require('koa-static');
 var summarizer = require('mathsync').summarizer;
-var serialize = require('./sync').serializeQuestion;
+var serialize = require('./sync');
 
 // Body
 require('koa-body-parser')(app);
@@ -32,7 +32,12 @@ app.use(function* (next) {
 require('./couchstore')(process.env.COUCH_URL).then(function (api) {
 
   app.use(route.get('/summary/:level', function* (level) {
-    var s = summarizer.fromItems(api.getQuestions(), serialize);
+    var s = summarizer.fromItems(api.getQuestions(), serialize.serializeQuestion);
+    this.body = yield s(level);
+  }));
+
+  app.use(route.get('/summaryWithRank/:level', function* (level) {
+    var s = summarizer.fromItems(api.getQuestionsWithRanks(), serialize.serializeQuestionWithRank);
     this.body = yield s(level);
   }));
 

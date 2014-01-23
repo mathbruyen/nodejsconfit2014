@@ -36,6 +36,33 @@ module.exports = function (url) {
     return q;
   }
 
+  function getQuestionsWithRanks() {
+    var q = [];
+    for (qid in questions) {
+      q.push({
+        qid: qid,
+        q: questions[qid].q,
+        rank: getQuestionRank(qid)
+      });
+    }
+    return q;
+  }
+
+  function getQuestionRank(question) {
+    var r = ranks[question];
+    if (r) {
+      var sum = 0;
+      var count = 0;
+      for (var voter in r) {
+        count++;
+        sum += r[voter].rank;
+      }
+      return sum / Math.max(1, count);
+    } else {
+      return 0;
+    }
+  }
+
   function rankQuestion(question, requester, rank) {
     if (rank < 1 || rank > 5) {
       return q.reject('Invalid rank: ' + rank);
@@ -87,7 +114,8 @@ module.exports = function (url) {
     askQuestion: askQuestion,
     rankQuestion: rankQuestion,
     scoreSlide: scoreSlide,
-    getQuestions: getQuestions
+    getQuestions: getQuestions,
+    getQuestionsWithRanks: getQuestionsWithRanks
   };
 
   return list().then(function (body) {

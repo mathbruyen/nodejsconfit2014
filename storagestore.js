@@ -72,16 +72,18 @@ module.exports = function (storage) {
   }
 
   function processPending(key, processOne) {
-    return q().then(function () {
-      var promises = [];
-      var pending = get(key, []);
-      pending.forEach(function (q) {
-        promises.push(processOne(q));
-      });
-      return q.all(promises).then(function () {
-        set(key, []);
-      });
-    });
+    var pending = get(key, []);
+    set(key, []);
+    var p = q();
+    for (var i = 0; i < pending.length; i++) {
+      (function () {
+        var j = i;
+        p = p.then(function () {
+          processOne(pending[j]);
+        });
+      })();
+    }
+    return p;
   }
 
   function askPendingQuestions() {
@@ -119,11 +121,37 @@ module.exports = function (storage) {
       var resolver = mathsync.resolver.fromSummarizers(local, remote, sync.deserializeQuestion);
       return resolver();
     }).then(function (difference) {
+      difference.removed.forEach(function (item) {
+        storage.removeItem(item.qid);
+      });
       difference.added.forEach(function (item) {
         set(item.qid, item);
       });
+    });
+  }
+
+  function syncQuestionsWithRanks() {
+    return q().then(function () {
+      var local = mathsync.summarizer.fromItems(getQuestions(), sync.serializeQuestionWithRank);
+      var remote = mathsync.summarizer.fromJSON(function (level) {
+        var deferred = q.defer();
+        request.get('/summaryWithRank/' + level).end(function (res) {
+          if (res.ok) {
+            deferred.resolve(res.body);
+          } else {
+            deferred.reject(res.text);
+          }
+        });
+        return deferred.promise;
+      });
+      var resolver = mathsync.resolver.fromSummarizers(local, remote, sync.deserializeQuestionWithRank);
+      return resolver();
+    }).then(function (difference) {
       difference.removed.forEach(function (item) {
         storage.removeItem(item.qid);
+      });
+      difference.added.forEach(function (item) {
+        set(item.qid, item);
       });
     });
   }
@@ -133,6 +161,7 @@ module.exports = function (storage) {
     rankQuestion: rankQuestion,
     scoreSlide: scoreSlide,
     getQuestions: getQuestions,
-    doSync: doSync
+    doSync: doSync,
+    syncQuestionsWithRanks: syncQuestionsWithRanks
   });
 }
