@@ -18,6 +18,18 @@ require('./storagestore')(window.localStorage).then(function (api) {
     }
   }
 
+  // Ask questions
+  var submitQuestionElement = document.getElementById('askquestion');
+  var textQuestionElement = document.getElementById('questiontext');
+  submitQuestionElement.addEventListener('submit', function (e) {
+    e.preventDefault();
+    api.askQuestion(textQuestionElement.value).then(function () {
+      textQuestionElement.value = '';
+    });
+    // TODO handle failure
+  });
+
+  // Rank questions
   var questionElement = document.getElementById('rankedquestion');
   function rankCurrentQuestion(rank) {
     if (rankedQuestion) {
