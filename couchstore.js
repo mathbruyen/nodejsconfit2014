@@ -37,7 +37,7 @@ module.exports = function (url) {
   }
 
   function rankQuestion(question, requester, rank) {
-    if (rank >= 0 && rank <= 5) {
+    if (rank < 1 || rank > 5) {
       return q.reject('Invalid rank: ' + rank);
     }
 
@@ -49,7 +49,11 @@ module.exports = function (url) {
       ranks[question] = {};
     }
 
-    var obj = ranks[question][requester] || { qid: question, req: requester };
+    var obj = ranks[question][requester];
+    if (!obj) {
+      obj = { qid: question, req: requester };
+      ranks[question][requester] = obj;
+    }
     obj.rank = rank;
 
     var id = question + '_' + requester;
@@ -59,14 +63,18 @@ module.exports = function (url) {
   }
 
   function scoreSlide(slide, requester, score) {
-    if (score >= 0 && score <= 5) {
+    if (score < 1 || score > 5) {
       return q.reject('Invalid score: ' + score);
     }
     if (!votes[slide]) {
       return q.reject('Slide ' + slide + ' does not exist and cannot be scored');
     }
 
-    var obj = votes[slide][requester] || { sid: slide, req: requester };
+    var obj = votes[slide][requester];
+    if (!obj) {
+      obj = { sid: slide, req: requester };
+      votes[slide][requester] = obj;
+    }
     obj.score = score;
 
     var id = slide + '_' + requester;

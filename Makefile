@@ -1,5 +1,4 @@
 init:
-	nvm use 0.11
 	npm install .
 	npm install -g forever
 	npm install -g browserify

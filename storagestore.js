@@ -46,14 +46,14 @@ module.exports = function (storage) {
   }
 
   function rankQuestion(question, rank) {
-    if (rank >= 0 && rank <= 5) {
+    if (rank < 1 || rank > 5) {
       return q.reject('Invalid rank: ' + rank);
     }
     return addToPending('pendingranks', { question: question, rank: rank });
   }
 
   function scoreSlide(slide, score) {
-    if (score >= 0 && score <= 5) {
+    if (score < 1 || score > 5) {
       return q.reject('Invalid score: ' + score);
     }
     return addToPending('pendingscores', { slide: slide, score: score });
@@ -61,7 +61,7 @@ module.exports = function (storage) {
 
   var post = function (path, form) {
     var deferred = q.defer();
-    request.post(path).type('form').send(form).end(function (res) {
+    request.post(path).send(form).end(function (res) {
       if (res.ok) {
         deferred.resolve();
       } else {
@@ -86,19 +86,19 @@ module.exports = function (storage) {
 
   function askPendingQuestions() {
     return processPending('pendingquestions', function (question) {
-      return post('/question', { form: question });
+      return post('/question', question);
     });
   }
 
   function pushPendingRanks() {
     return processPending('pendingranks', function (rank) {
-      return post('/rank', { form: rank });
+      return post('/rank', rank);
     });
   }
 
   function pushPengingScores() {
     return processPending('pendingscores', function (score) {
-      return post('/score', { form: score });
+      return post('/score', score);
     });
   }
 
