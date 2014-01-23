@@ -33,7 +33,7 @@ function serializeQuestion(question) {
   return new Uint8Array(new Buffer(str, 'utf-8')).buffer;
 }
 
-require('./public/couchstore')('http://@mathbr.cloudant.com').then(function (api) {
+require('./couchstore')(process.env.COUCH_URL).then(function (api) {
 
   app.use(route.get('/summary/:level', function* (level) {
     var s = summarizer.fromItems(api.getQuestions(), serializeQuestion);
