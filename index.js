@@ -41,7 +41,6 @@ require('./couchstore')(process.env.COUCH_URL).then(function (api) {
     var query = yield* this.request.json();
     currentSlide = query.currentSlide;
     this.body = 'Slide updated!';
-    this.response.redirect('/');
   }));
 
   app.use(route.get('/summary/:level', function* (level) {
@@ -58,7 +57,6 @@ require('./couchstore')(process.env.COUCH_URL).then(function (api) {
     var query = yield* this.request.json();
     yield api.askQuestion(query.question, this.session.id);
     this.body = 'Question added!';
-    this.response.redirect('/');
   }));
 
   app.use(route.post('/rank', function* () {
@@ -66,7 +64,6 @@ require('./couchstore')(process.env.COUCH_URL).then(function (api) {
     var rank = parseInt(query.rank, 10);
     yield api.rankQuestion(query.question, this.session.id, rank);
     this.body = 'Rank added!';
-    this.response.redirect('/');
   }));
 
   app.use(route.post('/score', function* () {
@@ -74,7 +71,6 @@ require('./couchstore')(process.env.COUCH_URL).then(function (api) {
     var score = parseInt(query.score, 10);
     yield api.scoreSlide(query.slide, this.session.id, score);
     this.body = 'Score added!';
-    this.response.redirect('/');
   }));
 
   app.use(serve('public'));
