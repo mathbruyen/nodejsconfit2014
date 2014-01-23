@@ -79,7 +79,7 @@ module.exports = function (storage) {
       (function () {
         var j = i;
         p = p.then(function () {
-          processOne(pending[j]);
+          return processOne(pending[j]);
         });
       })();
     }
