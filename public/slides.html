@@ -1011,6 +1011,110 @@
           </div>
         </div>
       </div>
+      <div class="ft-page" data-id="Errors" data-title="Errors">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Errors</h1>
+            <svg viewBox="0 0 400 200" class="timestamperrors">
+              <defs>
+              </defs>
+              <style type="text/css" ><![CDATA[
+                .timestamperrors text {
+                  text-anchor: middle;
+                  dominant-baseline: middle;
+                  font-size: 7pt;
+                }
+                .timestamperrors .cloud {
+                  fill: #B22;
+                  stroke: #BBB;
+                }
+                .timestamperrors .log text {
+                  font-size: 6pt;
+                }
+                .timestamperrors .log rect {
+                  fill: #292;
+                }
+                .timestamperrors .timeline rect {
+                  fill: purple;
+                }
+                .timestamperrors .timeline path {
+                  stroke: black;
+                  fill: none;
+                }
+                .timestamperrors .checkpoint rect {
+                  fill: #44C;
+                }
+                .timestamperrors .action path {
+                  stroke: #C22;
+                  fill: none;
+                }
+                .timestamperrors .edited {
+                  fill: #CCC;
+                }
+              ]]></style>
+              <g class="timeline" transform="translate(100,7)">
+                <rect x="-30" y="-6" width="60" height="12" rx="3" ry="3"/>
+                <text>Server</text>
+                <path d="M 0 8 L 0 250" />
+              </g>
+              <g class="timeline" transform="translate(300,7)">
+                <rect x="-30" y="-6" width="60" height="12" rx="3" ry="3"/>
+                <text>Client</text>
+                <path d="M 0 8 L 0 250" />
+                <g class="checkpoint" transform="translate(0,100)">
+                  <rect x="-35" y="-7" width="70" height="14" rx="3" ry="3"/>
+                  <text>checkpoint: 103</text>
+                </g>
+                <g class="checkpoint" transform="translate(0,190)">
+                  <rect x="-35" y="-7" width="70" height="14" rx="3" ry="3"/>
+                  <text>checkpoint: 103</text>
+                </g>
+                <g class="action" transform="translate(0,40)">
+                  <path d="M 0 0 L -100 0 L -100 30 L 0 30" />
+                  <use class="link" xlink:href="#arrow" transform="translate(0,30)" />
+                </g>
+                <g class="action" transform="translate(0,130)">
+                  <path d="M 0 0 L -100 0 L -100 30 L 0 30" />
+                  <use class="link" xlink:href="#arrow" transform="translate(0,30)" />
+                  <g class="checkpoint" transform="translate(-50,22)">
+                    <rect x="-20" y="-7" width="40" height="14" rx="3" ry="3"/>
+                    <text>nothing!</text>
+                  </g>
+                </g>
+              </g>
+              <g transform="translate(100,60)">
+                <use class="cloud" xlink:href="#cloud" transform="scale(1.7,1.5)" />
+                <g class="log" transform="translate(40, -25)">
+                  <rect class="log" x="-30" y="0" width="60" height="50" rx="4" ry="4"/>
+                  <text y="15">100 - /user/1</text>
+                  <text y="25">101 - /user/2</text>
+                  <text y="35">103 - /user/8</text>
+                </g>
+                <text x="-55" y="0">/user/1: { ... }</text>
+                <text x="-30" y="-15">/user/2: { ... }</text>
+                <text x="-25" y="20">/user/8: { ... }</text>
+              </g>
+              <g class="checkpoint" transform="translate(100,112)">
+                <rect x="-50" y="-7" width="100" height="14" rx="3" ry="3"/>
+                <text>Rogue edit on /user/8</text>
+              </g>
+              <g transform="translate(100,165)">
+                <use class="cloud" xlink:href="#cloud" transform="scale(1.7,1.5)" />
+                <g class="log" transform="translate(40, -25)">
+                  <rect class="log" x="-30" y="0" width="60" height="50" rx="4" ry="4"/>
+                  <text y="15">100 - /user/1</text>
+                  <text y="25">101 - /user/2</text>
+                  <text y="35">103 - /user/8</text>
+                </g>
+                <text x="-55" y="0">/user/1: { ... }</text>
+                <text x="-30" y="-15">/user/2: { ... }</text>
+                <rect class="edited" x="-55" y="14" width="60" height="13" rx="3" ry="3" />
+                <text x="-25" y="20">/user/8: { ... }</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
       <div class="ft-page" data-id="Filters" data-title="Filters">
         <div class="stack-center">
           <div class="stacked-center">
