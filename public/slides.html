@@ -1319,6 +1319,101 @@ local.applyDifference(diff);</code></pre>
           </div>
         </div>
       </div>
+      <div class="ft-page" data-id="Mathsyncdatastructureschema" data-title="Mathsync data structure schema">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <h1>Mathsync data structure</h1>
+            <svg class="mathschema" viewBox="0 0 400 200">
+              <style type="text/css" ><![CDATA[
+                .mathschema text {
+                  text-anchor: middle;
+                  dominant-baseline: middle;
+                  font-size: 7pt;
+                }
+                .mathschema .json text {
+                  text-anchor: start;
+                }
+                .mathschema path {
+                  fill: none;
+                }
+                .mathschema rect {
+                  stroke: #222244;
+                  fill: #BBB;
+                }
+                .mathschema path {
+                  stroke: #C22;
+                }
+              ]]></style>
+              <g transform="translate(50, 10)">
+                <rect x="-35" y="-8" width="70" height="16" rx="3" ry="3" />
+                <text>{ name: "Alice" }</text>
+                <path d="M -25 8 L -25 23 L -5 23" />
+              </g>
+              <g transform="translate(80, 33)">
+                <rect x="-35" y="-8" width="70" height="16" rx="3" ry="3" />
+                <text>content: [1A2B]</text>
+                <path d="M -25 8 L -25 23 L -5 23" />
+                <path d="M -25 8 L -25 46 L -5 46" />
+              </g>
+              <g transform="translate(110, 56)">
+                <rect x="-35" y="-8" width="70" height="16" rx="3" ry="3" />
+                <text>hash: [123]</text>
+              </g>
+              <g transform="translate(110, 79)">
+                <rect x="-35" y="-8" width="70" height="16" rx="3" ry="3" />
+                <text>buckets: 1, 2</text>
+              </g>
+
+              <g transform="translate(50, 121)">
+                <rect x="-35" y="-8" width="70" height="16" rx="3" ry="3" />
+                <text>{ name: "Bob" }</text>
+                <path d="M -25 8 L -25 23 L -5 23" />
+              </g>
+              <g transform="translate(80, 144)">
+                <rect x="-35" y="-8" width="70" height="16" rx="3" ry="3" />
+                <text>content: [3C4D]</text>
+                <path d="M -25 8 L -25 23 L -5 23" />
+                <path d="M -25 8 L -25 46 L -5 46" />
+              </g>
+              <g transform="translate(110, 167)">
+                <rect x="-35" y="-8" width="70" height="16" rx="3" ry="3" />
+                <text>hash: [456]</text>
+              </g>
+              <g transform="translate(110, 190)">
+                <rect x="-35" y="-8" width="70" height="16" rx="3" ry="3" />
+                <text>buckets: 2, 3</text>
+              </g>
+
+              <g class="json" transform="translate(230, 10)">
+                <rect x="-5" y="-9" width="145" height="198" rx="5" ry="5"/>
+                <text x="0" y="0">[{</text>
+                <text x="20" y="15">items: 1</text>
+                <text x="20" y="30">content: [1A2B]</text>
+                <text x="20" y="45">hash: [123]</text>
+                <text x="0" y="60">}, {</text>
+                <text x="20" y="75">items: 2</text>
+                <text x="20" y="90">content: [1A2B] XOR [3C4D]</text>
+                <text x="20" y="105">hash: [123] XOR [456]</text>
+                <text x="0" y="120">}, {</text>
+                <text x="20" y="135">items: 1</text>
+                <text x="20" y="150">content: [3C4D]</text>
+                <text x="20" y="165">hash: [456]</text>
+                <text x="0" y="180">}]</text>
+              </g>
+
+              <path d="M 150 40 L 220 40" />
+              <use class="link" xlink:href="#arrow" transform="translate(220 40) rotate(0)" />
+              <path d="M 150 40 L 220 90" />
+              <use class="link" xlink:href="#arrow" transform="translate(220 90) rotate(40)" />
+
+              <path d="M 150 160 L 220 160" />
+              <use class="link" xlink:href="#arrow" transform="translate(220 160) rotate(0)" />
+              <path d="M 150 160 L 220 110" />
+              <use class="link" xlink:href="#arrow" transform="translate(220 110) rotate(-40)" />
+            </svg>
+          </div>
+        </div>
+      </div>
       <div class="ft-page" data-id="Mathsync data structure" data-title="Mathematical Synchronization - data structure">
         <div class="stack-center">
           <div class="stacked-center">
