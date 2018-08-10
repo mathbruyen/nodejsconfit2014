@@ -30,8 +30,8 @@ require('./storagestore')(window.localStorage).then(function (api) {
   }
   readButtons(slideElement, scoreCurrentSlide);
   function getLastSlide() {
-    request.get('/currentSlide').end(function (res) {
-      if (res.ok) {
+    request.get('/currentSlide').end(function (err, res) {
+      if (!err) {
         slideElement.textContent = res.text;
       }
     });
